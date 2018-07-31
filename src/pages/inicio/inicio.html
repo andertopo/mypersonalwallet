@@ -1,0 +1,119 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="search"></ion-icon>
+      </button>
+      <button ion-button clear icon-only end>
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons left>
+      <button ion-button (click)="presentPopover($event)">
+        Enero&nbsp;&nbsp;
+        <ion-icon name="arrow-dropdown"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-title>
+    $ -5,093,236.00
+    <p class="subtitle">Saldo en las cuentas</p>
+  </ion-title>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      Accesos rápidos
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="trending-up" item-start></ion-icon>
+          Ingreso
+        </ion-item>
+        <ion-item>
+          <ion-icon name="trending-down" item-start></ion-icon>
+          Gasto
+        </ion-item>
+        <ion-item>
+          <ion-icon name="stats" item-start></ion-icon>
+          Balance
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <strong>Balance mensual: </strong>
+      <span float-right>$205.000</span>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas baseChart [datasets]="barChartData" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType"
+        [colors]="colours" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="presupuesto">
+    <ion-card-header>
+      <strong>Presupuesto</strong>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        Presupuesto
+        <span float-right>$1.800.000</span>
+      </ion-item>
+      <ion-item>
+        Gastado
+        <span float-right class="gastado-text">$0</span>
+      </ion-item>
+      <ion-item>
+        Restan
+        <span float-right class="restante-text">$1.800.000</span>
+      </ion-item>
+      <progress-bar [progress]="0"></progress-bar>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <button ion-button clear small>
+          <div>Editar</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <strong>Metas</strong>
+      <div float-right>
+        <ion-icon name="arrow-dropright"></ion-icon>
+      </div>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-icon name="jet" item-start></ion-icon>
+        <progress-bar [progress]="0"></progress-bar>
+      </ion-item>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <button ion-button clear small>
+          <div>Editar</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Gastos por Categoría
+    </ion-card-header>
+    <ion-card-content>
+      <canvas baseChart
+        [data]="doughnutChartData"
+        [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType"
+        [colors]="coloursDonut"
+        [options]="barChartOptions"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

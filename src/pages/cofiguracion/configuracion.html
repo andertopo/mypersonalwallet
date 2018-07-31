@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      MÁS OPCIONES
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="settings"></ion-icon>
+      </button>
+      <button ion-button clear icon-only end>
+        <ion-icon name="help"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-segment [(ngModel)]="configurationTab" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="perfil">
+      Mi perfil
+    </ion-segment-button>
+    <ion-segment-button value="gerenciar">
+      Gerenciar
+    </ion-segment-button>
+    <ion-segment-button value="general">
+      GENERAL
+    </ion-segment-button>
+    <ion-segment-button value="acerca">
+      ACERCA DE
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ion-content padding>
+  <div [ngSwitch]="configurationTab">
+    <configuracion-perfil *ngSwitchCase="'perfil'"></configuracion-perfil>
+    <configuracion-gerenciar *ngSwitchCase="'gerenciar'"></configuracion-gerenciar>
+  </div>
+</ion-content>

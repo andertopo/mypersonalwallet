@@ -1,0 +1,49 @@
+progress-bar {
+  .progress {
+    margin-bottom: 16px;
+  }
+  .progress-outer {
+      margin: 3px 16px 3px 16px;
+      padding: 1px;
+      text-align: center;
+      background-color: #f4f4f4;
+      border: 1px solid #dcdcdc;
+      color: #fff;
+      border-radius: 20px;
+  }
+
+  .progress-inner {
+      min-width: 15%;
+      white-space: nowrap;
+      overflow: hidden;
+      padding: 1px;
+      border-radius: 20px;
+  }
+
+  .progress-description {
+    margin-left: 16px;
+    color: gray;
+  }
+
+  .progress-text {
+    margin-right: 16px;
+    color: gray;
+  }
+
+  #progress-success {
+    background-color: map-get($colors, secondary);
+  }
+
+  #progres-info {
+    background-color: map-get($colors, primary);
+  }
+
+  #progress-warning {
+    background-color: map-get($colors, warning);
+  }
+
+  #progress-danger {
+    background-color: map-get($colors, danger);
+  }
+
+}

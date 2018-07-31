@@ -1,0 +1,44 @@
+page-inicio {
+  ion-header {
+    background: map-get($colors, azulPrimario);
+  }
+  .toolbar-title-md {
+    font-size: 3em;
+  }
+	.toolbar-background-md {
+		background: map-get($colors, azulPrimario);
+  }
+  .toolbar {
+    color: map-get($colors, light);
+  }
+
+  .toolbar-title {
+    text-align: center;
+    .subtitle {
+      font-size: 0.4em;
+      margin-top: 0;
+    }
+  }
+  .ion-md-trending-up{
+    color: map-get($colors, secondary);
+  }
+  .ion-md-trending-down{
+    color: map-get($colors, danger);
+  }
+  .ion-md-stats{
+    color: map-get($colors, azulPrimario);
+  }
+
+  .ion-md-jet {
+    color: map-get($map: $colors, $key: danger);
+  }
+
+  .presupuesto {
+    ion-card-content ion-item .gastado-text {
+      color: map-get($colors, danger);
+    }
+    ion-card-content ion-item .restante-text {
+      color: map-get($map: $colors, $key: secondary);
+    }
+  }
+}
