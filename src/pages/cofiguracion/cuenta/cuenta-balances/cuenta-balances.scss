@@ -1,0 +1,10 @@
+page-cuenta-balances {
+  @import '../../../../theme/bg-headers.scss';
+  .label-md {
+    margin: 0;
+    max-width: 90px;
+  }
+  .col-balance {
+    padding-right: 0;
+  }
+}

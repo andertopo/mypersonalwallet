@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar color="azulPrimario">
+    <ion-title>
+      filtrar
+      <ion-icon name="checkmark" float-right (click)="close()"></ion-icon>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item (click)="openPopover('estado')">
+    <ion-list-header>Situación</ion-list-header>
+    <ion-icon margin-right [color]="estadoTransaccion.color" float-left [name]="estadoTransaccion.icono"></ion-icon>
+    {{ estadoTransaccion.nombre }}
+    <ion-icon float-right name="arrow-dropdown"></ion-icon>
+  </ion-item>
+  <ion-item (click)="openPopover('categoria')">
+    <ion-list-header>Categorías</ion-list-header>
+    <ion-icon margin-right float-left name="pricetag"></ion-icon>
+    <span class="span-categorias" *ngIf="categoriasTransaccion.length > 0">
+      <ion-chip class="chip-margin" [color]="categoriaTransaccion.color" *ngFor="let categoriaTransaccion of categoriasTransaccion">
+        <span class="chip-span">{{ categoriaTransaccion.nombre }}</span>
+      </ion-chip>
+    </span>
+    <span *ngIf="categoriasTransaccion.length == 0">
+      Todas
+    </span>
+    <ion-icon float-right name="arrow-dropdown"></ion-icon>
+  </ion-item>
+  <ion-item (click)="openPopover('cuenta')">
+    <ion-list-header>Cuentas</ion-list-header>
+    <ion-icon margin-right float-left name="pricetag"></ion-icon>
+    <span class="span-categorias" *ngIf="cuentasTransaccion.length > 0">
+      <ion-chip class="chip-margin" [color]="cuentaTransaccion.color" *ngFor="let cuentaTransaccion of cuentasTransaccion">
+        <span class="chip-span">{{ cuentaTransaccion.nombre }}</span>
+      </ion-chip>
+    </span>
+    <span *ngIf="cuentasTransaccion.length == 0">
+      Todas
+    </span>
+    <ion-icon float-right name="arrow-dropdown"></ion-icon>
+  </ion-item>
+  <ion-item (click)="openPopover('etiqueta')">
+    <ion-list-header>Etiquetas</ion-list-header>
+    <ion-icon margin-right float-left name="pricetag"></ion-icon>
+    <span class="span-categorias" *ngIf="etiquetasTransaccion.length > 0">
+      <ion-chip class="chip-margin" [color]="etiquetaTransaccion.color" *ngFor="let etiquetaTransaccion of etiquetasTransaccion">
+        <span class="chip-span">{{ etiquetaTransaccion.nombre }}</span>
+      </ion-chip>
+    </span>
+    <span *ngIf="etiquetasTransaccion.length == 0">
+      Todas
+    </span>
+    <ion-icon float-right name="arrow-dropdown"></ion-icon>
+  </ion-item>
+  <ion-item>
+    <ion-label>Filtrar por período</ion-label>
+    <ion-toggle></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-label>Guardar Filtro</ion-label>
+    <ion-toggle></ion-toggle>
+  </ion-item>
+</ion-content>

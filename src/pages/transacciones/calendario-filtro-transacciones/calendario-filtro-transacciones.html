@@ -1,0 +1,64 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title text-center>
+      <ion-icon name="arrow-back" (click)="modifyYear(-1)"></ion-icon>
+      <span class="title-calendar">{{ currentYear }}</span>
+      <ion-icon name="arrow-forward" (click)="modifyYear(1)"></ion-icon>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col (click)="setMonth(1)">
+        ene.
+      </ion-col>
+      <ion-col (click)="setMonth(2)">
+        feb.
+      </ion-col>
+      <ion-col (click)="setMonth(3)">
+        mar.
+      </ion-col>
+      <ion-col (click)="setMonth(4)">
+        abr.
+      </ion-col>
+      <ion-col (click)="setMonth(5)">
+        may.
+      </ion-col>
+      <ion-col (click)="setMonth(6)">
+        jun.
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col (click)="setMonth(7)">
+        jul.
+      </ion-col>
+      <ion-col (click)="setMonth(8)">
+        ago.
+      </ion-col>
+      <ion-col (click)="setMonth(9)">
+        sep.
+      </ion-col>
+      <ion-col (click)="setMonth(10)">
+        oct.
+      </ion-col>
+      <ion-col (click)="setMonth(11)">
+        nov.
+      </ion-col>
+      <ion-col (click)="setMonth(12)">
+        dic.
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-buttons end>
+    <button ion-button small clear (click)="close()">
+      cancelar
+    </button>
+    <button ion-button small clear (click)="setMonth(00)">
+      mes actual
+    </button>
+  </ion-buttons>
+</ion-content>

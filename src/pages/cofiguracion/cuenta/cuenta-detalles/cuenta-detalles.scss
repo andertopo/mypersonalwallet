@@ -1,0 +1,16 @@
+page-cuenta-detalles {
+  @import '../../../../theme/bg-headers.scss';
+
+  .balance {
+    font-size: 1.5em;
+  }
+
+  .list-header-md {
+    margin-bottom: 0;
+    border-top: 0;
+    min-height: 20px;
+  }
+  .label-md {
+    margin: 0;
+  }
+}

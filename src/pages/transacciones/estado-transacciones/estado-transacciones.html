@@ -1,0 +1,6 @@
+<ion-list>
+  <ion-item *ngFor="let estadoTransaccion of estadosTransacciones" (click)="close(estadoTransaccion)">
+    <ion-icon [color]="estadoTransaccion.color" [name]="estadoTransaccion.icono"></ion-icon>
+    <span text-capitalize>{{ estadoTransaccion.nombre }}</span>
+  </ion-item>
+</ion-list>

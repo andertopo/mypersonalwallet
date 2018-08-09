@@ -1,0 +1,22 @@
+page-filtro-transacciones {
+  .list-header-md {
+    border-top: none;
+    .item-inner {
+      border-bottom: none !important;
+    }
+  }
+  .span-categorias {
+    float: left;
+    width: 80%;
+  }
+  .chip-span {
+    margin: 0 10px;
+  }
+  .ion-chip {
+    max-width: 85%;
+  }
+  .chip-margin {
+    margin-right: 5px;
+    float: left;
+  }
+}

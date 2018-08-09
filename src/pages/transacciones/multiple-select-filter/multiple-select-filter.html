@@ -1,0 +1,13 @@
+<ion-list>
+  <ion-item *ngFor="let multipleSelectItem of multiSelectItems">
+    <ion-checkbox [(ngModel)]="multipleSelectItem.selected"></ion-checkbox>
+    <ion-label>
+      <ion-icon margin-right [color]="multipleSelectItem.color" [name]="multipleSelectItem.icono"></ion-icon>
+      <span text-capitalize>{{ multipleSelectItem.nombre }}</span>
+    </ion-label>
+  </ion-item>
+</ion-list>
+<button ion-button clear float-right small (click)="enviarFiltro()">
+  OK&nbsp;&nbsp;
+  <ion-icon name="checkmark"></ion-icon>
+</button>

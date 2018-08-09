@@ -15,7 +15,7 @@
       </button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-title>
+  <ion-title text-center>
     $ -5,093,236.00
     <p class="subtitle">Saldo en las cuentas</p>
   </ion-title>
@@ -28,15 +28,15 @@
     </ion-card-header>
     <ion-card-content>
       <ion-list>
-        <ion-item>
+        <ion-item (click)="goTransacciones('ingresos')">
           <ion-icon name="trending-up" item-start></ion-icon>
           Ingreso
         </ion-item>
-        <ion-item>
+        <ion-item (click)="goTransacciones('gastos')">
           <ion-icon name="trending-down" item-start></ion-icon>
           Gasto
         </ion-item>
-        <ion-item>
+        <ion-item (click)="goTransacciones('transacciones')">
           <ion-icon name="stats" item-start></ion-icon>
           Balance
         </ion-item>

@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { PopoverController } from 'ionic-angular';
 
 import { CalendarioPage } from './calendariopage';
+import { TransaccionesPage } from "../transacciones/transacciones";
 
 @Component({
   selector: 'page-inicio',
@@ -56,17 +57,6 @@ export class InicioPage {
   public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
   public doughnutChartData:number[] = [350, 450, 100];
   public doughnutChartType:string = 'doughnut';
-  
-  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController) {
-
-  }
-  
-  presentPopover(myEvent) {
-    let popover = this.popoverCtrl.create(CalendarioPage);
-    popover.present({
-      ev: myEvent
-    });
-  }
 
   // events
   public chartClicked(e:any):void {
@@ -75,5 +65,20 @@ export class InicioPage {
  
   public chartHovered(e:any):void {
     console.log(e);
+  }
+  
+  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController) {
+
+  }
+  
+  presentPopover(myEvent) {
+    let popover = this.popoverCtrl.create(CalendarioPage, {}, {cssClass: 'popover-center popover-busqueda'});
+    popover.present({
+      ev: myEvent
+    });
+  }
+
+  goTransacciones(type:string) {
+    this.navCtrl.setRoot(TransaccionesPage, {type: {transaccion: type}})
   }
 }

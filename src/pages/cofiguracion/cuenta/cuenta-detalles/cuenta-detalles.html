@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar color="azulPrimario">
+    <ion-toolbar>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="goSearch()">
+          <ion-icon name="list"></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="goBalance()">
+          <ion-icon name="pulse"></ion-icon>
+        </button>
+        <button ion-button clear icon-only end>
+          <ion-icon name="pie"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title text-uppercase>billetera</ion-title>
+    </ion-toolbar>
+  </ion-navbar>
+  <ion-title margin-bottom text-center class="date-content">
+    <small>Saldo actual</small>
+    <br/>
+    <span class="balance">{{ cuenta.saldoTotal | currency}}</span>
+    <br/>
+    <small text-uppercase>reajustar saldo</small>
+    <br/>
+  </ion-title>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      <small>Tipo de cuenta</small>
+    </ion-list-header>
+    <ion-item no-lines>
+      <ion-icon color="azulPrimario" name="cash"></ion-icon>
+      {{ cuenta.tipo }}
+    </ion-item>
+    <ion-list-header>
+      <small>Total de gastos</small>
+    </ion-list-header>
+    <ion-item no-lines>
+      <ion-icon color="danger" name="information-circle"></ion-icon>
+      <span text-capitalize>{{ cuenta.gastos }}</span>
+    </ion-item>
+    <ion-list-header>
+      <small>Total de ingresos</small>
+    </ion-list-header>
+    <ion-item no-lines>
+      <ion-icon color="secondary" name="information-circle"></ion-icon>
+      <span text-capitalize>{{ cuenta.ingresos }}</span>
+    </ion-item>
+    <ion-list-header>
+      <small>Total de transferencias</small>
+    </ion-list-header>
+    <ion-item no-lines>
+      <ion-icon color="primary" name="repeat"></ion-icon>
+      <span text-capitalize>{{ cuenta.transacciones }}</span>
+    </ion-item>
+    <ion-list-header>
+      <small>Saldo inicial</small>
+    </ion-list-header>
+    <ion-item no-lines>
+      <ion-icon color="azulPrimario" name="stat"></ion-icon>
+      <span>{{ saldoInicial | currency }}</span>
+    </ion-item>
+  </ion-list>
+</ion-content>

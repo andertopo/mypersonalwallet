@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar color="azulPrimario">
+    <ion-toolbar>
+      <ion-buttons end>
+        <button ion-button icon-only>
+          <ion-icon name="calendar"></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="goSearch()">
+          <ion-icon name="search"></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="openFilters()">
+          <ion-icon name="funnel"></ion-icon>
+        </button>
+        <button ion-button clear icon-only end>
+          <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title>CUENTAS</ion-title>
+    </ion-toolbar>
+  </ion-navbar>
+  <ion-title class="date-content">
+    <ion-icon name="arrow-dropleft" (click)="setMonth(-1)"></ion-icon>
+    <span class="date-title">{{ currentDate | date: 'MMMM, yyyy'}}</span>
+    <ion-icon name="arrow-dropright" (click)="setMonth(1)"></ion-icon>
+  </ion-title>
+</ion-header>
+<ion-content padding>
+  <ion-list>
+    <ion-item (click)="goDetalles(cuenta)" *ngFor="let cuenta of cuentas">
+      <ion-icon name="more" float-right (click)="abrirOpciones($event, cuenta)"></ion-icon>
+      <ion-icon [color]="cuenta.itemGui.color" [name]="cuenta.itemGui.icono" item-start></ion-icon>
+      <p class="cuenta-title" text-uppercase>
+        <span>{{ cuenta.itemGui.nombre }}</span>
+      </p>
+      <p float-left>
+        <span>Saldo actual</span>
+        <br/>
+        <small>{{ currentDate | date: 'dd,MM' }}</small>
+      </p>
+      <p class="transaction-value" float-right>
+        <span class="in">{{ (cuenta.ingresos - cuenta.gastos) | currency }}</span>
+        <br/>
+        <small>{{ cuenta.saldoTotal | currency }}</small>
+      </p>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="azulPrimario">
+    <ion-title>Balances del año {{ currentYear }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let balance of cuenta.saldosMes">
+    <ion-card-header text-center>
+      {{ balance.fecha | date: 'MMMM'}}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>Ingresos</ion-col>
+          <ion-col>Gastos</ion-col>
+          <ion-col>Balance</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label color="secondary">{{ balance.ingresos.valor | currency}}</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label color="danger">{{ balance.gastos.valor | currency}}</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label color="primary">{{ balance.saldo }}</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-8>
+            <ion-label color="opaque">fin de mes</ion-label>
+          </ion-col>
+          <ion-col class="col-balance">
+            <ion-label color="secondary">{{ cuenta.saldoTotal }}</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

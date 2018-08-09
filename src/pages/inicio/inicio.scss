@@ -1,19 +1,7 @@
 page-inicio {
-  ion-header {
-    background: map-get($colors, azulPrimario);
-  }
-  .toolbar-title-md {
+  @import '../../theme/bg-headers.scss';
+	.toolbar-title {
     font-size: 3em;
-  }
-	.toolbar-background-md {
-		background: map-get($colors, azulPrimario);
-  }
-  .toolbar {
-    color: map-get($colors, light);
-  }
-
-  .toolbar-title {
-    text-align: center;
     .subtitle {
       font-size: 0.4em;
       margin-top: 0;

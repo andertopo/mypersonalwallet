@@ -40,6 +40,7 @@ $colors: (
   warning:    #EC6839,
   light:      #f4f4f4,
   dark:       #222,
+  opaque:     #B2B1B1,
   azulPrimario: #00A9E0
 );
 
@@ -54,7 +55,7 @@ $colors: (
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-$popover-md-width: 350px;
+//$popover-md-width: 350px;
 $toolbar-md-title-text-color: map-get($colors, light);
 
 

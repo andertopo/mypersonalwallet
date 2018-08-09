@@ -1,17 +1,97 @@
+<div class="shadow"></div>
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+  <ion-navbar [color]="colorHeader">
+    <ion-toolbar>
+      <ion-buttons end>
+        <button ion-button icon-only>
+          <ion-icon name="calendar"></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="goSearch()">
+          <ion-icon name="search"></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="openFilters()">
+          <ion-icon name="funnel"></ion-icon>
+        </button>
+        <button ion-button clear icon-only end>
+          <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-buttons left>
+        <button ion-button (click)="mostrarTiposTransacciones()">
+          {{ tipoTransaccion }}&nbsp;&nbsp;
+          <ion-icon name="arrow-dropdown"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-title text-center margin [color]="colorHeader">
+      <ion-icon name="arrow-dropleft"(click)="setMonth(-1)"></ion-icon>
+      <span class="date-title" (click)="goFiltroFecha()">{{ currentDate | date: 'MMMM, yyyy'}}</span>
+      <ion-icon name="arrow-dropright" (click)="setMonth(1)"></ion-icon>
+    </ion-title>
   </ion-navbar>
+  <ion-title *ngIf="isFilterVisible" class="filter-div">
+    Filtro
+    <span class="filtros">{{ filtros }}</span>
+    <ion-icon float-right class="cerrar" name="close-circle" (click)="toggleFilter(false)"></ion-icon>
+  </ion-title>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-segment>
+    <ion-segment-button>
+      Fin de mes
+      <br/>
+      <span class="segment-fin-mes">$-3,248,236.00</span>
+    </ion-segment-button>
+    <ion-segment-button>
+      Balance mensual
+      <br/>
+      <span class="segment-balance">$95,000.00</span>
+    </ion-segment-button>
+  </ion-segment>
+  <div class="headerdivider"></div>
+  <br/>
+  <ion-list>
+    <div *ngFor="let transaccion of transacciones">
+      <ion-list-header>
+        {{ transaccion.fecha | date:'EEE' | dateTranslate }}, {{ transaccion.fecha | date: 'dd'}}
+      </ion-list-header>
+      <ion-item no-lines *ngFor="let transactionItem of transaccion.arrayTransacciones">
+        <div class="icon-circled bg-{{ transactionItem.categoria.color}}" float-left>
+          <ion-icon [name]="transactionItem.categoria.icono" item-start></ion-icon>
+        </div>
+        <p float-left class="transaction-description">
+          <span text-capitalize>{{ transactionItem.descripcion }}</span>
+          <br/>
+          <small text-capitalize>{{ transactionItem.categoria.nombre }} | {{ transactionItem.cuenta.nombre }}</small>
+        </p>
+        <p float-right text-right class="transaction-value">
+          <span [class]="transactionItem.tipo">{{ transactionItem.valor | currency }}</span>
+          <br/>
+          <small *ngIf="transactionItem.estado">Realizado</small>
+          <small *ngIf="!transactionItem.estado">Pendiente</small>
+        </p>
+      </ion-item>
+    </div>
+
+  </ion-list>
+  <ion-fab right bottom>
+    <button ion-fab color="primary">
+      <ion-icon name="add"></ion-icon>
+    </button>
+    <ion-fab-list side="top">
+      <button ion-fab color="primary">
+        <ion-icon name="stats"></ion-icon>
+        <div>Transacción</div>
+      </button>
+      <button ion-fab color="danger">
+        <ion-icon name="trending-down"></ion-icon>
+        <div>Gasto</div>
+      </button>
+      <button ion-fab color="secondary">
+        <ion-icon name="trending-up"></ion-icon>
+        <div>Ingreso</div>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

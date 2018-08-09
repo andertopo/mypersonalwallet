@@ -1,22 +1,20 @@
 import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { CuentaPage } from '../../pages/cofiguracion/cuenta/cuenta';
 
-/**
- * Generated class for the ConfiguracionGerenciarComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'configuracion-gerenciar',
   templateUrl: 'configuracion-gerenciar.html'
 })
 export class ConfiguracionGerenciarComponent {
 
-  text: string;
-
-  constructor() {
+  constructor(public navCtrl: NavController) {
     console.log('Hello ConfiguracionGerenciarComponent Component');
-    this.text = 'Hello World';
+  }
+
+  goCuenta() {
+    console.log("nos vamos a cuenta");
+    this.navCtrl.push(CuentaPage);
   }
 
 }

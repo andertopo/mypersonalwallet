@@ -1,0 +1,25 @@
+.icon-circled {
+  width: 40px;
+  height: 40px;
+  color: white;
+  border-radius: 50px;
+  font-size: 23px;
+  padding-left: 7px;
+  padding-top: 6px;
+  margin-right: 20px;
+}
+.list-header-md {
+  margin-bottom: 0;
+  border-top: 0;
+  color: black;
+}
+.item-md p {
+  margin-top: 4px;
+}
+ion-item p.transaction-description span {
+  color: black;
+}
+ion-icon {
+  margin-top: 0 !important;
+}
+@import 'colores-transacciones.scss'

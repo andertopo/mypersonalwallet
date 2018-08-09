@@ -17,3 +17,11 @@
 .card-md {
   border-radius: 10px;
 }
+.popover-md {
+  background-color: rgba($color: map-get($colors, dark), $alpha: 0.6);
+}
+
+.popover-center .popover-content {
+  width: 350px;
+  position: initial;
+}

@@ -1,0 +1,17 @@
+.transaction-value {
+  small {
+    margin-right: 5px
+  }
+  .in,
+  .ingreso {
+    color: map-get($map: $colors, $key: secondary);
+  }
+  .out,
+  .gasto {
+    color: map-get($map: $colors, $key: danger);
+  }
+  .transfer,
+  .transferencia {
+    color: map-get($map: $colors, $key: primary);
+  }
+}

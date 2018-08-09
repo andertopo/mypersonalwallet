@@ -1,0 +1,19 @@
+page-cuenta {
+  p span{
+    color: black;
+  }
+  .date-title {
+    margin-left: 26px;
+    margin-right: 26px;
+  }
+  .date-content {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .cuenta-title {
+    margin-bottom: 10px;
+  }
+  @import '../../../theme/bg-headers.scss';
+  @import '../../../theme/colores-transacciones.scss';
+}
