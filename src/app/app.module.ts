@@ -4,12 +4,14 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { InicioPage } from '../pages/inicio/inicio';
+import { CalendarioInicioPage } from '../pages/inicio/calendario-inicio-page';
+
 import { ConfiguracionPage } from '../pages/cofiguracion/configuracion';
 import { TransaccionesPage } from '../pages/transacciones/transacciones';
 import { TabsPage } from '../pages/tabs/tabs';
 
 /*para popovers*/
-import { CalendarioPage } from '../pages/inicio/calendariopage';
+import { CalendarioPage } from '../pages/calendario/calendario';
 
 import { ChartsModule } from 'ng2-charts';
 
@@ -19,8 +21,18 @@ import { PipesModule } from '../pipes/pipes.module';
 import { ComponentsModule } from '../components/components.module';
 import { CuentaPageModule } from '../pages/cofiguracion/cuenta/cuenta.module';
 import { TransaccionesPageModule } from '../pages/transacciones/transacciones.module';
+
+import { DatabaseProvider } from '../providers/database/database';
+import { CategoriasProvider } from '../providers/categorias/categorias';
 import { CuentaProvider } from '../providers/cuenta/cuenta-provider';
 import { TransaccionesProvider } from '../providers/transacciones/transacciones-provider';
+
+import { SQLite } from '@ionic-native/sqlite';
+import { SQLitePorter } from '@ionic-native/sqlite-porter';
+
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+
 
 
 @NgModule({
@@ -30,7 +42,8 @@ import { TransaccionesProvider } from '../providers/transacciones/transacciones-
     TransaccionesPage,
     ConfiguracionPage,
     TabsPage,
-    CalendarioPage,    
+    CalendarioInicioPage,
+    CalendarioPage
   ],
   imports: [
     ChartsModule,
@@ -40,12 +53,15 @@ import { TransaccionesProvider } from '../providers/transacciones/transacciones-
     PipesModule,
     ComponentsModule,
     TransaccionesPageModule,
-    CuentaPageModule
+    CuentaPageModule,
+    HttpClientModule,
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     InicioPage,
+    CalendarioInicioPage,
     TransaccionesPage,
     ConfiguracionPage,
     TabsPage,
@@ -55,8 +71,13 @@ import { TransaccionesProvider } from '../providers/transacciones/transacciones-
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HttpClient,
     CuentaProvider,
-    TransaccionesProvider
+    TransaccionesProvider,
+    DatabaseProvider,
+    SQLite,
+    SQLitePorter,
+    CategoriasProvider
   ]
 })
 export class AppModule {}

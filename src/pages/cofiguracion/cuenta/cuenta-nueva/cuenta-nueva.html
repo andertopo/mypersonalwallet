@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Nueva cuenta</ion-title>
+    <ion-buttons end>
+      <button ion-button clear icon-only float-right (click)="crear()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label floating>
+      <ion-icon name="card"></ion-icon>
+      Nombre
+    </ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>
+      <ion-icon name="calculator"></ion-icon>
+      Valor inicial
+    </ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label class="item-crear">
+      <ion-icon [name]="cuenta.itemGui.icono"></ion-icon>
+      <span (click)="openOpciones()" text-capitalize class="cuenta-nombre">{{ cuenta.itemGui.nombre }}</span>
+      <ion-icon (click)="openOpciones()" class="icon-type" name="arrow-dropdown"></ion-icon>
+      <ion-icon (click)="openColor()" class="icon-color" float-right name="arrow-dropdown"></ion-icon>
+      <span (click)="openColor()" float-right class="color-circle bg-{{ cuenta.itemGui.color }}"></span>&nbsp;&nbsp;
+    </ion-label>
+  </ion-item>
+</ion-content>

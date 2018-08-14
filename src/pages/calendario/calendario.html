@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>{{ dateSelected | date: 'dd, MMMM - yyyy'}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col no-padding no-margin>
+         <button ion-button icon-only clear (click)="addMonth(-1)">
+          <ion-icon name="arrow-back"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col align-self-center text-center col-6>{{ dateTitle | date: 'MMMM, yyyy'}}</ion-col>
+      <ion-col no-padding no-margin>
+        <button ion-button icon-only clear (click)="addMonth(1)">
+          <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row margin-bottom>
+      <ion-col text-center>L</ion-col>
+      <ion-col text-center>M</ion-col>
+      <ion-col text-center>M</ion-col>
+      <ion-col text-center>J</ion-col>
+      <ion-col text-center>V</ion-col>
+      <ion-col text-center>S</ion-col>
+      <ion-col text-center>D</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let fila of fechas">
+      <ion-col text-center (click)="select(fecha)" [class]="fecha.class" *ngFor="let fecha of fila">
+        {{ fecha.fecha | date: 'd' }}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

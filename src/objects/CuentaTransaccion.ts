@@ -22,5 +22,7 @@ export class CuentaTransaccion {
     return cuenta;
   }
 
-  public constructor() {}
+  public constructor() {
+    this.itemGui = new SelectFilterItem();
+  }
 }

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, PopoverController } from 'ionic-angular';
 import { CuentaBalancesPage } from '../cuenta-balances/cuenta-balances';
 import { CuentaTransaccion } from '../../../../objects/CuentaTransaccion';
+import { CalendarioPage } from '../../../calendario/calendario';
 
 
 @Component({
@@ -10,9 +11,11 @@ import { CuentaTransaccion } from '../../../../objects/CuentaTransaccion';
 })
 export class CuentaDetallesPage {
   public cuenta:CuentaTransaccion;
+  public date:Date;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController) {
     this.cuenta = new CuentaTransaccion();
+    this.date = new Date();
   }
 
   ionViewDidLoad() {
@@ -24,5 +27,10 @@ export class CuentaDetallesPage {
 
   goBalance() {
     this.navCtrl.push(CuentaBalancesPage, {cuenta: this.cuenta});
+  }
+
+  goTransacciones() {
+    let popover = this.popoverCtrl.create(CalendarioPage, {}, {cssClass: 'popover-date'});
+    popover.present({});
   }
 }

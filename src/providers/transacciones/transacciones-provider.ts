@@ -5,7 +5,7 @@ import { EstadoTransaccion } from '../../objects/EstadoTransaccion';
 
 @Injectable()
 export class TransaccionesProvider {
-  public transacciones:Array<Transaccion>;
+  public transacciones:Array<any>;
 
   constructor() {
     console.log('Hello TransaccionesProvider Provider');

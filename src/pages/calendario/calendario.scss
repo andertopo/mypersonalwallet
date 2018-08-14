@@ -1,0 +1,16 @@
+page-calendario {
+  .col {
+    margin: 5px;
+  }
+
+  .scroll-content {
+    padding: 0 !important;
+    margin-top: 36px;
+  }
+
+  .date-active {
+    border-radius: 50%;
+  }
+
+  @import '../../theme/bg-categorias.scss';
+}

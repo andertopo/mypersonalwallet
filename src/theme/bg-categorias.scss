@@ -18,3 +18,29 @@
   border: 1px solid map-get($map: $colors, $key: azulPrimario);
   background-color: map-get($map: $colors, $key: azulPrimario);
 }
+
+/* COLORES PARA LAS CUENTAS */
+.bg-azul {
+  border: 1px solid #02A6DD;
+  background-color: #02A6DD;
+}
+
+.bg-violeta {
+  border: 1px solid #A097C5;
+  background-color: #A097C5;
+}
+
+.bg-green {
+  border: 1px solid #658320;
+  background-color: #658320;
+}
+
+.bg-beige {
+  border: 1px solid #C9BD87;
+  background-color: #C9BD87;
+}
+
+.bg-orange {
+  border: 1px solid #C36E38;
+  background-color: #C36E38;
+}

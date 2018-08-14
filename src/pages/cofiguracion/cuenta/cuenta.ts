@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController, Events } from 'ionic-angular';
 import { CuentaDetallesPage } from './cuenta-detalles/cuenta-detalles';
 import { CuentaPopoverOpciones } from './cuenta-popover-opciones/cuenta-popover-opciones';
-import { CuentaTransaccion } from '../../../objects/CuentaTransaccion';
 import { CuentaProvider } from '../../../providers/cuenta/cuenta-provider';
+import { CuentaNuevaPage } from './cuenta-nueva/cuenta-nueva';
 
 @IonicPage()
 @Component({
@@ -35,6 +35,10 @@ export class CuentaPage {
     if(!this.isOptionOpen) {
       this.navCtrl.push(CuentaDetallesPage, {cuenta: cuenta});
     }
+  }
+
+  public goNew() {
+    this.navCtrl.push(CuentaNuevaPage);
   }
 
   public abrirOpciones(event, cuenta) {

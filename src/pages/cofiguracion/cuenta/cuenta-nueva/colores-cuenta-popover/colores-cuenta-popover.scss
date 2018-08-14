@@ -1,0 +1,15 @@
+page-colores-cuenta-popover {
+  .circle {
+    border: 1px solid red;
+    border-radius: 50%;
+    background-color: red;
+    min-height: 40px;
+    max-width: 40px;
+    margin: 10px;
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+  }
+
+  @import '../../../../../theme/bg-categorias.scss';
+}

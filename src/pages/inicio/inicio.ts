@@ -3,7 +3,7 @@ import {Component} from "@angular/core";
 import { NavController } from 'ionic-angular';
 import { PopoverController } from 'ionic-angular';
 
-import { CalendarioPage } from './calendariopage';
+import { CalendarioInicioPage } from './calendario-inicio-page';
 import { TransaccionesPage } from "../transacciones/transacciones";
 
 @Component({
@@ -72,7 +72,7 @@ export class InicioPage {
   }
   
   presentPopover(myEvent) {
-    let popover = this.popoverCtrl.create(CalendarioPage, {}, {cssClass: 'popover-center popover-busqueda'});
+    let popover = this.popoverCtrl.create(CalendarioInicioPage, {}, {cssClass: 'popover-center popover-busqueda'});
     popover.present({
       ev: myEvent
     });

@@ -52,7 +52,7 @@ import {ViewController } from "ionic-angular";
     </ion-grid>
   `
 })
-export class CalendarioPage {
+export class CalendarioInicioPage {
   constructor(public viewCtrl: ViewController) {}
 
   close() {
