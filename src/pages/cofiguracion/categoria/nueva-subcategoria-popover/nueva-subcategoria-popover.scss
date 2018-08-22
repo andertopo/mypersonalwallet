@@ -1,0 +1,14 @@
+page-nueva-subcategoria-popover {
+  @import '../../../../theme/bg-headers.scss';
+  @import '../../../../theme/bg-categorias.scss';
+  @import '../../../../theme/transacciones-item.scss';
+  .item-md p {
+    padding-top: 4px;
+  }
+  .scroll-content {
+    padding-bottom: 0px !important;
+  }
+  .error {
+    color: map-get($map: $colors, $key: danger);
+  }
+}

@@ -1,0 +1,39 @@
+<ion-header class="secondary">
+  <ion-navbar>
+    <ion-title>Crear nueva subcategoria</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formSubcategoria" (ngSubmit)="crear()">
+    <ion-item>
+      <ion-label floating>
+        <ion-icon margin-right name="card"></ion-icon>
+        Descripción
+        <small *ngIf="formSubcategoria.controls['descripcion'].invalid && (formSubcategoria.controls['descripcion'].dirty || formSubcategoria.controls['descripcion'].touched)">
+          <div class="error" *ngIf="formSubcategoria.controls['descripcion'].errors.required">
+            La descripción para la subcategoria es requerida.
+          </div>
+        </small>
+      </ion-label>
+      <ion-input class="form-control" type="text" [formControl]="formSubcategoria.controls['descripcion']"></ion-input>
+    </ion-item>
+    <ion-item>
+      <div class="small" (click)="openCategorias()">
+        <div class="icon-circled bg-{{ categoria.itemGui.color}}" float-left>
+          <ion-icon margin-right [name]="categoria.itemGui.icono"></ion-icon>
+        </div>
+        <p class="transaction-description">
+          {{ categoria.itemGui.nombre }}
+          <ion-icon float-right name="arrow-dropdown"></ion-icon>
+        </p>
+      </div>
+    </ion-item>
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-buttons end>
+    <button ion-button clear small (click)="close()">Cancelar</button>
+    <button ion-button clear small (click)="crear()">Guardar</button>
+  </ion-buttons>
+</ion-footer>
