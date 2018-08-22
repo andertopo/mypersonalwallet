@@ -50,4 +50,8 @@ export class CuentaProvider {
     return this.cuentas;
   }
 
+  public crearCuenta(cuenta:CuentaTransaccion) {
+    return true;
+  }
+
 }
