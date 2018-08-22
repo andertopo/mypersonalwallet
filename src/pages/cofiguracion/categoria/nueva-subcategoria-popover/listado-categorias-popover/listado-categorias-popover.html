@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar animated="true" placeholder="Buscar" (ionInput)="filtrar($event)">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item class="small" no-lines (click)="seleccionar(categoria)" *ngFor="let categoria of categoriasFiltradas">
+      <div class="icon-circled bg-{{ categoria.itemGui.color}}" float-left>
+        <ion-icon [name]="categoria.itemGui.icono" item-start></ion-icon>
+      </div>
+      <p float-left class="transaction-description">
+        <span text-capitalize>{{ categoria.itemGui.nombre }}</span>
+      </p>
+    </ion-item>
+  </ion-list>
+</ion-content>

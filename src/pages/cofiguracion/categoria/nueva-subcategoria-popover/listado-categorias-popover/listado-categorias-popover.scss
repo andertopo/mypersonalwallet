@@ -1,0 +1,15 @@
+page-listado-categorias-popover {
+  @import '../../../../../theme/transacciones-item.scss';
+  @import '../../../../../theme/bg-categorias.scss';
+  @import '../../../../../theme/popover-list.scss';
+  .bar-button-default-md,
+  .bar-button-clear-md-default,
+  .bar-button-md-default {
+    color: black;
+  }
+  .searchbar-md .searchbar-input {
+    background-color: map-get($map: $colors, $key: light);
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+}
