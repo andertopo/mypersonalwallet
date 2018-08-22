@@ -12,6 +12,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 /*para popovers*/
 import { CalendarioPage } from '../pages/calendario/calendario';
+/*fin para popovers*/
 
 import { ChartsModule } from 'ng2-charts';
 
@@ -23,7 +24,7 @@ import { CuentaPageModule } from '../pages/cofiguracion/cuenta/cuenta.module';
 import { TransaccionesPageModule } from '../pages/transacciones/transacciones.module';
 
 import { DatabaseProvider } from '../providers/database/database';
-import { CategoriasProvider } from '../providers/categorias/categorias';
+import { CategoriasProvider } from '../providers/categorias/categorias-provider';
 import { CuentaProvider } from '../providers/cuenta/cuenta-provider';
 import { TransaccionesProvider } from '../providers/transacciones/transacciones-provider';
 
@@ -31,6 +32,9 @@ import { SQLite } from '@ionic-native/sqlite';
 import { SQLitePorter } from '@ionic-native/sqlite-porter';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { EtiquetaPageModule } from '../pages/cofiguracion/etiqueta/etiqueta.module';
+import { EtiquetaProvider } from '../providers/etiqueta/etiqueta-provider';
+import { CategoriaPageModule } from '../pages/cofiguracion/categoria/categoria.module';
 
 
 
@@ -43,17 +47,21 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ConfiguracionPage,
     TabsPage,
     CalendarioInicioPage,
-    CalendarioPage
+    CalendarioPage,
   ],
   imports: [
     ChartsModule,
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      tabsHideOnSubPages: true
+    }),
 
     PipesModule,
     ComponentsModule,
     TransaccionesPageModule,
     CuentaPageModule,
+    EtiquetaPageModule,
+    CategoriaPageModule,
     HttpClientModule,
     
   ],
@@ -72,12 +80,14 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpClient,
-    CuentaProvider,
-    TransaccionesProvider,
     DatabaseProvider,
     SQLite,
     SQLitePorter,
-    CategoriasProvider
+
+    CuentaProvider,
+    TransaccionesProvider,
+    CategoriasProvider,
+    EtiquetaProvider
   ]
 })
 export class AppModule {}
