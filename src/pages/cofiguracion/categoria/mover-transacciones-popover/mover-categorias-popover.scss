@@ -1,0 +1,16 @@
+page-mover-transacciones-popover {
+  .move {
+    color: map-get($map: $colors, $key: opaque);
+    .label-md {
+      margin-bottom: 0;
+    }
+  }
+  
+  @import '../../../../theme/bg-headers.scss';
+  @import '../../../../theme/bg-categorias.scss';
+  @import '../../../../theme/transacciones-item.scss';
+  
+  .item-md p {
+    padding-top: 4px;
+  }
+}
