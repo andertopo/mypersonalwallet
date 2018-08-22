@@ -30,3 +30,47 @@
   width: 300px;
   position: initial;
 }
+
+.item-md p {
+  font-size: 1.6rem;
+}
+
+.segment-md .segment-button {
+  font-size: 1.4rem;
+}
+
+ion-icon {
+  &[class*="custom-"] {
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-position: 50% 50%;
+    -webkit-mask-position: 50% 50%;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    background: currentColor;
+    width: 1em;
+    height: 1em;
+  }
+
+  &[class*="custom-wallet"] {
+    mask-image: url(../assets/aditional-icons/wallet.svg);
+  }
+  &[class*="custom-motor-bike"] {
+    mask-image: url(../assets/aditional-icons/motorbike.svg);
+  }
+  &[class*="custom-bank"] {
+    mask-image: url(../assets/aditional-icons/bank.svg);
+  }
+  &[class*="custom-chart"] {
+    mask-image: url(../assets/aditional-icons/chart.svg);
+  }
+  &[class*="custom-beach"] {
+    mask-image: url(../assets/aditional-icons/beach.svg);
+  }
+  &[class*="custom-balance"] {
+    mask-image: url(../assets/aditional-icons/balance.svg);
+  }
+  &[class*="custom-transaction"] {
+    mask-image: url(../assets/aditional-icons/transaction.svg);
+  }
+}
