@@ -19,6 +19,11 @@
   background-color: map-get($map: $colors, $key: azulPrimario);
 }
 
+.bg-opaque {
+  border: 1px solid map-get($map: $colors, $key: opaque);
+  background-color: map-get($map: $colors, $key: opaque);
+}
+
 /* COLORES PARA LAS CUENTAS */
 .bg-azul {
   border: 1px solid #02A6DD;
