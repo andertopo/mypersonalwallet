@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS tbl_categorias(
   nombre TEXT,
   icono TEXT,
   color TEXT,
+  tipo INTEGER
   padre_categoria_id INTEGER,
   FOREIGN KEY (padre_categoria_id) REFERENCES tbl_categorias (id_categoria)
 );
@@ -58,3 +59,12 @@ CREATE TABLE IF NOT EXISTS tbl_presupuestos (
   categoria_id INTEGER,
   FOREIGN KEY (categoria_id) REFERENCES tbl_categorias (id_categoria)
 );
+
+INSERT INTO tbl_cuentas (nombre, icono, color) VALUES('efectivo', 'cash', 'secondary');
+INSERT INTO tbl_cuentas (nombre, icono, color) VALUES('banco', 'custom-bank', 'primary');
+
+
+INSERT INOT tbl_categorias (nombre, icono, color, tipo) VALUES('transporte', 'bus', 'secondary', 'gasto');
+INSERT INOT tbl_categorias (nombre, icono, color, tipo) VALUES('salud', 'medkit', 'azulPrimario', 'gasto');
+INSERT INOT tbl_categorias (nombre, icono, color, tipo) VALUES('alimentación', 'restaurant', 'primary', 'gasto');
+INSERT INOT tbl_categorias (nombre, icono, color, tipo) VALUES('compras', 'cart', 'primary', 'gasto');
