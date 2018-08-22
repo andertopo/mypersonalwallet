@@ -1,6 +1,7 @@
 import { SelectFilterItem } from "./SelectFilterItem";
 
 export class CuentaTransaccion {
+  public id:number;
   public itemGui:SelectFilterItem;
   public tipo:string;
   public ingresos:number;
