@@ -1,0 +1,34 @@
+<ion-header [class]="bgClass">
+  <ion-navbar [color]="color">
+    <ion-title>Categorías</ion-title>
+    <ion-buttons end>
+      <button ion-button clear icon-only>
+        <ion-icon name="cloud-download"></ion-icon>
+      </button>
+      <button ion-button clear icon-only (click)="openMover()">
+        <ion-icon name="custom-transaction"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-segment [(ngModel)]="tipo" color="light" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="gastos">
+      Gastos
+    </ion-segment-button>
+    <ion-segment-button value="ingresos">
+      Ingresos
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content padding>
+  <div [ngSwitch]="tipo">
+    <categoria-gastos *ngSwitchCase="'gastos'"></categoria-gastos>
+    <configuracion-gerenciar *ngSwitchCase="'ingresos'"></configuracion-gerenciar>
+  </div>
+
+  <ion-fab right bottom>
+    <button ion-fab [color]="color" (click)="openNueva()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>
