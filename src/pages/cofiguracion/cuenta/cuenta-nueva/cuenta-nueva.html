@@ -10,27 +10,45 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
-    <ion-label floating>
-      <ion-icon name="card"></ion-icon>
-      Nombre
-    </ion-label>
-    <ion-input type="text"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label floating>
-      <ion-icon name="calculator"></ion-icon>
-      Valor inicial
-    </ion-label>
-    <ion-input type="text"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label class="item-crear">
-      <ion-icon [name]="cuenta.itemGui.icono"></ion-icon>
-      <span (click)="openOpciones()" text-capitalize class="cuenta-nombre">{{ cuenta.itemGui.nombre }}</span>
-      <ion-icon (click)="openOpciones()" class="icon-type" name="arrow-dropdown"></ion-icon>
-      <ion-icon (click)="openColor()" class="icon-color" float-right name="arrow-dropdown"></ion-icon>
-      <span (click)="openColor()" float-right class="color-circle bg-{{ cuenta.itemGui.color }}"></span>&nbsp;&nbsp;
-    </ion-label>
-  </ion-item>
+  <ion-chip float-right color="danger" *ngIf="formCuenta.touched && formCuenta.invalid">
+    <ion-label>El formulario contiene errores</ion-label>
+  </ion-chip>
+  <form [formGroup]="formCuenta" (ngSubmit)="crear()">
+    <ion-item>
+      <ion-label floating>
+        <ion-icon name="card"></ion-icon>
+        Nombre
+        <small *ngIf="formCuenta.controls['nombre'].invalid && (formCuenta.controls['nombre'].dirty || formCuenta.controls['nombre'].touched)">
+          <div style="color: red" *ngIf="formCuenta.controls['nombre'].errors.required">
+            El nombre para la cuenta es requerido.
+          </div>
+        </small>
+      </ion-label>
+      <ion-input class="form-control" type="text" [formControl]="formCuenta.controls['nombre']"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>
+        <ion-icon name="calculator"></ion-icon>
+        Valor inicial
+        <small *ngIf="formCuenta.controls['valorInicial'].invalid && (formCuenta.controls['valorInicial'].dirty || formCuenta.controls['valorInicial'].touched)">
+          <div style="color: red" *ngIf="formCuenta.controls['valorInicial'].errors.required">
+            El valor inicial es requerido.
+          </div>
+          <div style="color: red" *ngIf="formCuenta.controls['valorInicial'].errors.pattern">
+            El valor debe ser numérico
+          </div>
+        </small>
+      </ion-label>
+      <ion-input class="form-control" type="tel" [formControl]="formCuenta.controls['valorInicial']"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="item-crear">
+        <ion-icon [name]="cuenta.itemGui.icono"></ion-icon>
+        <span (click)="openOpciones()" text-capitalize class="cuenta-nombre">{{ cuenta.itemGui.nombre }}</span>
+        <ion-icon (click)="openOpciones()" class="icon-type" name="arrow-dropdown"></ion-icon>
+        <ion-icon (click)="openColor()" class="icon-color" float-right name="arrow-dropdown"></ion-icon>
+        <span (click)="openColor()" float-right class="color-circle bg-{{ cuenta.itemGui.color }}"></span>&nbsp;&nbsp;
+      </ion-label>
+    </ion-item>
+  </form>
 </ion-content>
