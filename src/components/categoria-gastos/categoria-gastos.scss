@@ -1,0 +1,20 @@
+categoria-gastos {
+  @import '../../theme/transacciones-item.scss';
+  .item-md p.nombre,
+  .item-md p.icons {
+    margin-top: 12px;
+    color: black;
+  }
+  .item-md p.subcategory-name {
+    margin-top: 0;
+  }
+  .icons {
+    color: map-get($map: $colors, $key: opaque) !important;
+  }
+  .subcategory {
+    margin-top: 10px !important;
+    margin-left: 20px !important;
+    margin-right: 0 !important;
+    font-size: 1.5em;
+  }
+}
