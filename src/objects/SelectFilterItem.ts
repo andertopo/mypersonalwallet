@@ -1,8 +1,8 @@
 export class SelectFilterItem {
-  private nombre:string;
-  private icono:string;
-  private color:string;
-  private selected:boolean;
+  public nombre:string;
+  public icono:string;
+  public color:string;
+  public selected:boolean;
 
   public constructor() {}
 
