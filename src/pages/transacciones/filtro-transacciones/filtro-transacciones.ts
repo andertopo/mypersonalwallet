@@ -21,7 +21,6 @@ export class FiltroTransaccionesPage {
     this.categoriasTransaccion = new Array();
     this.cuentasTransaccion = new Array();
     this.etiquetasTransaccion = new Array();
-    //this.categoriasTransaccion.push(CategoriaTransaccion.crearCategoria('todos', 'globe', '', false));
   }
 
   ionViewDidLoad() {
