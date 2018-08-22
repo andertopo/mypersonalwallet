@@ -1,0 +1,31 @@
+page-nueva-categoria-popover {
+  .icons-container {
+    display: inline-flex;
+  }
+
+  .circle {
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    margin: 0;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: 1em;
+    margin-right: 5px;
+  }
+
+  .iconos {
+    .label-md {
+      padding: 8px 0;
+      margin-bottom: 5px;
+    }
+  }
+  .error {
+    color: map-get($map: $colors, $key: danger);
+  }
+
+  @import '../../../../theme/bg-headers.scss';
+  @import '../../../../theme/bg-categorias.scss';
+  @import '../../../../theme/transacciones-item.scss';
+}

@@ -1,0 +1,46 @@
+<ion-header class="secondary">
+  <ion-navbar>
+    <ion-title>Crear nueva categoria</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formSubcategoria" (ngSubmit)="crear()">
+    <ion-item no-lines>
+      <ion-label floating>
+        <ion-icon margin-right name="card"></ion-icon>
+        Descripción
+        <small *ngIf="formSubcategoria.controls['descripcion'].invalid && (formSubcategoria.controls['descripcion'].dirty || formSubcategoria.controls['descripcion'].touched)">
+          <div class="error" *ngIf="formSubcategoria.controls['descripcion'].errors.required">
+            Descripción requerida.
+          </div>
+        </small>
+      </ion-label>
+      <ion-input class="form-control" type="text" [formControl]="formSubcategoria.controls['descripcion']"></ion-input>
+    </ion-item>
+    <ion-item no-lines class="iconos">
+      <ion-icon name="color-palette"></ion-icon>
+      <div margin-left class="icons-container">
+        <span class="circle bg-{{ color.color }}" (click)="selectColor(color)" *ngFor="let color of colors">
+          <ion-icon [hidden]="!color.selected" name="checkmark"></ion-icon>
+        </span>
+      </div>
+      <ion-badge color="opaque" (click)="openColors()">otros...</ion-badge>
+    </ion-item>
+    <ion-item no-lines class="iconos">
+      <ion-icon name="image"></ion-icon>
+      <div margin-left class="icons-container">
+        <span class="circle bg-{{ icon.color }}" (click)="selectIcon(icon)" *ngFor="let icon of icons">
+          <ion-icon name="{{ icon.icon }}"></ion-icon>
+        </span>
+      </div>
+      <ion-badge color="opaque" (click)="openIconos()">otros...</ion-badge>
+    </ion-item>
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-buttons end>
+    <button ion-button clear small (click)="close()">Cancelar</button>
+    <button ion-button clear small (click)="crear()">Guardar</button>
+  </ion-buttons>
+</ion-footer>
