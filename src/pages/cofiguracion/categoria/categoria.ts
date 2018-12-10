@@ -9,7 +9,7 @@ import { NuevaCategoriaPopoverPage } from './nueva-categoria-popover/nueva-categ
   templateUrl: 'categoria.html',
 })
 export class CategoriaPage {
-  private tipo: string;
+  public tipo: string;
   private color: string;
   private bgClass: string;
 
