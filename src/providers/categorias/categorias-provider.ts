@@ -7,13 +7,12 @@ export class CategoriasProvider {
 
   constructor() {
     this.categorias = new Array();
-    this.generarCategorias();
   }
 
   public generarCategorias() {
-    this.categorias.push(CategoriaTransaccion.crearCategoria('moto', 'car', 'warning', false));
-    this.categorias.push(CategoriaTransaccion.crearCategoria('alimentacion', 'restaurant', 'primary', false));
-    this.categorias.push(CategoriaTransaccion.crearCategoria('arriendo', 'home', 'secondary', false));
+    this.categorias.push(CategoriaTransaccion.crearCategoria('moto', 'car', 'warning', false, 'gasto'));
+    this.categorias.push(CategoriaTransaccion.crearCategoria('alimentacion', 'restaurant', 'primary', false, 'gasto'));
+    this.categorias.push(CategoriaTransaccion.crearCategoria('arriendo', 'home', 'secondary', false, 'gasto'));
   }
 
   public obtenerCategorias() {
