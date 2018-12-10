@@ -24,7 +24,7 @@ export class CategoriaGastosComponent {
 
   openSubcategoria(event, categoria) {
     console.log("escogiendo categoria", categoria);
-    let popover = this.popoverCtrl.create(NuevaSubcategoriaPopoverPage, {categoria: categoria}, {cssClass: 'popover-center popover-busqueda'});
+    let popover = this.popoverCtrl.create(NuevaSubcategoriaPopoverPage, {categoria: categoria}, {cssClass: 'popover-center'});
     popover.present({ev: event});
   }
 
