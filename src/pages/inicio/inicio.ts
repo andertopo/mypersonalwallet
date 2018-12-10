@@ -72,7 +72,7 @@ export class InicioPage {
   }
   
   presentPopover(myEvent) {
-    let popover = this.popoverCtrl.create(CalendarioInicioPage, {}, {cssClass: 'popover-center popover-busqueda'});
+    let popover = this.popoverCtrl.create(CalendarioInicioPage, {}, {cssClass: 'popover-center'});
     popover.present({
       ev: myEvent
     });
