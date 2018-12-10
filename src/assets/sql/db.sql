@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS tbl_categorias(
   nombre TEXT,
   icono TEXT,
   color TEXT,
-  tipo INTEGER
+  tipo INTEGER,
   padre_categoria_id INTEGER,
   FOREIGN KEY (padre_categoria_id) REFERENCES tbl_categorias (id_categoria)
 );
@@ -12,7 +12,13 @@ CREATE TABLE IF NOT EXISTS tbl_cuentas (
   id_cuenta INTEGER PRIMARY KEY AUTOINCREMENT,
   nombre TEXT,
   icono TEXT,
-  color TEXT
+  color TEXT,
+  tipo TEXT,
+  ingresos INTEGER DEFAULT 0,
+  gastos INTEGER DEFAULT 0,
+  transacciones INTEGER DEFAULT 0,
+  saldo_inicial INTEGER DEFAULT 0,
+  saldo_total INTEGER DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS tbl_etiquetas (
@@ -60,11 +66,11 @@ CREATE TABLE IF NOT EXISTS tbl_presupuestos (
   FOREIGN KEY (categoria_id) REFERENCES tbl_categorias (id_categoria)
 );
 
-INSERT INTO tbl_cuentas (nombre, icono, color) VALUES('efectivo', 'cash', 'secondary');
-INSERT INTO tbl_cuentas (nombre, icono, color) VALUES('banco', 'custom-bank', 'primary');
+INSERT INTO tbl_cuentas (nombre, icono, color, tipo) VALUES('dinero efectivo', 'cash', 'secondary', 'efectivo');
+INSERT INTO tbl_cuentas (nombre, icono, color, tipo) VALUES('dinero en banco', 'custom-bank', 'primary', 'banco');
 
 
-INSERT INOT tbl_categorias (nombre, icono, color, tipo) VALUES('transporte', 'bus', 'secondary', 'gasto');
-INSERT INOT tbl_categorias (nombre, icono, color, tipo) VALUES('salud', 'medkit', 'azulPrimario', 'gasto');
-INSERT INOT tbl_categorias (nombre, icono, color, tipo) VALUES('alimentación', 'restaurant', 'primary', 'gasto');
-INSERT INOT tbl_categorias (nombre, icono, color, tipo) VALUES('compras', 'cart', 'primary', 'gasto');
+INSERT INTO tbl_categorias (nombre, icono, color, tipo) VALUES('transporte', 'bus', 'secondary', 'gasto');
+INSERT INTO tbl_categorias (nombre, icono, color, tipo) VALUES('salud', 'medkit', 'azulPrimario', 'gasto');
+INSERT INTO tbl_categorias (nombre, icono, color, tipo) VALUES('alimentación', 'restaurant', 'primary', 'gasto');
+INSERT INTO tbl_categorias (nombre, icono, color, tipo) VALUES('compras', 'cart', 'primary', 'gasto');
