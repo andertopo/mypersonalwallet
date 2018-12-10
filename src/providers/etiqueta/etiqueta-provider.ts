@@ -17,7 +17,7 @@ export class EtiquetaProvider {
   }
 
   public obtenerEtiquetas() {
-    this.generarEtiquetas();
+    //this.generarEtiquetas();
     return this.etiquetas;
   }
 
