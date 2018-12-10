@@ -28,7 +28,7 @@ export class OpcionesCategoriaPopoverPage {
 
   openMover() {
     this.viewCtrl.dismiss();
-    let popover = this.popoverCtrl.create(MoverTransaccionesPopoverPage, {categoria: this.categoria}, {cssClass: 'popover-center popover-busqueda'});
+    let popover = this.popoverCtrl.create(MoverTransaccionesPopoverPage, {categoria: this.categoria}, {cssClass: 'popover-center'});
     popover.present();
   }
 

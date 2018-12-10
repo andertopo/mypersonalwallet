@@ -16,8 +16,8 @@ export class MoverTransaccionesPopoverPage {
   public valid:boolean;
 
   constructor(public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, public toastCtrl: ToastController, public categoriaProvider: CategoriasProvider) {
-    this.categoriaOrigen = CategoriaTransaccion.crearCategoria('Seleccione una categoria', 'pricetag', 'opaque', false);
-    this.categoriaDestino = CategoriaTransaccion.crearCategoria('Seleccione una categoria', 'pricetag', 'opaque', false);
+    this.categoriaOrigen = CategoriaTransaccion.crearCategoria('Seleccione una categoria', 'pricetag', 'opaque', false, '');
+    this.categoriaDestino = CategoriaTransaccion.crearCategoria('Seleccione una categoria', 'pricetag', 'opaque', false, '');
     this.tipoCategoria = 'gasto';
     this.valid = true;
   }
