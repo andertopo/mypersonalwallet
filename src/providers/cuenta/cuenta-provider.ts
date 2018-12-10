@@ -1,57 +1,76 @@
 import { Injectable } from '@angular/core';
 import { CuentaTransaccion } from '../../objects/CuentaTransaccion';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 @Injectable()
 export class CuentaProvider {
   public cuentas:Array<CuentaTransaccion>;
   public currentDate:Date;
 
-  constructor() {
+  constructor(public sqlite: SQLite) {
     this.cuentas = new Array();
     this.currentDate = new Date();
   }
 
-  public generarCuentas() {
-    let saldoAnual = 0;
-    for(let i=0; i<5; i++) {
-      let arrayCuenta = new Array();
-      for(let i=0; i<12; i++) {
-        let randomIngresos = Math.floor((Math.random() * 10) + 1);
-        let randomGastos = Math.floor((Math.random() * 10) + 1);
-        let ingresos = randomIngresos * 10000;
-        let gastos = randomGastos * 10000;
-        let saldo = ingresos - gastos;
-        let saldoObj = {
-          fecha: "2018/" + (i + 1),
-          ingresos: {
-            valor: ingresos,
-            cantidad: 3
-          },
-          gastos: {
-            valor: gastos,
-            cantidad: 4
-          },
-          transacciones: {
-            valor: 20000,
-            cantidad: 4
-          },
-          saldo: saldo
-        }
-        saldoAnual += saldo;
-        arrayCuenta.push(saldoObj);
-      }
-      let cuenta = CuentaTransaccion.crearCuenta('billetera', 'card', 'primary', false, 'banco', arrayCuenta[this.currentDate.getMonth()].ingresos.valor, arrayCuenta[this.currentDate.getMonth()].gastos.valor, arrayCuenta[this.currentDate.getMonth()].transacciones.valor, arrayCuenta, saldoAnual);
-      this.cuentas.push(cuenta);
-    }
-  }
-
   public obtenerCuentas() {
-    this.generarCuentas();
     return this.cuentas;
   }
 
+  public guardarCuenta(cuenta:CuentaTransaccion, isEdit: boolean) {
+    if(!isEdit) {
+      return this.crearCuenta(cuenta);
+    } else {
+      return this.editarCuenta(cuenta);
+    } 
+  }
+
   public crearCuenta(cuenta:CuentaTransaccion) {
-    return true;
+    return new Promise((resolve, reject) => {
+      this.sqlite.create({
+        name: 'pesonalWallet.db',
+        location: 'default'
+      }).then((db: SQLiteObject) => {
+        console.log("se creo la base de datos");
+        db.executeSql('INSERT INTO tbl_cuentas (nombre, icono, color, tipo, saldo_inicial, saldo_total) VALUES(?,?,?,?,?,?)', [cuenta.itemGui.nombre, cuenta.itemGui.icono, cuenta.itemGui.color, cuenta.tipo, cuenta.saldoInicial, cuenta.saldoTotal]).then(resp => {
+          cuenta.id = resp.insertId;
+          this.cuentas.push(cuenta);
+          resolve(resp);
+          console.log("se insertó el registro", resp);
+        }).catch(err => {
+          console.log("no se insertó el registro en BD", err)
+          reject("no se insertó el registro en BD")
+        });
+      }).catch(e => {
+        console.log(e);
+        reject('no abre la base de datos');
+      });
+    });
+  }
+
+  public editarCuenta(cuenta:CuentaTransaccion) {
+    cuenta.saldoTotal = cuenta.saldoTotal + cuenta.saldoInicial;
+    //cuenta.saldoInicial = 0;
+    console.log("saldo total", cuenta.saldoTotal, cuenta.saldoInicial);
+    return new Promise((resolve, reject) => {
+      this.sqlite.create({
+        name: 'pesonalWallet.db',
+        location: 'default'
+      }).then((db: SQLiteObject) => {
+        console.log("se creo la base de datos");
+        db.executeSql('UPDATE tbl_cuentas SET nombre = ?, icono = ?, color = ?, tipo = ?, saldo_inicial = ?, saldo_total = ? WHERE id_cuenta = ?', [cuenta.itemGui.nombre, cuenta.itemGui.icono, cuenta.itemGui.color, cuenta.tipo, cuenta.saldoInicial, cuenta.saldoTotal, cuenta.id]).then(resp => {
+          cuenta.id = resp.insertId;
+          //this.cuentas.push(cuenta);
+          resolve(resp);
+          console.log("se actualizó el registro", resp);
+        }).catch(err => {
+          console.log("no se actualizó el registro en BD", err)
+          reject("no se acualizó el registro en BD")
+        });
+      }).catch(e => {
+        console.log(e);
+        reject('no abre la base de datos');
+      });
+    });
   }
 
 }
