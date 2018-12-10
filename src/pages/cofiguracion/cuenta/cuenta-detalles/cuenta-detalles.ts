@@ -3,6 +3,7 @@ import { NavController, NavParams, PopoverController } from 'ionic-angular';
 import { CuentaBalancesPage } from '../cuenta-balances/cuenta-balances';
 import { CuentaTransaccion } from '../../../../objects/CuentaTransaccion';
 import { CalendarioPage } from '../../../calendario/calendario';
+import { CuentaNuevaPage } from '../cuenta-nueva/cuenta-nueva';
 
 
 @Component({
@@ -32,5 +33,10 @@ export class CuentaDetallesPage {
   goTransacciones() {
     let popover = this.popoverCtrl.create(CalendarioPage, {}, {cssClass: 'popover-date'});
     popover.present({});
+  }
+
+  goEdit() {
+    let popover = this.popoverCtrl.create(CuentaNuevaPage, {cuenta: this.cuenta}, {cssClass: 'popover-center'});
+    popover.present();
   }
 }
