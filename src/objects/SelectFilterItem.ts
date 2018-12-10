@@ -1,4 +1,5 @@
 export class SelectFilterItem {
+  public id:number;
   public nombre:string;
   public icono:string;
   public color:string;
@@ -13,6 +14,14 @@ export class SelectFilterItem {
     selectFilterItem.setColor(color);
     selectFilterItem.setSelected(selected);
     return selectFilterItem;
+  }
+
+  public setId(id:number) {
+    this.id = id;
+  }
+
+  public getId() {
+    return this.id;
   }
 
   public setNombre(nom:string) {

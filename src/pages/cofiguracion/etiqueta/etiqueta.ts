@@ -10,9 +10,11 @@ import { SelectFilterItem } from '../../../objects/SelectFilterItem';
 })
 export class EtiquetaPage {
   public etiquetas: Array<SelectFilterItem>;
+  public isEdit: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public toastCtrl: ToastController, public etiquetaProvider: EtiquetaProvider) {
     this.etiquetas = this.etiquetaProvider.obtenerEtiquetas();
+    this.isEdit = false;
   }
 
   ionViewDidLoad() {
@@ -41,12 +43,11 @@ export class EtiquetaPage {
           handler: data => {
             console.log(data);
             if (data.nombre != '') {
-              let etiquetaCreada = this.etiquetaProvider.crearEtiqueta(SelectFilterItem.crearSelectFilterItem(data.nombre, 'pricetag', '', false))
-              let mensaje: string = 'La etiqueta ha sido creada';
-              if (!etiquetaCreada) {
-                mensaje = 'Ha ocurrido un error al crear la etiqueta';
-              }
-              this.showToast(mensaje);
+              this.etiquetaProvider.guardarEtiqueta(SelectFilterItem.crearSelectFilterItem(data.nombre, 'pricetag', '', false), false).then(res => {
+                this.showMessage('La etiqueta ha sido ' + ((this.isEdit) ? 'editada' : 'creada'), true);
+              }).catch(err => {
+                this.showMessage('Ha ocurrido un error al crear la etiqueta', true);
+              });
             }
           }
         }
@@ -130,25 +131,23 @@ export class EtiquetaPage {
       });
       alert.present();
     } else {
-      let etiquetaEliminada: boolean = this.etiquetaProvider.editarEtiqueta(etiqueta);
-      let mensaje: string = 'La etiqueta ha sido editada';
-      if (!etiquetaEliminada) {
-        mensaje = 'Ha ocurrido un error al editar la etiqueta';
-      }
-      this.showToast(mensaje);
+      this.etiquetaProvider.guardarEtiqueta(data, true).then(res => {
+        this.showMessage('La etiqueta ha sido editada', false);
+      }).catch(err => {
+        this.showMessage('Ha ocurrido un error al editar la etiqueta', false);
+      });
     }
   }
 
   deleteAction(etiqueta: SelectFilterItem) {
-    let etiquetaEliminada: boolean = this.etiquetaProvider.borrarEtiqueta(etiqueta);
-    let mensaje: string = 'La etiqueta ha sido eliminada';
-    if (!etiquetaEliminada) {
-      mensaje = 'Ha ocurrido un error al eliminar la etiqueta';
-    }
-    this.showToast(mensaje);
+    this.etiquetaProvider.borrarEtiqueta(etiqueta).then(resp => {
+      this.showMessage('La etiqueta ha sido eliminada', false);
+    }).catch(err => {
+      this.showMessage('Ha ocurrido un error al eliminar la etiqueta', false);
+    });
   }
 
-  showToast(mensaje: string) {
+  showMessage(mensaje: string, created) {
     let toast = this.toastCtrl.create({
       message: mensaje,
       duration: 2000,
