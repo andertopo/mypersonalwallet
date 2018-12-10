@@ -5,14 +5,14 @@ export class CategoriaTransaccion {
   public itemGui:SelectFilterItem;
   public tipo:string; //si es ingreso o gasto
 
-  static crearCategoria(nombre:string, icono:string, color:string, selected:boolean) {
+  static crearCategoria(nombre:string, icono:string, color:string, selected:boolean, tipo:string) {
     let categoria = new CategoriaTransaccion();
     categoria.itemGui.setNombre(nombre);
     categoria.itemGui.setIcono(icono);
     categoria.itemGui.setColor(color);
     categoria.itemGui.setSelected(selected);
     console.log(categoria);
-    categoria.tipo = 'gasto';
+    categoria.tipo = tipo;
     return categoria;
   }
 
