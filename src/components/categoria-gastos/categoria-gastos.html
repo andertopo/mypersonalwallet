@@ -1,16 +1,20 @@
 <ion-list>
-  <ion-item no-lines *ngFor="let categoria of categorias">
-    <div class="icon-circled bg-{{ categoria.itemGui.color}}" float-left>
-      <ion-icon [name]="categoria.itemGui.icono" item-start></ion-icon>
+  <div *ngFor="let categoria of categorias">
+    <ion-item no-lines>
+      <div class="icon-circled bg-{{ categoria.itemGui.color}}" float-left>
+        <ion-icon [name]="categoria.itemGui.icono" item-start></ion-icon>
+      </div>
+      <p float-left class="nombre">{{ categoria.itemGui.nombre }}</p>
+      <p float-right class="icons">
+        <ion-icon margin-right name="add-circle" (click)="openSubcategoria($event, categoria)"></ion-icon>
+        <ion-icon name="more" (click)="openOpciones($event, categoria)"></ion-icon>
+      </p>
+    </ion-item>
+    <div *ngIf="categoria.subcategorias.length > 0">
+      <ion-item no-lines *ngFor="let subcategoria of categoria.subcategorias">
+        <ion-icon class="subcategory" name="return-right" item-start></ion-icon>
+        <p float-left class="subcategory-name">{{ subcategoria.itemGui.nombre }}</p>
+      </ion-item>
     </div>
-    <p float-left class="nombre">{{ categoria.itemGui.nombre }}</p>
-    <p float-right class="icons">
-      <ion-icon margin-right name="add-circle" (click)="openSubcategoria($event, categoria)"></ion-icon>
-      <ion-icon name="more" (click)="openOpciones($event, categoria)"></ion-icon>
-    </p>
-  </ion-item>
-  <ion-item no-lines>
-    <ion-icon class="subcategory" name="return-right" item-start></ion-icon>
-    <p float-left class="subcategory-name">subcategoria</p>
-  </ion-item>
+  </div>
 </ion-list>

@@ -20,12 +20,24 @@ export class CategoriaGastosComponent {
   openOpciones(event, categoria) {
     let popover = this.popoverCtrl.create(OpcionesCategoriaPopoverPage, {categoria: categoria});
     popover.present({ev: event});
+    popover.onDidDismiss(data => {
+      if (data) {
+        console.log("cambiando categoría", data, categoria);
+        categoria = data.categoria;
+      }
+    });
   }
 
   openSubcategoria(event, categoria) {
     console.log("escogiendo categoria", categoria);
     let popover = this.popoverCtrl.create(NuevaSubcategoriaPopoverPage, {categoria: categoria}, {cssClass: 'popover-center'});
     popover.present({ev: event});
+    popover.onDidDismiss(data => {
+      if (data) {
+        console.log("subcategoria creada", data, categoria);
+        categoria.subcategorias.push(data.subcategoria);
+      }
+    });
   }
 
 }
