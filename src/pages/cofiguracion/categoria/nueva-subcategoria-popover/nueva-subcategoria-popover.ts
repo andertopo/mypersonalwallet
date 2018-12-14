@@ -23,7 +23,9 @@ export class NuevaSubcategoriaPopoverPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NuevaSubcategoriaPopoverPage');
-    this.categoria = this.navParams.get('categoria');
+    let categoriaPadre = this.navParams.get('categoria');
+    this.categoria = CategoriaTransaccion.crearCategoria(null, '', categoriaPadre.itemGui.icono, categoriaPadre.itemGui.color, false, categoriaPadre.tipo, categoriaPadre.id);
+    //this.categoria.padreId = this.categoria.id;
   }
 
   public close() {
@@ -34,22 +36,10 @@ export class NuevaSubcategoriaPopoverPage {
     if (this.formSubcategoria.valid) {
       console.log("el formulario si es valido");
       this.categoria.itemGui.setNombre(this.formSubcategoria.value.descripcion);
-      let subcategoriaCreada = this.categoriaProvider.crearCategoria(this.categoria);
-      let mensaje: string = 'La sub-categoria ha sido creada';
-      if (!subcategoriaCreada) {
-        mensaje = 'Ha ocurrido un error al crear la sub-categoria';
-      }
-      let toast = this.toastCtrl.create({
-        message: mensaje,
-        duration: 1000,
-        position: 'middle'
-      });
-      toast.present();
-
-      toast.onDidDismiss(() => {
-        if(subcategoriaCreada) {
-          this.viewCtrl.dismiss();
-        }
+      this.categoriaProvider.guardarCategoria(this.categoria, false).then(resp => {
+        this.showMessage('La subcategoria ha sido ' + ((false) ? 'editada' : 'creada'), true);
+      }).catch(err => {
+        this.showMessage('Ha ocurrido un error al guardar la subcategoria', false);
       });
     } else {
       console.log(this.formSubcategoria.hasError);
@@ -62,10 +52,23 @@ export class NuevaSubcategoriaPopoverPage {
     popover.present();
     popover.onDidDismiss(data => {
       if (data) {
-        //this.cuenta.itemGui.setNombre(data.tipoCuenta);
-        this.categoria = data.categoria;
+        this.categoria.padreId = data.categoria.id;
       }
     });
   }
 
+  showMessage(mensaje: string, created:boolean) {
+    let toast = this.toastCtrl.create({
+      message: mensaje,
+      duration: 2000,
+      position: 'middle'
+    });
+    toast.present();
+
+    toast.onDidDismiss(() => {
+      if (created) {
+        this.viewCtrl.dismiss({subcategoria: this.categoria});
+      }
+    });
+  }
 }
