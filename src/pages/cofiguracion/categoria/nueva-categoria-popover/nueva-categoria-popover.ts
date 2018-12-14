@@ -12,7 +12,10 @@ import { IconosCategoriaPopoverPage } from '../iconos-categoria-popover/iconos-c
   templateUrl: 'nueva-categoria-popover.html',
 })
 export class NuevaCategoriaPopoverPage {
+  public title: string;
   public formSubcategoria: FormGroup;
+
+  public categoria:CategoriaTransaccion;
   public tipoCategoria: string;
   
   private selectedColor: any;
@@ -22,8 +25,9 @@ export class NuevaCategoriaPopoverPage {
   public icons: Array<any>;
 
   constructor(public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams, fb: FormBuilder, public popoverCtrl: PopoverController, public toastCtrl: ToastController, public categoriaProvider: CategoriasProvider) {
+    this.title = 'nueva categoria';
     this.formSubcategoria = fb.group({
-      'descripcion': [null, Validators.required]
+      'descripcion': [((this.categoria != null) ? this.categoria.itemGui.nombre : ''), Validators.required]
     });
     this.selectedIcon = {};
 
@@ -64,11 +68,26 @@ export class NuevaCategoriaPopoverPage {
     });
 
     this.selectedColor = this.colors[0];
+    this.selectedIcon = this.icons[0];
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NuevaCategoriaPopoverPage');
     this.tipoCategoria = this.navParams.get('tipo');
+    this.categoria = this.navParams.get('categoria');
+    if(this.categoria) {
+      console.log("categoria!!!", this.categoria);
+      this.formSubcategoria.setValue({'descripcion': this.categoria.itemGui.nombre});
+      this.icons[0].icon = this.categoria.itemGui.icono;
+      this.icons[0].selected = true;
+      this.icons[0].color = this.categoria.itemGui.color;
+      this.selectedIcon = this.icons[0];
+  
+      this.colors[0].color = this.categoria.itemGui.color;
+      this.colors[0].selected = true;
+      this.selectedColor = this.colors[0];
+      this.title = 'Editar categoria';
+    }
   }
 
   public selectColor(color: any) {
@@ -98,30 +117,31 @@ export class NuevaCategoriaPopoverPage {
 
   public crear() {
     if (this.formSubcategoria.valid) {
-      let categoria = new CategoriaTransaccion();
+      let categoria = null;
+      if(this.categoria != null) { 
+        console.log("editando categoria");
+        categoria = this.categoria
+      } else {
+        console.log("categoria nueva")
+        categoria = new CategoriaTransaccion();
+      } 
       categoria.tipo = this.tipoCategoria;
       categoria.itemGui.setNombre(this.formSubcategoria.value.descripcion);
-      let subcategoriaCreada = this.categoriaProvider.crearCategoria(categoria);
-      let mensaje: string = 'La categoria ha sido creada';
-      if (!subcategoriaCreada) {
-        mensaje = 'Ha ocurrido un error al crear la categoria';
-      }
-      let toast = this.toastCtrl.create({
-        message: mensaje,
-        duration: 1000,
-        position: 'middle'
-      });
-      toast.present();
+      console.log((this.categoria != null), " vamos a setear categoria", categoria);
+      console.log(this.selectedIcon);
+      console.log(this.selectedColor['color']);
+      categoria.itemGui.setColor(this.selectedColor['color']);
+      categoria.itemGui.setIcono(this.selectedIcon['icon']);
 
-      toast.onDidDismiss(() => {
-        if (subcategoriaCreada) {
-          this.viewCtrl.dismiss();
-        }
+
+      this.categoriaProvider.guardarCategoria(categoria, (this.categoria != null)).then(resp => {
+        this.showMessage('La categoria ha sido ' + ((this.categoria != null) ? 'editada' : 'creada'), true);
+      }).catch(err => {
+        this.showMessage('Ha ocurrido un error al guardar la categoria', false);
       });
     } else {
       console.log(this.formSubcategoria.hasError);
     }
-
   }
 
   openIconos() {
@@ -129,7 +149,10 @@ export class NuevaCategoriaPopoverPage {
     popover.present();
     popover.onDidDismiss(data => {
       if (data) {
+        console.log("seleccionando ", data);
         this.icons[0].icon = data.icono;
+        this.icons[0].color = this.selectedColor['color'];
+        this.selectIcon = this.icons[0];
       }
     });
   }
@@ -142,6 +165,21 @@ export class NuevaCategoriaPopoverPage {
       if (data) {
         this.selectedColor.color = data.color;
         this.selectedIcon.color = data.color;
+      }
+    });
+  }
+
+  showMessage(mensaje: string, created:boolean) {
+    let toast = this.toastCtrl.create({
+      message: mensaje,
+      duration: 2000,
+      position: 'middle'
+    });
+    toast.present();
+
+    toast.onDidDismiss(() => {
+      if (created) {
+        this.viewCtrl.dismiss({categoria: this.categoria});
       }
     });
   }
