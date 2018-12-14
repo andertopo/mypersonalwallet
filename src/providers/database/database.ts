@@ -93,16 +93,33 @@ export class DatabaseProvider {
   }
 
   public setearCategorias() {
-    this.db.executeSql('SELECT * FROM tbl_categorias', []).then(categorias => {
+    this.db.executeSql('SELECT * FROM tbl_categorias ORDER BY id_categoria', []).then(categorias => {
       console.log('categorias', categorias);
       for (var i = 0; i < categorias.rows.length; i++) {
         let categoria = categorias.rows.item(i);
-        this.categoriaProvider.categorias.push(CategoriaTransaccion.crearCategoria(categoria.nombre, categoria.icono, categoria.color, false, categoria.tipo));
+        let categoriaTransaccion = CategoriaTransaccion.crearCategoria(categoria.id_categoria, categoria.nombre, categoria.icono, categoria.color, false, categoria.tipo, categoria.padre_categoria_id);
+        this.organizarSubcategorias(categoriaTransaccion);
+        //this.categoriaProvider.categorias.push(categoriaTransaccion);
       }
       this.setearCuentas();
     }).catch(e => {
       console.log(e);
     });
+  }
+
+  public organizarSubcategorias(categoria:CategoriaTransaccion) {
+    if(categoria.padreId == null) {
+      console.log("es categoria", categoria);
+      this.categoriaProvider.categorias.push(categoria);
+    } else {
+      console.log("es subcategoria", categoria);
+      this.categoriaProvider.categorias.forEach(categoriaItem => {
+        if(categoriaItem.id == categoria.padreId) {
+          console.log("es subcategoria de la categoria", categoriaItem);
+          categoriaItem.subcategorias.push(categoria);
+        }
+      });
+    }
   }
 
   public setearCuentas() {
