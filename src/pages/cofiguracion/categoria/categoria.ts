@@ -10,8 +10,8 @@ import { NuevaCategoriaPopoverPage } from './nueva-categoria-popover/nueva-categ
 })
 export class CategoriaPage {
   public tipo: string;
-  private color: string;
-  private bgClass: string;
+  public color: string;
+  public bgClass: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController) {
     this.tipo = 'gastos';
