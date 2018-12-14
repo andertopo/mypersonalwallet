@@ -87,7 +87,7 @@ export class EtiquetaProvider {
         location: 'default'
       }).then((db: SQLiteObject) => {
         console.log("se creo la base de datos");
-        db.executeSql('DELETE tbl_etiquetas WHERE id_etiqueta = ?', [etiqueta.id]).then(resp => {
+        db.executeSql('DELETE FROM tbl_etiquetas WHERE id_etiqueta = ?', [etiqueta.id]).then(resp => {
           etiqueta.id = resp.insertId;
           for(let index=0; index<this.etiquetas.length; index++) {
             if(this.etiquetas[index].id == etiqueta.id) {
