@@ -74,3 +74,4 @@ INSERT INTO tbl_categorias (nombre, icono, color, tipo) VALUES('transporte', 'bu
 INSERT INTO tbl_categorias (nombre, icono, color, tipo) VALUES('salud', 'medkit', 'azulPrimario', 'gasto');
 INSERT INTO tbl_categorias (nombre, icono, color, tipo) VALUES('alimentación', 'restaurant', 'primary', 'gasto');
 INSERT INTO tbl_categorias (nombre, icono, color, tipo) VALUES('compras', 'cart', 'primary', 'gasto');
+INSERT INTO tbl_categorias (nombre, icono, color, tipo) VALUES('salario', 'custom-wallet', 'secondary', 'ingreso');
