@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, PopoverController, ViewController, ToastController } from 'ionic-angular';
 import { CategoriaTransaccion } from '../../../../objects/CategoriaTransaccion';
-import { ListadoCategoriasPopoverPage } from '../nueva-subcategoria-popover/listado-categorias-popover/listado-categorias-popover';
+import { ListadoCategoriasPopoverPage } from '../gestion-subcategoria-popover/listado-categorias-popover/listado-categorias-popover';
 import { CategoriasProvider } from '../../../../providers/categorias/categorias-provider';
 
 
