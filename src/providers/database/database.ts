@@ -10,13 +10,14 @@ import { CuentaProvider } from '../cuenta/cuenta-provider';
 import { CuentaTransaccion } from '../../objects/CuentaTransaccion';
 import { EtiquetaProvider } from '../etiqueta/etiqueta-provider';
 import { SelectFilterItem } from '../../objects/SelectFilterItem';
+import { Platform } from 'ionic-angular';
 
 @Injectable()
 export class DatabaseProvider {
   private databaseReady: BehaviorSubject<boolean>;
   public db: SQLiteObject;
 
-  constructor(private sqlite: SQLite, private sqliteporter: SQLitePorter, private http: HttpClient, public categoriaProvider: CategoriasProvider, public cuentaProvider:CuentaProvider, public etiquetaProvider:EtiquetaProvider) {
+  constructor(public platform: Platform, private sqlite: SQLite, private sqliteporter: SQLitePorter, private http: HttpClient, public categoriaProvider: CategoriasProvider, public cuentaProvider:CuentaProvider, public etiquetaProvider:EtiquetaProvider) {
     console.log('Hello DatabaseProvider Provider');
     this.databaseReady = new BehaviorSubject(false);
     this.checkDatabase();
@@ -27,6 +28,40 @@ export class DatabaseProvider {
   }
 
   private checkDatabase() {
+    if(this.platform.is('core') || this.platform.is('mobileweb')) {
+      console.log("es por web, toca llamar al servicio remoto");
+      this.checkRemoteDatabase();
+    } else {
+      this.checkLocalDatabase();
+    }
+  }
+
+  private checkRemoteDatabase() {
+    this.http.get('/remote/categorias').subscribe(categorias => {
+      console.log("categorias: ", categorias);
+      for (let categoryKey in categorias) {
+        let categoria = categorias[categoryKey];
+        let categoriaTransaccion = CategoriaTransaccion.crearCategoria(categoria.id_categoria, categoria.nombre, categoria.icono, categoria.color, false, categoria.tipo, categoria.padre_categoria_id);
+        this.organizarSubcategorias(categoriaTransaccion);
+      }
+      this.cargarCuentas();
+    });
+  }
+
+  private cargarCuentas() {
+    console.log("cargando cuentas...");
+    this.http.get('/remote/cuentas').subscribe(cuentas => {
+      console.log("cuentas: ", cuentas);
+      for (let cuentaKey in cuentas) {
+        let cuenta = cuentas[cuentaKey];
+        let cuentaTransaccion = CuentaTransaccion.crearCuenta(cuenta.id_cuenta, cuenta.nombre, cuenta.icono, cuenta.color, false, cuenta.tipo, cuenta.ingresos, cuenta.gastos, cuenta.transacciones, null, cuenta.saldo_total);
+        this.cuentaProvider.cuentas.push(cuentaTransaccion);
+      }
+      //this.setearCuentas();
+    })
+  }
+
+  private checkLocalDatabase() {
     this.sqlite.create({
       name: 'pesonalWallet.db',
       location: 'default'
