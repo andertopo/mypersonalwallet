@@ -1,3 +1,19 @@
 registro-ingreso-gasto {
+	.toolbar-title {
+    font-size: 2em;
+    margin-left: 3rem;
+    margin-bottom: 1rem;
+  }
 
+  .gasto {
+    background: map-get($map: $colors, $key: danger);
+  }
+
+  .ingreso {
+    background: map-get($map: $colors, $key: secondary)
+  }
+
+  .transaccion {
+    background: map-get($map: $colors, $key: primary)
+  }
 }

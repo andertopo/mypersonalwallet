@@ -1,5 +1,75 @@
 <ion-header>
-  <ion-title>
-    Nuevo {{ tipoTransaccion }}
-  </ion-title>
+  <ion-navbar [color]="tipoTransaccion">
+    <ion-buttons end>
+      <button ion-button clear icon-only>
+        <ion-icon name="camera"></ion-icon>
+      </button>
+      <button ion-button clear icon-only>
+        <ion-icon name="image"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar [color]="tipoTransaccion">
+    <ion-title>Nuevo {{ tipoTransaccion }}</ion-title>
+  </ion-toolbar>
 </ion-header>
+<ion-content padding>
+  <ion-list>
+    <ion-item no-lines>
+      <ion-label>
+        <ion-icon name="star"></ion-icon>
+      </ion-label>
+      <ion-input type="number" placeholder="Introduzca el valor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-icon name="calendar"></ion-icon>
+      </ion-label>
+      <ion-input type="number" placeholder="Introduzca el valor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-icon name="microphone"></ion-icon>
+      </ion-label>
+      <ion-input type="number" placeholder="Descripción"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon float-left margin-right [color]="categoriaSeleccionada.itemGui.color" name="pricetag"></ion-icon>
+      <span>{{ categoriaSeleccionada.itemGui.nombre }}</span>
+      <ion-icon float-right name="arrow-dropdown"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-icon float-left margin-right [color]="cuentaSeleccionada.itemGui.color" name="pricetag"></ion-icon>
+      <span>{{ cuentaSeleccionada.itemGui.nombre }}</span>
+      <ion-icon float-right name="arrow-dropdown"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox [color]="tipoTransaccion" checked="true"></ion-checkbox>
+      <ion-label>Pago registrado</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox [color]="tipoTransaccion" checked="false"></ion-checkbox>
+      <ion-label>Gasto fijo</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox [color]="tipoTransaccion"></ion-checkbox>
+      <ion-label>Repetir</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon float-left margin-right name="pricetags"></ion-icon>
+      <span>Etiquetas</span>
+      <ion-icon float-right name="arrow-dropdown"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-icon float-left margin-right name="create"></ion-icon>
+      </ion-label>
+      <ion-input type="text" placeholder="Observación"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon float-left margin-right name="alarm"></ion-icon>
+      <span>Recordarme</span>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
