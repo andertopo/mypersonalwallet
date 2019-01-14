@@ -7,6 +7,8 @@ import { MultipleSelectFilterPage } from './multiple-select-filter/multiple-sele
 import { SearchTransactionsPage } from './search-transactions/search-transactions';
 import { TiposTransaccionesPage } from './tipos-transacciones/tipos-transacciones';
 import { FiltroTransaccionesPage } from './filtro-transacciones/filtro-transacciones';
+import { RegistrarPage } from './registrar/registrar';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,11 @@ import { FiltroTransaccionesPage } from './filtro-transacciones/filtro-transacci
     MultipleSelectFilterPage,
     SearchTransactionsPage,
     TiposTransaccionesPage,
-    FiltroTransaccionesPage
+    FiltroTransaccionesPage,
+    RegistrarPage
   ],
   imports: [
+    ComponentsModule,
     IonicPageModule.forChild(CalendarioFiltroTransaccionesPage),
     IonicPageModule.forChild(EstadoTransaccionesPage),
     IonicPageModule.forChild(FiltroBusquedaPage),
@@ -26,6 +30,7 @@ import { FiltroTransaccionesPage } from './filtro-transacciones/filtro-transacci
     IonicPageModule.forChild(SearchTransactionsPage),
     IonicPageModule.forChild(TiposTransaccionesPage),
     IonicPageModule.forChild(FiltroTransaccionesPage),
+    IonicPageModule.forChild(RegistrarPage),
   ]
 })
 export class TransaccionesPageModule {}

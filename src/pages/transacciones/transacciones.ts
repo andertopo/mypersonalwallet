@@ -4,9 +4,9 @@ import { SearchTransactionsPage } from './search-transactions/search-transaction
 import { TiposTransaccionesPage } from "./tipos-transacciones/tipos-transacciones";
 import { FiltroTransaccionesPage } from "./filtro-transacciones/filtro-transacciones";
 import { Transaccion } from "../../objects/Transaccion";
-import { SelectFilterItem } from "../../objects/SelectFilterItem";
 import { CalendarioFiltroTransaccionesPage } from "./calendario-filtro-transacciones/calendario-filtro-transacciones";
 import { TransaccionesProvider } from "../../providers/transacciones/transacciones-provider";
+import { RegistrarPage } from "./registrar/registrar";
 
 @Component({
   selector: 'page-transacciones',
@@ -104,5 +104,10 @@ export class TransaccionesPage {
     } else {
       this.colorHeader = 'azulPrimario';
     }
+  }
+
+  public registrar(tipoTransaccion: string) {
+    console.log("vamos a registrar un(a)", tipoTransaccion);
+    this.navCtrl.push(RegistrarPage, {tipoTransaccion: tipoTransaccion});
   }
 }
