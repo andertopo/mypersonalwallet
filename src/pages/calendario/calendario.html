@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="danger">
-    <ion-title>{{ dateSelected | date: 'dd, MMMM - yyyy'}}</ion-title>
+    <ion-title>{{ dateSelected | date: 'dd, MMMM - yyyy' | dateTranslate}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -12,7 +12,7 @@
           <ion-icon name="arrow-back"></ion-icon>
         </button>
       </ion-col>
-      <ion-col align-self-center text-center col-6>{{ dateTitle | date: 'MMMM, yyyy'}}</ion-col>
+      <ion-col align-self-center text-center col-6>{{ dateTitle | date: 'MMMM, yyyy' | dateTranslate }}</ion-col>
       <ion-col no-padding no-margin>
         <button ion-button icon-only clear (click)="addMonth(1)">
           <ion-icon name="arrow-forward"></ion-icon>

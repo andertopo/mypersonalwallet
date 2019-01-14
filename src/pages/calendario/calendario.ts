@@ -29,9 +29,10 @@ export class CalendarioPage {
 
   private calcularCalendario() {
     this.fechas = new Array();
-    this.currentDate.setDate(1);
-    let ultimoDiaMes = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0).getDate();
-    let diaSemana = (this.currentDate.getUTCDay() < 2) ? (this.currentDate.getUTCDay() + 5) : (this.currentDate.getUTCDay() - 2);
+    let dateInitial = new Date(this.currentDate);
+    dateInitial.setDate(1);
+    let ultimoDiaMes = new Date(dateInitial.getFullYear(), dateInitial.getMonth() + 1, 0).getDate();
+    let diaSemana = (dateInitial.getUTCDay() < 2) ? (dateInitial.getUTCDay() + 5) : (dateInitial.getUTCDay() - 2);
 
     for (let i = 0; i < 5; i++) {
       this.fechas.push(new Array());
@@ -50,13 +51,14 @@ export class CalendarioPage {
       if (i % 7 == 0) {
         contadorSemana++;
       }
-      let clase = (this.currentDate.getFullYear() + "/" + (this.currentDate.getMonth() + 1) + "/" + this.currentDate.getDate() == this.dateSelected) ? 'col date-active bg-danger' : 'col';
+      let clase = (dateInitial.getFullYear() + "/" + (dateInitial.getMonth() + 1) + "/" + dateInitial.getDate() == this.dateSelected) ? 'col date-active bg-danger' : 'col';
       this.fechas[contadorSemana].push({
-        fecha: this.currentDate.getFullYear() + "/" + (this.currentDate.getMonth() + 1) + "/" + this.currentDate.getDate(),
+        fecha: dateInitial.getFullYear() + "/" + (dateInitial.getMonth() + 1) + "/" + dateInitial.getDate(),
         class: clase
       });
-      this.currentDate.setDate(this.currentDate.getDate() + 1);
-    };
+      dateInitial.setDate(dateInitial.getDate() + 1);
+    }
+
     for (let j = this.fechas[4].length; j <= 7; j++) {
       this.fechas[4].push({
         fecha: '',
@@ -78,12 +80,21 @@ export class CalendarioPage {
     var d = new Date(date),
       n = date.getDate();
     d.setDate(1);
-    d.setMonth(d.getMonth() + value);
+    console.log("mes es cero", d.getMonth(), d, '-- ', date);
+    if(d.getMonth() == 0 && value == -1) {
+      console.log("mes es cero", d.getMonth());
+      d.setFullYear(d.getFullYear() - 1);
+      d.setMonth(11);
+    } else {
+      d.setMonth(d.getMonth() + value);
+      console.log(d.getMonth() + value);
+    }
     d.setDate(Math.min(n, this.getDaysInMonth(d.getFullYear(), d.getMonth())));
     return d;
   }
 
   public addMonth(month: number) {
+    console.log("validando fecha", this.currentDate);
     this.currentDate = this.addMonths(this.currentDate, month);
     this.dateTitle = this.currentDate;
     this.calcularCalendario();
@@ -91,6 +102,11 @@ export class CalendarioPage {
 
   public select(date) {
     console.log(date);
+    for(let semana in this.fechas) {
+      for(let fecha in this.fechas[semana]) {
+        this.fechas[semana][fecha].class = 'col';
+      }
+    }
     this.dateSelected = date.fecha;
     date.class = 'col date-active bg-danger';
 
