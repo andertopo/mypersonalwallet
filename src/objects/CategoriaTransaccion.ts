@@ -14,9 +14,9 @@ export class CategoriaTransaccion {
     categoria.itemGui.setIcono(icono);
     categoria.itemGui.setColor((color) ? color : 'opaque');
     categoria.itemGui.setSelected(selected);
-    console.log(categoria);
     categoria.tipo = tipo;
     categoria.padreId = padreId;
+    console.log(categoria);
     return categoria;
   }
 
