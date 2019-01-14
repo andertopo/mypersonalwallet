@@ -25,7 +25,7 @@
     </ion-toolbar>
     <ion-title text-center margin [color]="colorHeader">
       <ion-icon name="arrow-dropleft"(click)="setMonth(-1)"></ion-icon>
-      <span class="date-title" (click)="goFiltroFecha()">{{ currentDate | date: 'MMMM, yyyy'}}</span>
+      <span class="date-title" (click)="goFiltroFecha()">{{ currentDate | date: 'MMMM, yyyy' | dateTranslate}}</span>
       <ion-icon name="arrow-dropright" (click)="setMonth(1)"></ion-icon>
     </ion-title>
   </ion-navbar>
@@ -80,15 +80,15 @@
       <ion-icon name="add"></ion-icon>
     </button>
     <ion-fab-list side="top">
-      <button ion-fab color="primary">
+      <button ion-fab color="primary" (click)="registrar('transaccion')">
         <ion-icon name="stats"></ion-icon>
         <div>Transacción</div>
       </button>
-      <button ion-fab color="danger">
+      <button ion-fab color="danger" (click)="registrar('gasto')">
         <ion-icon name="trending-down"></ion-icon>
         <div>Gasto</div>
       </button>
-      <button ion-fab color="secondary">
+      <button ion-fab color="secondary" (click)="registrar('ingreso')">
         <ion-icon name="trending-up"></ion-icon>
         <div>Ingreso</div>
       </button>

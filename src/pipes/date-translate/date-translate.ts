@@ -24,6 +24,18 @@ export class DateTranslatePipe implements PipeTransform {
     } else if(value == 'Sat') {
       value = 'Sábado';
     }
+    value = value.toLowerCase().replace("january", "Enero");
+    value = value.toLowerCase().replace("february", "Febrero");
+    value = value.toLowerCase().replace("march", "Marzo");
+    value = value.toLowerCase().replace("april", "Abril");
+    value = value.toLowerCase().replace("may", "Mayo");
+    value = value.toLowerCase().replace("june", "Junio");
+    value = value.toLowerCase().replace("july", "Julio");
+    value = value.toLowerCase().replace("august", "Agosto");
+    value = value.toLowerCase().replace("september", "Septiembre");
+    value = value.toLowerCase().replace("october", "Octubre");
+    value = value.toLowerCase().replace("november", "Noviembre");
+    value = value.toLowerCase().replace("december", "Diciembre");
     return value;
   }
 }
