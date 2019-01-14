@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 import { MoverTransaccionesPopoverPage } from './mover-transacciones-popover/mover-transacciones-popover';
-import { NuevaCategoriaPopoverPage } from './nueva-categoria-popover/nueva-categoria-popover';
+import { GestionCategoriaPopoverPage } from './gestion-categoria-popover/gestion-categoria-popover';
 
 @IonicPage()
 @Component({
@@ -29,7 +29,7 @@ export class CategoriaPage {
   }
 
   openNueva() {
-    let popover = this.popoverCtrl.create(NuevaCategoriaPopoverPage, {tipo: this.tipo}, {});
+    let popover = this.popoverCtrl.create(GestionCategoriaPopoverPage, {tipo: this.tipo}, {});
     popover.present();
   }
 

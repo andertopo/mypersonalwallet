@@ -3,18 +3,18 @@ import { IonicPageModule } from 'ionic-angular';
 import { CategoriaPage } from './categoria';
 import { ComponentsModule } from '../../../components/components.module';
 import { OpcionesCategoriaPopoverPage } from './opciones-categoria-popover/opciones-categoria-popover';
-import { NuevaSubcategoriaPopoverPage } from './nueva-subcategoria-popover/nueva-subcategoria-popover';
-import { ListadoCategoriasPopoverPage } from './nueva-subcategoria-popover/listado-categorias-popover/listado-categorias-popover';
+import { GestionSubcategoriaPopoverPage } from './gestion-subcategoria-popover/gestion-subcategoria-popover';
+import { ListadoCategoriasPopoverPage } from './gestion-subcategoria-popover/listado-categorias-popover/listado-categorias-popover';
 import { MoverTransaccionesPopoverPage } from './mover-transacciones-popover/mover-transacciones-popover';
-import { NuevaCategoriaPopoverPage } from './nueva-categoria-popover/nueva-categoria-popover';
+import { GestionCategoriaPopoverPage } from './gestion-categoria-popover/gestion-categoria-popover';
 import { IconosCategoriaPopoverPage } from './iconos-categoria-popover/iconos-categoria-popover';
 
 @NgModule({
   declarations: [
     CategoriaPage,
     OpcionesCategoriaPopoverPage,
-    NuevaCategoriaPopoverPage,
-    NuevaSubcategoriaPopoverPage,
+    GestionCategoriaPopoverPage,
+    GestionSubcategoriaPopoverPage,
     ListadoCategoriasPopoverPage,
     MoverTransaccionesPopoverPage,
     IconosCategoriaPopoverPage
@@ -23,10 +23,10 @@ import { IconosCategoriaPopoverPage } from './iconos-categoria-popover/iconos-ca
     ComponentsModule,
     IonicPageModule.forChild(CategoriaPage),
     IonicPageModule.forChild(OpcionesCategoriaPopoverPage),
-    IonicPageModule.forChild(NuevaSubcategoriaPopoverPage),
+    IonicPageModule.forChild(GestionSubcategoriaPopoverPage),
     IonicPageModule.forChild(ListadoCategoriasPopoverPage),
     IonicPageModule.forChild(MoverTransaccionesPopoverPage),
-    IonicPageModule.forChild(NuevaCategoriaPopoverPage),
+    IonicPageModule.forChild(GestionCategoriaPopoverPage),
     IonicPageModule.forChild(IconosCategoriaPopoverPage),
   ],
 })

@@ -7,10 +7,10 @@ import { CategoriasProvider } from '../../../../providers/categorias/categorias-
 
 
 @Component({
-  selector: 'page-nueva-subcategoria-popover',
-  templateUrl: 'nueva-subcategoria-popover.html',
+  selector: 'page-gestion-subcategoria-popover',
+  templateUrl: 'gestion-subcategoria-popover.html',
 })
-export class NuevaSubcategoriaPopoverPage {
+export class GestionSubcategoriaPopoverPage {
   public formSubcategoria: FormGroup;
   public categoria:CategoriaTransaccion;
 
@@ -22,7 +22,7 @@ export class NuevaSubcategoriaPopoverPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NuevaSubcategoriaPopoverPage');
+    console.log('ionViewDidLoad GestionSubcategoriaPopoverPage');
     let categoriaPadre = this.navParams.get('categoria');
     this.categoria = CategoriaTransaccion.crearCategoria(null, '', categoriaPadre.itemGui.icono, categoriaPadre.itemGui.color, false, categoriaPadre.tipo, categoriaPadre.id);
     //this.categoria.padreId = this.categoria.id;

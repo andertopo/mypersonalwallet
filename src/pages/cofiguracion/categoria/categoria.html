@@ -22,8 +22,8 @@
 
 <ion-content padding>
   <div [ngSwitch]="tipo">
-    <categoria-gastos *ngSwitchCase="'gastos'"></categoria-gastos>
-    <configuracion-gerenciar *ngSwitchCase="'ingresos'"></configuracion-gerenciar>
+    <categoria-transacciones tipo="gasto" *ngSwitchCase="'gastos'"></categoria-transacciones>
+    <categoria-transacciones tipo="ingreso" *ngSwitchCase="'ingresos'"></categoria-transacciones>
   </div>
 
   <ion-fab right bottom>

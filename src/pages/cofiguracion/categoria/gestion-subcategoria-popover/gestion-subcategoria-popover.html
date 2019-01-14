@@ -33,7 +33,7 @@
 </ion-content>
 <ion-footer>
   <ion-buttons end>
-    <button ion-button clear small (click)="close()">Cancelar</button>
-    <button ion-button clear small (click)="crear()">Guardar</button>
+    <button ion-button [color]="this.categoria.itemGui.color" clear small (click)="close()">Cancelar</button>
+    <button ion-button [color]="this.categoria.itemGui.color" clear small (click)="crear()">Guardar</button>
   </ion-buttons>
 </ion-footer>

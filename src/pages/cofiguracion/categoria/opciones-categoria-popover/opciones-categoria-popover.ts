@@ -4,7 +4,7 @@ import { MoverTransaccionesPopoverPage } from '../mover-transacciones-popover/mo
 import { CategoriaTransaccion } from '../../../../objects/CategoriaTransaccion';
 import { IconosCategoriaPopoverPage } from '../iconos-categoria-popover/iconos-categoria-popover';
 import { CategoriasProvider } from '../../../../providers/categorias/categorias-provider';
-import { NuevaCategoriaPopoverPage } from '../nueva-categoria-popover/nueva-categoria-popover';
+import { GestionCategoriaPopoverPage } from '../gestion-categoria-popover/gestion-categoria-popover';
 
 /**
  * Generated class for the OpcionesCategoriaPopoverPage page.
@@ -36,7 +36,7 @@ export class OpcionesCategoriaPopoverPage {
   }
 
   editar() {
-    let popover = this.popoverCtrl.create(NuevaCategoriaPopoverPage, {tipo: this.categoria.tipo, categoria: this.categoria}, {});
+    let popover = this.popoverCtrl.create(GestionCategoriaPopoverPage, {tipo: this.categoria.tipo, categoria: this.categoria}, {});
     popover.present();
     popover.onDidDismiss(data => {
       if (data) {
@@ -47,7 +47,7 @@ export class OpcionesCategoriaPopoverPage {
   }
 
   openIconos() {
-    let popover = this.popoverCtrl.create(IconosCategoriaPopoverPage, {color: 'opaque'}, {});
+    let popover = this.popoverCtrl.create(IconosCategoriaPopoverPage, {color: this.categoria.itemGui.color}, {});
     popover.present();
     popover.onDidDismiss(data => {
       if (data) {

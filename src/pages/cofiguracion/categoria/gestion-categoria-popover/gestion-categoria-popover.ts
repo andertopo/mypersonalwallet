@@ -8,10 +8,10 @@ import { IconosCategoriaPopoverPage } from '../iconos-categoria-popover/iconos-c
 
 
 @Component({
-  selector: 'page-nueva-categoria-popover',
-  templateUrl: 'nueva-categoria-popover.html',
+  selector: 'page-gestion-categoria-popover',
+  templateUrl: 'gestion-categoria-popover.html',
 })
-export class NuevaCategoriaPopoverPage {
+export class GestionCategoriaPopoverPage {
   public title: string;
   public formSubcategoria: FormGroup;
 
@@ -72,7 +72,7 @@ export class NuevaCategoriaPopoverPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NuevaCategoriaPopoverPage');
+    console.log('ionViewDidLoad GestionCategoriaPopoverPage');
     this.tipoCategoria = this.navParams.get('tipo');
     this.categoria = this.navParams.get('categoria');
     if(this.categoria) {
