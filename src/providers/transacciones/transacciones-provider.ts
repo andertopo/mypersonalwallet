@@ -13,28 +13,29 @@ export class TransaccionesProvider {
   }
 
   public generarTransacciones() {
-    this.transacciones.push(Transaccion.crearTransaccion('gasto', 'mecato', 1700, '2018/07/01', false, SelectFilterItem.crearSelectFilterItem('alimentación', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('billetera', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
-    this.transacciones.push(Transaccion.crearTransaccion('gasto', 'transporte bus', 2000, "2018/07/01", true, SelectFilterItem.crearSelectFilterItem('transporte', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('bolsillo', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
-    this.transacciones.push(Transaccion.crearTransaccion('gasto', 'transporte bus', 1700, "2018/07/02", true, SelectFilterItem.crearSelectFilterItem('transporte', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('billetera', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
-    this.transacciones.push(Transaccion.crearTransaccion('ingreso', 'freelance', 50000, "2018/07/03", false, SelectFilterItem.crearSelectFilterItem('trabajo', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('billetera', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
-    this.transacciones.push(Transaccion.crearTransaccion('gasto', 'parqueadero moto', 5400, "2018/07/04", true, SelectFilterItem.crearSelectFilterItem('moto', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('bolsillo', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
-    this.transacciones.push(Transaccion.crearTransaccion('gasto', 'mantenimiento', 20000, "2018/07/04", true, SelectFilterItem.crearSelectFilterItem('moto', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('billetera', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
-    this.transacciones.push(Transaccion.crearTransaccion('ingreso', 'salario', 2100000, "2018/07/04", true, SelectFilterItem.crearSelectFilterItem('salario', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('billetera', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
-    this.transacciones.push(Transaccion.crearTransaccion('gasto', 'mecato', 1700, "2018/07/05", true, SelectFilterItem.crearSelectFilterItem('alimentación', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('bolsillo', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
-    this.transacciones.push(Transaccion.crearTransaccion('gasto', 'arriendo', 300000, "2018/07/05", false, SelectFilterItem.crearSelectFilterItem('arriendo', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('billetera', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
-    this.transacciones.push(Transaccion.crearTransaccion('gasto', 'mecato', 3000, "2018/07/06", true, SelectFilterItem.crearSelectFilterItem('alimentación', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('billetera', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
+    this.transacciones.push(Transaccion.crearTransaccion('gasto', 'mecato', 1700, '2018/12/01', false, SelectFilterItem.crearSelectFilterItem('alimentación', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('billetera', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
+    this.transacciones.push(Transaccion.crearTransaccion('gasto', 'transporte bus', 2000, "2018/12/01", true, SelectFilterItem.crearSelectFilterItem('transporte', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('bolsillo', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
+    this.transacciones.push(Transaccion.crearTransaccion('gasto', 'transporte bus', 1700, "2018/12/02", true, SelectFilterItem.crearSelectFilterItem('transporte', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('billetera', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
+    this.transacciones.push(Transaccion.crearTransaccion('ingreso', 'freelance', 50000, "2018/12/03", false, SelectFilterItem.crearSelectFilterItem('trabajo', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('billetera', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
+    this.transacciones.push(Transaccion.crearTransaccion('gasto', 'parqueadero moto', 5400, "2018/12/04", true, SelectFilterItem.crearSelectFilterItem('moto', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('bolsillo', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
+    this.transacciones.push(Transaccion.crearTransaccion('gasto', 'mantenimiento', 20000, "2018/12/04", true, SelectFilterItem.crearSelectFilterItem('moto', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('billetera', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
+    this.transacciones.push(Transaccion.crearTransaccion('ingreso', 'salario', 2100000, "2018/12/04", true, SelectFilterItem.crearSelectFilterItem('salario', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('billetera', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
+    this.transacciones.push(Transaccion.crearTransaccion('gasto', 'mecato', 1700, "2018/12/05", true, SelectFilterItem.crearSelectFilterItem('alimentación', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('bolsillo', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
+    this.transacciones.push(Transaccion.crearTransaccion('gasto', 'arriendo', 300000, "2018/12/05", false, SelectFilterItem.crearSelectFilterItem('arriendo', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('billetera', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
+    this.transacciones.push(Transaccion.crearTransaccion('gasto', 'mecato', 3000, "2018/12/06", true, SelectFilterItem.crearSelectFilterItem('alimentación', 'restaurant', 'secondary', false), SelectFilterItem.crearSelectFilterItem('billetera', 'cash', 'primary', false), SelectFilterItem.crearSelectFilterItem('mecato', 'restaurant', 'secondary', false), '', ''));
   }
 
   public ordenarTransacciones() {
     let transaccionesOrdenadas = Array();
-    let fechaInicio = new Date(2018, 8, 0);//fecha + 1
-    let lastDay = new Date(2018, 7, 0).getDate();
+    let fechaInicio = new Date(2019, 0, 0);//fecha + 1
+    let lastDay = new Date(2018, 12, 0).getDate();
     for (let j = 1; j <= lastDay; j++) {
       let fechaAux = fechaInicio.getFullYear() + '/';
-      let month = (fechaInicio.getMonth() < 10) ? ("0" + fechaInicio.getMonth()) : fechaInicio.getMonth();
+      let month = (fechaInicio.getMonth() < 10) ? ("0" + (fechaInicio.getMonth() + 1)) : (fechaInicio.getMonth() + 1);
       let date = (fechaInicio.getDate() < 9) ? "0" + fechaInicio.getDate() : fechaInicio.getDate();
       fechaAux += month + "/" + date;
       for (let i = 0; i < this.transacciones.length; i++) {
+        console.log("fec aux: ", fechaAux + " -- fec ", this.transacciones[i].getFecha());
         if (this.transacciones[i].getFecha() == fechaAux) {
           let indexTransaccion = transaccionesOrdenadas.findIndex(v => v.fecha === fechaAux);
           if (indexTransaccion > -1) {
