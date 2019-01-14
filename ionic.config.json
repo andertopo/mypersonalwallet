@@ -4,5 +4,11 @@
   "integrations": {
     "cordova": {}
   },
-  "pro_id": "7a9f2507"
+  "pro_id": "7a9f2507",
+  "proxies": [
+    {
+      "path": "/remote",
+      "proxyUrl": "http://localhost:3000"
+    }
+  ]
 }
