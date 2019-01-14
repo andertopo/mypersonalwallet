@@ -1,16 +1,16 @@
 import { SelectFilterItem } from "./SelectFilterItem";
 
 export class Transaccion {
-  private tipo:string;
-  private descripcion: string;
-  private valor: number;
-  private fecha: string;
-  private estado: boolean;
-  private categoria: SelectFilterItem;
-  private cuenta: SelectFilterItem;
-  private etiqueta: SelectFilterItem;
-  private observacion: string;
-  private ubicacion: string;
+  public tipo:string;
+  public descripcion: string;
+  public valor: number;
+  public fecha: string;
+  public estado: boolean;
+  public categoria: SelectFilterItem;
+  public cuenta: SelectFilterItem;
+  public etiqueta: SelectFilterItem;
+  public observacion: string;
+  public ubicacion: string;
 
   static crearTransaccion(tipo:string, descripcion: string, valor: number, fecha: string, estado: boolean, categoria: SelectFilterItem, cuenta: SelectFilterItem, etiqueta: SelectFilterItem, observacion: string, ubicacion: string) {
     let transaccion = new Transaccion();
