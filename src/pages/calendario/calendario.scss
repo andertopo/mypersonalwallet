@@ -12,5 +12,9 @@ page-calendario {
     border-radius: 50%;
   }
 
+  .max-list {
+    max-height: 390px;
+  }
+
   @import '../../theme/bg-categorias.scss';
 }

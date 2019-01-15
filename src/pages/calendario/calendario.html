@@ -1,14 +1,17 @@
 <ion-header>
   <ion-navbar color="danger">
-    <ion-title>{{ dateSelected | date: 'dd, MMMM - yyyy' | dateTranslate}}</ion-title>
+    <ion-title>
+      <span (click)="toggleYear()">{{ dateSelected | date: 'yyyy' }}</span><br />
+      {{ dateSelected | date: 'dd, MMMM - yyyy' | dateTranslate}}
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding *ngIf="showCalendar">
   <ion-grid>
     <ion-row>
       <ion-col no-padding no-margin>
-         <button ion-button icon-only clear (click)="addMonth(-1)">
+        <button ion-button icon-only clear (click)="addMonth(-1)">
           <ion-icon name="arrow-back"></ion-icon>
         </button>
       </ion-col>
@@ -34,4 +37,18 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-buttons float-right>
+      <button small ion-button start outline (click)="enviarFecha(true)">Cancelar</button>
+    <button small ion-button end outline (click)="enviarFecha(false)">Aceptar</button>
+  </ion-buttons>
+</ion-content>
+
+<ion-content padding *ngIf="!showCalendar">
+  <ion-list class="max-list">
+    <ion-item *ngFor="let year of years">
+      <ion-label text-center (click)="cambiarAnio(year)">
+        {{ year }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

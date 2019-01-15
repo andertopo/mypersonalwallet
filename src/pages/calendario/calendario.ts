@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -12,13 +12,20 @@ export class CalendarioPage {
   public dateTitle: Date;
   public fechas: Array<any>;
   public dateSelected: string;
+  public showCalendar: boolean;
+  public years: Array<number>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {
     this.clase = 'col date-active bg-danger';
     this.fechas = new Array();
     this.currentDate = new Date();
+    this.showCalendar = true;
     this.dateTitle = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth());
     this.dateSelected = this.currentDate.getFullYear() + '/' + (this.currentDate.getMonth() + 1) + '/' + this.currentDate.getDate();
+    this.years = new Array();
+    for(let i=this.currentDate.getFullYear() - 50; i<(this.currentDate.getFullYear() + 50); i++) {
+      this.years.push(i);
+    }
 
     this.calcularCalendario();
   }
@@ -110,5 +117,23 @@ export class CalendarioPage {
     this.dateSelected = date.fecha;
     date.class = 'col date-active bg-danger';
 
+  }
+
+  toggleYear() {
+    this.showCalendar = !this.showCalendar;
+  }
+
+  cambiarAnio(anio) {
+    this.currentDate.setFullYear(anio);
+    this.dateTitle = this.currentDate;
+    this.dateSelected = this.currentDate.getFullYear() + '/' + (this.currentDate.getMonth() + 1) + '/' + this.currentDate.getDate();
+    this.calcularCalendario();
+    this.toggleYear();
+  }
+
+  enviarFecha(current:boolean) {
+    this.viewCtrl.dismiss({
+      fecha: ((current) ? new Date() : this.dateSelected)
+    })
   }
 }
