@@ -7,6 +7,7 @@ import { CuentaBalancesPage } from './cuenta-balances/cuenta-balances';
 import { CuentaNuevaPage } from './cuenta-nueva/cuenta-nueva';
 import { TipoCuentaOpcionesPage } from './cuenta-nueva/tipo-cuenta-opciones/tipo-cuenta-opciones';
 import { ColoresCuentaPopoverPage } from './cuenta-nueva/colores-cuenta-popover/colores-cuenta-popover';
+import { SimpleSelectCuentaPopoverPage } from './simple-select-cuenta-popover/simple-select-cuenta-popover';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ColoresCuentaPopoverPage } from './cuenta-nueva/colores-cuenta-popover/
 
     CuentaPopoverOpciones,
     TipoCuentaOpcionesPage,
-    ColoresCuentaPopoverPage
+    ColoresCuentaPopoverPage,
+    SimpleSelectCuentaPopoverPage
   ],
   imports: [
     IonicPageModule.forChild(CuentaPage),
@@ -27,7 +29,8 @@ import { ColoresCuentaPopoverPage } from './cuenta-nueva/colores-cuenta-popover/
     
     IonicPageModule.forChild(CuentaPopoverOpciones),
     IonicPageModule.forChild(TipoCuentaOpcionesPage),
-    IonicPageModule.forChild(ColoresCuentaPopoverPage)
+    IonicPageModule.forChild(ColoresCuentaPopoverPage),
+    IonicPageModule.forChild(SimpleSelectCuentaPopoverPage)
   ]
 })
 export class CuentaPageModule {}

@@ -1,0 +1,8 @@
+<ion-list>
+  <ion-item *ngFor="let cuenta of cuentas" (click)="seleccionarCuenta(cuenta)">
+    <ion-label>
+        <ion-icon float-left margin-right [color]="cuenta.itemGui.color" [name]="cuenta.itemGui.icono"></ion-icon>
+        {{ cuenta.itemGui.nombre }}
+    </ion-label>
+  </ion-item>
+</ion-list>
