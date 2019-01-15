@@ -1,5 +1,6 @@
 categoria-transacciones {
   @import '../../theme/transacciones-item.scss';
+  @import '../../theme/bg-categorias.scss';
   .item-md p.nombre,
   .item-md p.icons {
     margin-top: 12px;
@@ -17,7 +18,15 @@ categoria-transacciones {
     margin-right: 0 !important;
     font-size: 1.5em;
   }
-  ion-icon {
+  /*ion-icon {
     margin-left: 2px;
+  }*/
+
+  .item-md .item-button {
+    border-radius: 50%;
+    margin-right: 12px;
+    height: 35px;
+    width: 35px;
+    font-size: 1.8rem;
   }
 }

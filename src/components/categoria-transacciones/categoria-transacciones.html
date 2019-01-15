@@ -1,16 +1,16 @@
 <ion-list>
   <div *ngFor="let categoria of categorias">
-    <ion-item no-lines>
+    <ion-item no-lines (click)="seleccionar(categoria)">
       <div class="icon-circled bg-{{ categoria.itemGui.color}}" float-left>
         <ion-icon [name]="categoria.itemGui.icono" item-start></ion-icon>
       </div>
       <p float-left class="nombre">{{ categoria.itemGui.nombre }}</p>
-      <p float-right class="icons">
+      <p float-right class="icons" *ngIf="!isSelect">
         <ion-icon margin-right name="add-circle" (click)="openSubcategoria($event, categoria)"></ion-icon>
         <ion-icon name="more" (click)="openOpciones($event, categoria)"></ion-icon>
       </p>
     </ion-item>
-    <div *ngIf="categoria.subcategorias.length > 0">
+    <div *ngIf="categoria.subcategorias.length > 0" (click)="seleccionar()">
       <ion-item no-lines *ngFor="let subcategoria of categoria.subcategorias">
         <ion-icon class="subcategory" name="return-right" item-start></ion-icon>
         <p float-left class="subcategory-name">{{ subcategoria.itemGui.nombre }}</p>
