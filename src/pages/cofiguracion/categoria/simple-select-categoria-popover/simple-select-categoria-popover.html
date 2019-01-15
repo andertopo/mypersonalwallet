@@ -1,0 +1,6 @@
+<ion-header color="primary">
+    <ion-searchbar placeholder="Seleccione categoria" (ionInput)="getCategorias($event)"></ion-searchbar>
+</ion-header>
+<ion-content>
+    <categoria-transacciones #categoriaTransacciones (categoriaSeleccionadaEvent)="seleccionarCategoria($event)" tipo="gasto" [isSelect]="isSelect"></categoria-transacciones>
+</ion-content>

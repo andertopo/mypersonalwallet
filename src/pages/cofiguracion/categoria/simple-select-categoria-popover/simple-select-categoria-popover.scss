@@ -1,0 +1,11 @@
+simple-select-categoria-popover {
+  @import '../../../../theme/popover-list.scss';
+  .searchbar-md .searchbar-input {
+    background-color: transparent;
+    -webkit-box-shadow: initial;
+    box-shadow: initial;
+  }
+  .searchbar-md .searchbar-input::placeholder {
+    color: black;
+  }
+}
