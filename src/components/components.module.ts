@@ -7,6 +7,7 @@ import { ConfiguracionGeneralComponent } from './configuracion-general/configura
 import { CategoriaTransaccionesComponent } from './categoria-transacciones/categoria-transacciones';
 import { WalletSelectComponent } from './wallet-select/wallet-select';
 import { RegistroIngresoGastoComponent } from './registro-ingreso-gasto/registro-ingreso-gasto';
+import { PipesModule } from '../pipes/pipes.module';
 @NgModule({
 	declarations: [ProgressBarComponent,
     ConfiguracionPerfilComponent,
@@ -17,6 +18,7 @@ import { RegistroIngresoGastoComponent } from './registro-ingreso-gasto/registro
     RegistroIngresoGastoComponent,
   ],
 	imports: [
+    PipesModule,
     IonicPageModule.forChild(ProgressBarComponent),
     IonicPageModule.forChild(ConfiguracionPerfilComponent),
     IonicPageModule.forChild(ConfiguracionGerenciarComponent),
