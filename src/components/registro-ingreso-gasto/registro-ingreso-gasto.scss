@@ -1,19 +1,24 @@
 registro-ingreso-gasto {
-	.toolbar-title {
+  .toolbar-title {
     font-size: 2em;
     margin-left: 3rem;
     margin-bottom: 1rem;
   }
 
-  .gasto {
-    background: map-get($map: $colors, $key: danger);
+  ion-icon {
+    width: 5%;
   }
 
-  .ingreso {
-    background: map-get($map: $colors, $key: secondary)
+  .flex {
+    display: flex;
+    align-items: center;
   }
 
-  .transaccion {
-    background: map-get($map: $colors, $key: primary)
+  .margin-select {
+    margin-left: 8px;
+  }
+
+  .error {
+    color: map-get($map: $colors, $key: danger);
   }
 }

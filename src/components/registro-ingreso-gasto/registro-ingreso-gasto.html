@@ -14,62 +14,80 @@
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
-  <ion-list>
-    <ion-item no-lines>
-      <ion-label>
-        <ion-icon name="star"></ion-icon>
-      </ion-label>
-      <ion-input type="number" placeholder="Introduzca el valor"></ion-input>
-    </ion-item>
+  <div class="flex">
+    <ion-icon float-left name="star"></ion-icon>
     <ion-item>
-      <ion-label>
-        <ion-icon name="calendar"></ion-icon>
-      </ion-label>
-      <ion-input type="number" placeholder="Introduzca el valor"></ion-input>
+      <ion-input float-right [formControl]="formTransaccion.controls['valor']" type="number" placeholder="Introduzca el valor"></ion-input>
     </ion-item>
+    <br/>
+    <small *ngIf="formTransaccion.controls['valor'].invalid && (formTransaccion.controls['valor'].dirty || formTransaccion.controls['valor'].touched)">
+      <div class="error" *ngIf="formTransaccion.controls['valor'].errors.required">
+        Descripción requerida.
+      </div>
+    </small>
+  </div>
+  <div class="flex" (click)="openCalendario()">
+    <ion-icon name="calendar"></ion-icon>
     <ion-item>
-      <ion-label>
-        <ion-icon name="microphone"></ion-icon>
-      </ion-label>
+        <span class="margin-select">{{ fechaSeleccionada | date: 'dd, MMMM - yyyy' | dateTranslate }}</span>
+        <ion-input type="hidden" [formControl]="formTransaccion.controls['fecha']"></ion-input>
+    </ion-item>
+  </div>
+  <div class="flex">
+    <ion-icon name="microphone"></ion-icon>
+    <ion-item>
       <ion-input type="number" placeholder="Descripción"></ion-input>
     </ion-item>
+  </div>
+  <div class="flex" (click)="openCategorias()">
+    <ion-icon [color]="categoriaSeleccionada.itemGui.color" name="pricetag"></ion-icon>
     <ion-item>
-      <ion-icon float-left margin-right [color]="categoriaSeleccionada.itemGui.color" name="pricetag"></ion-icon>
-      <span>{{ categoriaSeleccionada.itemGui.nombre }}</span>
+      <span class="margin-select">{{ categoriaSeleccionada.itemGui.nombre }}</span>
       <ion-icon float-right name="arrow-dropdown"></ion-icon>
     </ion-item>
+  </div>
+  <div class="flex" (click)="openCuentas()">
+    <ion-icon [color]="cuentaSeleccionada.itemGui.color" name="pricetag"></ion-icon>
     <ion-item>
-      <ion-icon float-left margin-right [color]="cuentaSeleccionada.itemGui.color" name="pricetag"></ion-icon>
-      <span>{{ cuentaSeleccionada.itemGui.nombre }}</span>
+      <span class="margin-select">{{ cuentaSeleccionada.itemGui.nombre }}</span>
       <ion-icon float-right name="arrow-dropdown"></ion-icon>
     </ion-item>
+  </div>
+  <div class="flex">
+    <ion-checkbox [formControl]="formTransaccion.controls['pago']" [color]="tipoTransaccion" checked="true"></ion-checkbox>
     <ion-item>
-      <ion-checkbox [color]="tipoTransaccion" checked="true"></ion-checkbox>
-      <ion-label>Pago registrado</ion-label>
+      <ion-label class="margin-select">Pago registrado</ion-label>
     </ion-item>
+  </div>
+  <div class="flex">
+    <ion-checkbox [formControl]="formTransaccion.controls['pago']" [color]="tipoTransaccion" checked="false"></ion-checkbox>
     <ion-item>
-      <ion-checkbox [color]="tipoTransaccion" checked="false"></ion-checkbox>
-      <ion-label>Gasto fijo</ion-label>
+      <ion-label class="margin-select">Gasto fijo</ion-label>
     </ion-item>
+  </div>
+  <div class="flex">
+    <ion-checkbox [color]="tipoTransaccion"></ion-checkbox>
     <ion-item>
-      <ion-checkbox [color]="tipoTransaccion"></ion-checkbox>
-      <ion-label>Repetir</ion-label>
+      <ion-label class="margin-select">Repetir</ion-label>
     </ion-item>
+  </div>
+  <div class="flex">
+    <ion-icon name="pricetags"></ion-icon>
     <ion-item>
-      <ion-icon float-left margin-right name="pricetags"></ion-icon>
-      <span>Etiquetas</span>
+      <span class="margin-select">Etiquetas</span>
       <ion-icon float-right name="arrow-dropdown"></ion-icon>
     </ion-item>
+  </div>
+  <div class="flex">
+    <ion-icon name="create"></ion-icon>
     <ion-item>
-      <ion-label>
-        <ion-icon float-left margin-right name="create"></ion-icon>
-      </ion-label>
       <ion-input type="text" placeholder="Observación"></ion-input>
     </ion-item>
+  </div>
+  <div class="flex">
+    <ion-icon name="alarm"></ion-icon>
     <ion-item>
-      <ion-icon float-left margin-right name="alarm"></ion-icon>
       <span>Recordarme</span>
     </ion-item>
-  </ion-list>
-
+  </div>
 </ion-content>
