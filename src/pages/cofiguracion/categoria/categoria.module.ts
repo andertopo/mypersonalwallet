@@ -8,6 +8,8 @@ import { ListadoCategoriasPopoverPage } from './gestion-subcategoria-popover/lis
 import { MoverTransaccionesPopoverPage } from './mover-transacciones-popover/mover-transacciones-popover';
 import { GestionCategoriaPopoverPage } from './gestion-categoria-popover/gestion-categoria-popover';
 import { IconosCategoriaPopoverPage } from './iconos-categoria-popover/iconos-categoria-popover';
+import { SimpleSelectCategoriaPopoverPage } from './simple-select-categoria-popover/simple-select-categoria-popover';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { IconosCategoriaPopoverPage } from './iconos-categoria-popover/iconos-ca
     GestionSubcategoriaPopoverPage,
     ListadoCategoriasPopoverPage,
     MoverTransaccionesPopoverPage,
-    IconosCategoriaPopoverPage
+    IconosCategoriaPopoverPage,
+    SimpleSelectCategoriaPopoverPage
   ],
   imports: [
     ComponentsModule,
@@ -28,6 +31,7 @@ import { IconosCategoriaPopoverPage } from './iconos-categoria-popover/iconos-ca
     IonicPageModule.forChild(MoverTransaccionesPopoverPage),
     IonicPageModule.forChild(GestionCategoriaPopoverPage),
     IonicPageModule.forChild(IconosCategoriaPopoverPage),
+    IonicPageModule.forChild(SimpleSelectCategoriaPopoverPage)
   ],
 })
 export class CategoriaPageModule {}
