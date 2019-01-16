@@ -1,9 +1,9 @@
 <ion-list>
   <div *ngFor="let categoria of categorias">
     <ion-item no-lines (click)="seleccionar(categoria)">
-      <div class="icon-circled bg-{{ categoria.itemGui.color}}" float-left>
-        <ion-icon [name]="categoria.itemGui.icono" item-start></ion-icon>
-      </div>
+      <button ion-button round float-left [color]="categoria.itemGui.color">
+        <ion-icon [name]="categoria.itemGui.icono"></ion-icon>
+      </button>
       <p float-left class="nombre">{{ categoria.itemGui.nombre }}</p>
       <p float-right class="icons" *ngIf="!isSelect">
         <ion-icon margin-right name="add-circle" (click)="openSubcategoria($event, categoria)"></ion-icon>
