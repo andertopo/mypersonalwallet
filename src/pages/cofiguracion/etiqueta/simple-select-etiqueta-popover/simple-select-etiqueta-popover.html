@@ -1,0 +1,25 @@
+<ion-header color="primary">
+  <ion-searchbar *ngIf="etiquetas.length > 0" placeholder="Seleccione etiqueta" (ionInput)="getEtiquetas($event)"></ion-searchbar>
+  <ion-toolbar [color]="color" *ngIf="etiquetas.length <= 0">
+    <ion-buttons end>
+      <button ion-button icon-only (click)="agregarEtiqueta()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>
+      No hay etiquetas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-label>Sin datos</ion-label>
+    <ion-input [(ngModel)]="etiquetaNueva" type="text" placeholder="Ingrese etiquetas separadas por ,"></ion-input>
+  </ion-item>
+  <ion-list *ngIf="etiquetas.length > 0">
+    <ion-item *ngFor="let etiqueta of etiquetas" (click)="seleccionarEtiqueta(etiqueta)">
+      <ion-icon name="tag"></ion-icon>
+      {{ etiqueta.nombre }}
+    </ion-item>
+  </ion-list>
+</ion-content>
