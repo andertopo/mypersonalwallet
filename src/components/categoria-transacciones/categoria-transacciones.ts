@@ -63,7 +63,7 @@ export class CategoriaTransaccionesComponent implements OnInit {
     if (categoriaBuscada && categoriaBuscada.trim() != '') {
       this.categorias = this.categorias.filter((categoria) => {
         return (categoria.itemGui.nombre.toLowerCase().indexOf(categoriaBuscada.toLowerCase()) > -1);
-      })
+      });
     }
   }
 
