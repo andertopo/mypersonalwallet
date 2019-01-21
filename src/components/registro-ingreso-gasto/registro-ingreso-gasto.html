@@ -14,67 +14,91 @@
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
-  <div class="flex">
-    <ion-icon float-left name="star"></ion-icon>
+  <div class="flex" (click)="openCalculator()">
+    <ion-icon float-left color="light" name="star"></ion-icon>
     <ion-item>
-      <ion-input float-right [formControl]="formTransaccion.controls['valor']" type="number" placeholder="Introduzca el valor"></ion-input>
+      <ion-label class="margin-select" [color]="tipoTransaccion" *ngIf="formTransaccion.valor != 0">{{
+        formTransaccion.valor | currency }}</ion-label>
+      <ion-label class="margin-select" color="opaque" *ngIf="formTransaccion.valor == 0">Ingrese el valor</ion-label>
     </ion-item>
-    <br/>
-    <small *ngIf="formTransaccion.controls['valor'].invalid && (formTransaccion.controls['valor'].dirty || formTransaccion.controls['valor'].touched)">
-      <div class="error" *ngIf="formTransaccion.controls['valor'].errors.required">
-        Descripción requerida.
-      </div>
-    </small>
   </div>
   <div class="flex" (click)="openCalendario()">
     <ion-icon name="calendar"></ion-icon>
     <ion-item>
-        <span class="margin-select">{{ fechaSeleccionada | date: 'dd, MMMM - yyyy' | dateTranslate }}</span>
-        <ion-input type="hidden" [formControl]="formTransaccion.controls['fecha']"></ion-input>
+      <span class="margin-select">{{ formTransaccion.fechaSeleccionada | date: 'dd, MMMM - yyyy' | dateTranslate }}</span>
     </ion-item>
   </div>
   <div class="flex">
     <ion-icon name="microphone"></ion-icon>
     <ion-item>
-      <ion-input type="number" placeholder="Descripción"></ion-input>
+      <ion-input type="text" [(ngModel)]="formTransaccion.descripcion" placeholder="Descripción"></ion-input>
     </ion-item>
   </div>
   <div class="flex" (click)="openCategorias()">
-    <ion-icon [color]="categoriaSeleccionada.itemGui.color" name="pricetag"></ion-icon>
+    <ion-icon [color]="formTransaccion.categoriaSeleccionada.itemGui.color" name="pricetag"></ion-icon>
     <ion-item>
-      <span class="margin-select">{{ categoriaSeleccionada.itemGui.nombre }}</span>
+      <span class="margin-select">{{ formTransaccion.categoriaSeleccionada.itemGui.nombre }}</span>
       <ion-icon float-right name="arrow-dropdown"></ion-icon>
     </ion-item>
   </div>
   <div class="flex" (click)="openCuentas()">
-    <ion-icon [color]="cuentaSeleccionada.itemGui.color" name="pricetag"></ion-icon>
+    <ion-icon [color]="formTransaccion.cuentaSeleccionada.itemGui.color" name="pricetag"></ion-icon>
     <ion-item>
-      <span class="margin-select">{{ cuentaSeleccionada.itemGui.nombre }}</span>
+      <span class="margin-select">{{ formTransaccion.cuentaSeleccionada.itemGui.nombre }}</span>
       <ion-icon float-right name="arrow-dropdown"></ion-icon>
     </ion-item>
   </div>
-  <div class="flex">
-    <ion-checkbox [formControl]="formTransaccion.controls['pago']" [color]="tipoTransaccion" checked="true"></ion-checkbox>
-    <ion-item>
-      <ion-label class="margin-select">Pago registrado</ion-label>
-    </ion-item>
-  </div>
-  <div class="flex">
-    <ion-checkbox [formControl]="formTransaccion.controls['pago']" [color]="tipoTransaccion" checked="false"></ion-checkbox>
-    <ion-item>
-      <ion-label class="margin-select">Gasto fijo</ion-label>
-    </ion-item>
-  </div>
-  <div class="flex">
-    <ion-checkbox [color]="tipoTransaccion"></ion-checkbox>
-    <ion-item>
-      <ion-label class="margin-select">Repetir</ion-label>
-    </ion-item>
-  </div>
-  <div class="flex">
+
+  <ion-list radio-group [(ngModel)]="formTransaccion.pagoRegistrado">
+    <div class="flex">
+      <ion-item no-padding>
+        <ion-radio item-left [color]="tipoTransaccion" value="true"></ion-radio>
+        <ion-label class="margin-select">Pago registrado</ion-label>
+      </ion-item>
+    </div>
+    <div class="flex">
+      <ion-item no-padding>
+        <ion-radio item-left [color]="tipoTransaccion" value="false"></ion-radio>
+        <ion-label class="margin-select">Gasto fijo</ion-label>
+      </ion-item>
+    </div>
+  </ion-list>
+  <ion-grid>
+    <ion-row style="align-items: center;">
+      <ion-col col-1>
+        <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox>
+      </ion-col>
+      <ion-col [attr.col-11]="false" [attr.col-6]="true">
+        <ion-item no-padding (click)="toggleRepetir()">
+          <ion-label class="margin-select">Repetir</ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item *ngIf="formTransaccion.repetir">
+
+          <ion-select>
+            <ion-option selected="true">Diario</ion-option>
+            <ion-option>Semanal</ion-option>
+            <ion-option>Mensual</ion-option>
+            <ion-option>Anual</ion-option>
+            <ion-option>Personalizado</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-input type="text" placeholder="hola"></ion-input>
+    </ion-row>
+  </ion-grid>
+  <div class="flex" (click)="openEtiquetas()">
     <ion-icon name="pricetags"></ion-icon>
     <ion-item>
-      <span class="margin-select">Etiquetas</span>
+      <span class="margin-select" *ngIf="formTransaccion.etiquetasSeleccionadas.length == 0">Seleccione la etiqueta</span>
+      <span class="margin-select" *ngIf="formTransaccion.etiquetasSeleccionadas.length > 0">
+        <ion-badge [color]="tipoTransaccion" *ngFor="let etiqueta of formTransaccion.etiquetasSeleccionadas">
+          {{ etiqueta.nombre }}
+        </ion-badge>
+      </span>
       <ion-icon float-right name="arrow-dropdown"></ion-icon>
     </ion-item>
   </div>
@@ -90,4 +114,6 @@
       <span>Recordarme</span>
     </ion-item>
   </div>
+  <button ion-button full round [color]="tipoTransaccion" (click)="guardar()">Aceptar</button>
+  <button ion-button full clear [color]="tipoTransaccion">Aceptar y continuar</button>
 </ion-content>

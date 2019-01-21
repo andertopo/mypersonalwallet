@@ -5,8 +5,29 @@ registro-ingreso-gasto {
     margin-bottom: 1rem;
   }
 
+  .item-md .radio-md {
+    margin-left: 0 !important; 
+    margin-right: 16px !important;
+  }
+
+  .list-md {
+    margin-top: 0;
+  }
+
   ion-icon {
     width: 5%;
+  }
+
+  ion-select {
+    max-width: 100%;
+  }
+
+  .grid {
+    padding-left: 0;
+  }
+
+  ion-col {
+    padding-left: 0 !important;
   }
 
   .flex {
@@ -15,7 +36,7 @@ registro-ingreso-gasto {
   }
 
   .margin-select {
-    margin-left: 8px;
+    margin-left: 8px !important;
   }
 
   .error {

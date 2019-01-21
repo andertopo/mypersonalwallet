@@ -6,8 +6,10 @@ import { CuentaTransaccion } from '../../objects/CuentaTransaccion';
 import { PopoverController } from 'ionic-angular';
 import { SimpleSelectCategoriaPopoverPage } from '../../pages/cofiguracion/categoria/simple-select-categoria-popover/simple-select-categoria-popover';
 import { SimpleSelectCuentaPopoverPage } from '../../pages/cofiguracion/cuenta/simple-select-cuenta-popover/simple-select-cuenta-popover';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { CalendarioPage } from '../../pages/calendario/calendario';
+import { CalculatorComponent } from '../calculator/calculator';
+import { SimpleSelectEtiquetaPopoverPage } from '../../pages/cofiguracion/etiqueta/simple-select-etiqueta-popover/simple-select-etiqueta-popover';
 
 /**
  * Generated class for the RegistroIngresoGastoComponent component.
@@ -21,21 +23,30 @@ import { CalendarioPage } from '../../pages/calendario/calendario';
 })
 export class RegistroIngresoGastoComponent implements OnInit {
   @Input() tipoTransaccion: string;
+  public valor: number;
   public categoriaSeleccionada: CategoriaTransaccion;
   public cuentaSeleccionada: CuentaTransaccion;
   public fechaSeleccionada: Date;
-  public formTransaccion: FormGroup;
+  public formTransaccion;
 
   constructor(public popoverCtrl: PopoverController, fb: FormBuilder, public categoriasProvider: CategoriasProvider, public cuentasProvider:CuentaProvider) {
     console.log('Hello RegistroIngresoGastoComponent Component');
     this.categoriaSeleccionada = this.categoriasProvider.categorias[0];
     this.cuentaSeleccionada = this.cuentasProvider.cuentas[0];
     this.fechaSeleccionada = new Date();
+    this.valor = 0;
 
-
-    this.formTransaccion = fb.group({
-      'valor': [''/*((this.categoria != null) ? this.categoria.itemGui.nombre : '')*/, Validators.required]
-    });
+    this.formTransaccion = {
+      valor: 0,
+      categoriaSeleccionada: this.categoriasProvider.categorias[0],
+      cuentaSeleccionada: this.cuentasProvider.cuentas[0],
+      etiquetasSeleccionadas: [],
+      fechaSeleccionada: new Date(),
+      descripcion: '',
+      pagoRegistrado: true,
+      gastoFijo: false,
+      repetir: false,
+    }
   }
 
   ngOnInit() {
@@ -48,7 +59,7 @@ export class RegistroIngresoGastoComponent implements OnInit {
     popover.onDidDismiss(data => {
       if (data) {
         console.log("cambiando categoría", data);
-        this.categoriaSeleccionada = data.categoriaSeleccionada;
+        this.formTransaccion.categoriaSeleccionada = data.categoriaSeleccionada;
       }
     });
   }
@@ -59,7 +70,29 @@ export class RegistroIngresoGastoComponent implements OnInit {
     popover.onDidDismiss(data => {
       if (data) {
         console.log("cambiando categoría", data);
-        this.cuentaSeleccionada = data.cuentaSeleccionada;
+        this.formTransaccion.cuentaSeleccionada = data.cuentaSeleccionada;
+      }
+    });
+  }
+
+  openEtiquetas() {
+    let popover = this.popoverCtrl.create(SimpleSelectEtiquetaPopoverPage, {color: this.tipoTransaccion}, {cssClass: 'popover-date'});
+    popover.present({ev: event});
+    popover.onDidDismiss(data => {
+      if (data) {
+        console.log("cambiando etiqueta", data);
+        this.formTransaccion.etiquetasSeleccionadas = data.etiquetasSeleccionadas;
+      }
+    });
+  }
+
+  openCalculator() {
+    let popover = this.popoverCtrl.create(CalculatorComponent, {color: this.tipoTransaccion}, {cssClass: 'popover-date'});
+    popover.present({});
+    popover.onDidDismiss(data => {
+      if (data) {
+        console.log("seleccionando valor", data);
+        this.formTransaccion.valor = data.valor;
       }
     });
   }
@@ -70,9 +103,24 @@ export class RegistroIngresoGastoComponent implements OnInit {
     popover.onDidDismiss(data => {
       if (data) {
         console.log("seleccionando fecha", data);
-        this.fechaSeleccionada = data.fecha;
+        this.formTransaccion.fechaSeleccionada = data.fecha;
       }
     });
+  }
+
+  toggleRepetir() {
+    this.formTransaccion.repetir = !this.formTransaccion.repetir;
+  }
+
+  limpiarCheckGroup(toCheck) {
+    console.log("cambiando");
+    //this.formTransaccion.gastoFijo = true;
+    //this.formTransaccion.gastoFijo = false;
+    //toCheck = true;
+  }
+
+  guardar() {
+
   }
 
 }
