@@ -134,6 +134,6 @@ export class CalendarioPage {
   enviarFecha(current:boolean) {
     this.viewCtrl.dismiss({
       fecha: ((current) ? new Date() : this.dateSelected)
-    })
+    });
   }
 }
