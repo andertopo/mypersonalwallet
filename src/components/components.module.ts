@@ -7,7 +7,12 @@ import { ConfiguracionGeneralComponent } from './configuracion-general/configura
 import { CategoriaTransaccionesComponent } from './categoria-transacciones/categoria-transacciones';
 import { WalletSelectComponent } from './wallet-select/wallet-select';
 import { RegistroIngresoGastoComponent } from './registro-ingreso-gasto/registro-ingreso-gasto';
+
+
 import { PipesModule } from '../pipes/pipes.module';
+import { CalculatorComponent } from './calculator/calculator';
+
+
 @NgModule({
 	declarations: [ProgressBarComponent,
     ConfiguracionPerfilComponent,
@@ -16,6 +21,7 @@ import { PipesModule } from '../pipes/pipes.module';
     CategoriaTransaccionesComponent,
     WalletSelectComponent,
     RegistroIngresoGastoComponent,
+    CalculatorComponent
   ],
 	imports: [
     PipesModule,
@@ -24,7 +30,8 @@ import { PipesModule } from '../pipes/pipes.module';
     IonicPageModule.forChild(ConfiguracionGerenciarComponent),
     IonicPageModule.forChild(ConfiguracionGeneralComponent),
     IonicPageModule.forChild(CategoriaTransaccionesComponent),
-    IonicPageModule.forChild(RegistroIngresoGastoComponent)
+    IonicPageModule.forChild(RegistroIngresoGastoComponent),
+    IonicPageModule.forChild(CalculatorComponent)
   ],
 	exports: [ProgressBarComponent,
     ConfiguracionPerfilComponent,
@@ -33,6 +40,7 @@ import { PipesModule } from '../pipes/pipes.module';
     CategoriaTransaccionesComponent,
     WalletSelectComponent,
     RegistroIngresoGastoComponent,
+    CalculatorComponent
   ]
 })
 export class ComponentsModule {}

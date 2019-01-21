@@ -1,0 +1,36 @@
+<ion-header padding>
+  <ion-title text-center>
+    {{ value | currency }}
+  </ion-title>
+  <button ion-button end color="opaque" (click)="borrarValor()">
+    <ion-icon name="backspace"></ion-icon>
+  </button>
+</ion-header>
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col (click)="addValue(1)">1</ion-col>
+      <ion-col (click)="addValue(2)">2</ion-col>
+      <ion-col (click)="addValue(3)">3</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col (click)="addValue(4)">4</ion-col>
+      <ion-col (click)="addValue(5)">5</ion-col>
+      <ion-col (click)="addValue(6)">6</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col (click)="addValue(7)">7</ion-col>
+      <ion-col (click)="addValue(8)">8</ion-col>
+      <ion-col (click)="addValue(9)">9</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col (click)="addValue('00')">00</ion-col>
+      <ion-col (click)="addValue(0)">0</ion-col>
+      <ion-col (click)="addValue('000')">000</ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-buttons float-right>
+    <button small ion-button start clear [color]="color" (click)="cancelar()">Cancelar</button>
+    <button small ion-button end clear [color]="color" (click)="enviarValor()">Aceptar</button>
+  </ion-buttons>
+</ion-content>

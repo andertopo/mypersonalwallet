@@ -1,0 +1,22 @@
+calculator {
+  color: map-get($map: $colors, $key: opaque);
+  font-size: 2.5em;
+
+  ion-header {
+    display: flex;
+    align-items: center;
+  }
+  .content-md {
+    color: map-get($map: $colors, $key: opaque);
+    text-align: center;
+  }
+
+  .toolbar-title-md {
+    color: map-get($map: $colors, $key: dark);
+    font-size: 0.8em;
+  }
+
+  .signed {
+    font-size: 0.5em;
+  }
+}
