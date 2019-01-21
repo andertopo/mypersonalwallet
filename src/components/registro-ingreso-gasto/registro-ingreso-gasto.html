@@ -68,14 +68,18 @@
       <ion-col col-1>
         <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox>
       </ion-col>
-      <ion-col [attr.col-11]="false" [attr.col-6]="true">
+      <ion-col *ngIf="!formTransaccion.repetir">
         <ion-item no-padding (click)="toggleRepetir()">
           <ion-label class="margin-select">Repetir</ion-label>
         </ion-item>
       </ion-col>
-      <ion-col>
-        <ion-item *ngIf="formTransaccion.repetir">
-
+      <ion-col *ngIf="formTransaccion.repetir">
+        <ion-item no-padding>
+          <ion-input type="text" placeholder="cantidad"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col *ngIf="formTransaccion.repetir">
+        <ion-item no-padding *ngIf="formTransaccion.repetir">
           <ion-select>
             <ion-option selected="true">Diario</ion-option>
             <ion-option>Semanal</ion-option>
@@ -86,8 +90,31 @@
         </ion-item>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-input type="text" placeholder="hola"></ion-input>
+    <ion-row margin-left padding-left>
+      <ion-col>
+          L <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox> 
+      </ion-col>
+      <ion-col>
+          M <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox> 
+      </ion-col>
+      <ion-col>
+          M <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox> 
+      </ion-col>
+      <ion-col>
+          J <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox> 
+      </ion-col>
+      <ion-col>
+          V <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox> 
+      </ion-col>
+      <ion-col>
+          S <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox> 
+      </ion-col>
+      <ion-col>
+          D <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox> 
+      </ion-col>
+      <!--<ion-item margin-left>
+          
+      </ion-item>-->
     </ion-row>
   </ion-grid>
   <div class="flex" (click)="openEtiquetas()">
