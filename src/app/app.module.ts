@@ -1,3 +1,5 @@
+import { ExternalTransacccionDAOProvider } from './../providers/database/externalDatabase/external-transacciones-dao-provider';
+import { TabProvider } from './../providers/tab/tab-provider';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -81,13 +83,17 @@ import { CategoriaPageModule } from '../pages/cofiguracion/categoria/categoria.m
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpClient,
     DatabaseProvider,
+    ExternalTransacccionDAOProvider,
+
+
     SQLite,
     SQLitePorter,
 
     CuentaProvider,
     TransaccionesProvider,
     CategoriasProvider,
-    EtiquetaProvider
+    EtiquetaProvider,
+    TabProvider
   ]
 })
 export class AppModule {}
