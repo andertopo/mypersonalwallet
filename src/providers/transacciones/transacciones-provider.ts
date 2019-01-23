@@ -1,3 +1,4 @@
+import { DatabaseProvider } from './../database/database';
 import { Injectable } from '@angular/core';
 import { Transaccion } from '../../objects/Transaccion';
 import { SelectFilterItem } from '../../objects/SelectFilterItem';
@@ -7,7 +8,7 @@ import { EstadoTransaccion } from '../../objects/EstadoTransaccion';
 export class TransaccionesProvider {
   public transacciones:Array<any>;
 
-  constructor() {
+  constructor(public databaseProvider: DatabaseProvider) {
     console.log('Hello TransaccionesProvider Provider');
     this.transacciones = new Array();
   }
@@ -126,6 +127,29 @@ export class TransaccionesProvider {
       transaccionesFiltradas[i].arrayTransacciones = transaccionesFilter;
     }
     return transaccionesFiltradas;
+  }
+
+  public guardarTransaccion(transaccion:Transaccion, isEdit: boolean) {
+    if(isEdit) {
+      return this.editarTransaccion(transaccion);
+    } else {
+      return this.crearTransaccion(transaccion);
+    }
+  }
+
+  public crearTransaccion(transaccion:Transaccion) {
+    return new Promise((resolve, reject) => {
+      this.databaseProvider.crearTransaccion(transaccion).then(transaccionCreada => {
+        this.transacciones.push(transaccion);
+        resolve(transaccion);
+      }).catch(err => {
+        reject(err);
+      });
+    });
+  }
+
+  public editarTransaccion(transaccion:Transaccion) {
+    return new Promise((resolve, reject) => {});
   }
 
 }
