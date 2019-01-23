@@ -1,3 +1,4 @@
+import { Transaccion } from './../../objects/Transaccion';
 import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { HttpClient } from '@angular/common/http';
@@ -11,13 +12,14 @@ import { CuentaTransaccion } from '../../objects/CuentaTransaccion';
 import { EtiquetaProvider } from '../etiqueta/etiqueta-provider';
 import { SelectFilterItem } from '../../objects/SelectFilterItem';
 import { Platform } from 'ionic-angular';
+import { ExternalTransacccionDAOProvider } from './externalDatabase/external-transacciones-dao-provider';
 
 @Injectable()
 export class DatabaseProvider {
   private databaseReady: BehaviorSubject<boolean>;
   public db: SQLiteObject;
 
-  constructor(public platform: Platform, private sqlite: SQLite, private sqliteporter: SQLitePorter, private http: HttpClient, public categoriaProvider: CategoriasProvider, public cuentaProvider:CuentaProvider, public etiquetaProvider:EtiquetaProvider) {
+  constructor(public platform: Platform, private sqlite: SQLite, private sqliteporter: SQLitePorter, private http: HttpClient, public categoriaProvider: CategoriasProvider, public cuentaProvider:CuentaProvider, public etiquetaProvider:EtiquetaProvider, public externalTransacccionDAOProvider: ExternalTransacccionDAOProvider) {
     console.log('Hello DatabaseProvider Provider');
     this.databaseReady = new BehaviorSubject(false);
     this.checkDatabase();
@@ -182,6 +184,12 @@ export class DatabaseProvider {
     }).catch(e => {
       console.log(e);
     });
+  }
+
+  public crearTransaccion(transaccion: Transaccion) {
+    if(this.platform.is('core') || this.platform.is('mobileweb')) {
+      return this.externalTransacccionDAOProvider.crearTransaccion(transaccion);
+    }
   }
 
 }
