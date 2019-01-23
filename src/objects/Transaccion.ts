@@ -1,6 +1,7 @@
 import { SelectFilterItem } from "./SelectFilterItem";
 
 export class Transaccion {
+  public id_transaccion: number;
   public tipo:string;
   public descripcion: string;
   public valor: number;
