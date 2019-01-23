@@ -6,12 +6,25 @@ registro-ingreso-gasto {
   }
 
   .item-md .radio-md {
-    margin-left: 0 !important; 
+    margin-left: 0 !important;
     margin-right: 16px !important;
   }
 
   .list-md {
     margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .searchbar-md {
+    padding: 0;
+    .searchbar-search-icon, .searchbar-md .searchbar-md-cancel {
+      display: none;
+    }
+
+    .searchbar-input {
+      box-shadow: none;
+      padding: 0;
+    }
   }
 
   ion-icon {

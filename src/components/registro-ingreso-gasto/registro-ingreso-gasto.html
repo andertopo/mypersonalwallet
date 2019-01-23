@@ -31,18 +31,18 @@
   <div class="flex">
     <ion-icon name="microphone"></ion-icon>
     <ion-item>
-      <ion-input type="text" [(ngModel)]="formTransaccion.descripcion" placeholder="Descripción"></ion-input>
+      <ion-searchbar class="margin-select" [(ngModel)]="formTransaccion.descripcion" (ionInput)="searchTransactions($event)" placeholder="Descripción"></ion-searchbar>
     </ion-item>
   </div>
   <div class="flex" (click)="openCategorias()">
-    <ion-icon [color]="formTransaccion.categoriaSeleccionada.itemGui.color" name="pricetag"></ion-icon>
+    <ion-icon [color]="formTransaccion.categoriaSeleccionada.itemGui.color" [name]="formTransaccion.categoriaSeleccionada.itemGui.icono"></ion-icon>
     <ion-item>
       <span class="margin-select">{{ formTransaccion.categoriaSeleccionada.itemGui.nombre }}</span>
       <ion-icon float-right name="arrow-dropdown"></ion-icon>
     </ion-item>
   </div>
   <div class="flex" (click)="openCuentas()">
-    <ion-icon [color]="formTransaccion.cuentaSeleccionada.itemGui.color" name="pricetag"></ion-icon>
+    <ion-icon [color]="formTransaccion.cuentaSeleccionada.itemGui.color" [name]="formTransaccion.cuentaSeleccionada.itemGui.icono"></ion-icon>
     <ion-item>
       <span class="margin-select">{{ formTransaccion.cuentaSeleccionada.itemGui.nombre }}</span>
       <ion-icon float-right name="arrow-dropdown"></ion-icon>
@@ -75,46 +75,63 @@
       </ion-col>
       <ion-col *ngIf="formTransaccion.repetir">
         <ion-item no-padding>
-          <ion-input type="text" placeholder="cantidad"></ion-input>
+          <ion-input [(ngModel)]="formTransaccion.cantidadRepeticiones" type="text" placeholder="cantidad"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col *ngIf="formTransaccion.repetir">
         <ion-item no-padding *ngIf="formTransaccion.repetir">
-          <ion-select>
-            <ion-option selected="true">Diario</ion-option>
-            <ion-option>Semanal</ion-option>
-            <ion-option>Mensual</ion-option>
-            <ion-option>Anual</ion-option>
-            <ion-option>Personalizado</ion-option>
+          <ion-select interface="popover" [selectOptions]="selectOptions" [(ngModel)]="formTransaccion.tipoRepeticion">
+            <ion-option value="d">Diario</ion-option>
+            <ion-option value="s">Semanal</ion-option>
+            <ion-option value="m">Mensual</ion-option>
+            <ion-option value="a">Anual</ion-option>
+            <ion-option value="p">Personalizado</ion-option>
           </ion-select>
         </ion-item>
       </ion-col>
     </ion-row>
-    <ion-row margin-left padding-left>
+    <ion-row margin-left padding-left *ngIf="formTransaccion.tipoRepeticion == 'd'">
       <ion-col>
-          L <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox> 
+        L <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox>
       </ion-col>
       <ion-col>
-          M <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox> 
+        M <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox>
       </ion-col>
       <ion-col>
-          M <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox> 
+        M <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox>
       </ion-col>
       <ion-col>
-          J <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox> 
+        J <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox>
       </ion-col>
       <ion-col>
-          V <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox> 
+        V <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox>
       </ion-col>
       <ion-col>
-          S <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox> 
+        S <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox>
       </ion-col>
       <ion-col>
-          D <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox> 
+        D <ion-checkbox [(ngModel)]="formTransaccion.repetir" [color]="tipoTransaccion"></ion-checkbox>
       </ion-col>
-      <!--<ion-item margin-left>
-          
-      </ion-item>-->
+    </ion-row>
+    <ion-row *ngIf="formTransaccion.tipoRepeticion == 'p'">
+      <ion-col margin-left>
+          <ion-label class="margin-select" padding-left color="opaque">Repetir cada: </ion-label>
+      </ion-col>
+      <ion-col col-2>
+        <ion-item no-padding>
+          <ion-input [(ngModel)]="formTransaccion.repetirCadaX" type="text" placeholder="X"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item no-padding *ngIf="formTransaccion.repetir">
+          <ion-select [(ngModel)]="formTransaccion.tipoCadaX">
+            <ion-option value="Dias">días</ion-option>
+            <ion-option value="Semanas">Semanas</ion-option>
+            <ion-option value="Meses">Meses</ion-option>
+            <ion-option value="Años">Años</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
     </ion-row>
   </ion-grid>
   <div class="flex" (click)="openEtiquetas()">

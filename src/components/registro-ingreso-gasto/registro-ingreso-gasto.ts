@@ -1,12 +1,13 @@
+import { TransaccionesProvider } from './../../providers/transacciones/transacciones-provider';
+import { Transaccion } from './../../objects/Transaccion';
 import { Component, Input, OnInit } from '@angular/core';
 import { CategoriasProvider } from '../../providers/categorias/categorias-provider';
 import { CategoriaTransaccion } from '../../objects/CategoriaTransaccion';
 import { CuentaProvider } from '../../providers/cuenta/cuenta-provider';
 import { CuentaTransaccion } from '../../objects/CuentaTransaccion';
-import { PopoverController } from 'ionic-angular';
+import { PopoverController, ToastController } from 'ionic-angular';
 import { SimpleSelectCategoriaPopoverPage } from '../../pages/cofiguracion/categoria/simple-select-categoria-popover/simple-select-categoria-popover';
 import { SimpleSelectCuentaPopoverPage } from '../../pages/cofiguracion/cuenta/simple-select-cuenta-popover/simple-select-cuenta-popover';
-import { FormBuilder } from '@angular/forms';
 import { CalendarioPage } from '../../pages/calendario/calendario';
 import { CalculatorComponent } from '../calculator/calculator';
 import { SimpleSelectEtiquetaPopoverPage } from '../../pages/cofiguracion/etiqueta/simple-select-etiqueta-popover/simple-select-etiqueta-popover';
@@ -27,9 +28,12 @@ export class RegistroIngresoGastoComponent implements OnInit {
   public categoriaSeleccionada: CategoriaTransaccion;
   public cuentaSeleccionada: CuentaTransaccion;
   public fechaSeleccionada: Date;
-  public formTransaccion;
+  public formTransaccion: any;
+  public selectOptions = {
+    cssClass: 'remove-ok'
+  };
 
-  constructor(public popoverCtrl: PopoverController, fb: FormBuilder, public categoriasProvider: CategoriasProvider, public cuentasProvider:CuentaProvider) {
+  constructor(public popoverCtrl: PopoverController, public toastCtrl: ToastController, public categoriasProvider: CategoriasProvider, public cuentasProvider:CuentaProvider, public transaccionProvider: TransaccionesProvider) {
     console.log('Hello RegistroIngresoGastoComponent Component');
     this.categoriaSeleccionada = this.categoriasProvider.categorias[0];
     this.cuentaSeleccionada = this.cuentasProvider.cuentas[0];
@@ -46,6 +50,10 @@ export class RegistroIngresoGastoComponent implements OnInit {
       pagoRegistrado: true,
       gastoFijo: false,
       repetir: false,
+      cantidadRepeticiones: '',
+      tipoRepeticion: 'm',
+      repetirCadaX: '',
+      tipoCadaX: 'Meses'
     }
   }
 
@@ -112,15 +120,48 @@ export class RegistroIngresoGastoComponent implements OnInit {
     this.formTransaccion.repetir = !this.formTransaccion.repetir;
   }
 
-  limpiarCheckGroup(toCheck) {
-    console.log("cambiando");
-    //this.formTransaccion.gastoFijo = true;
-    //this.formTransaccion.gastoFijo = false;
-    //toCheck = true;
+  searchTransactions(evt) {
+    
   }
 
   guardar() {
+    if(this.formTransaccion.valor != '') {
+      console.log(this.formTransaccion);
+      if(this.formTransaccion.repetir == true && this.formTransaccion.cantidadRepeticiones == '') {
+        this.mostrarAlerta("Se debe ingresar el número de veces que se debe repetir el " + this.tipoTransaccion);  
+      } else {
+        if(this.formTransaccion.repetir == true && this.formTransaccion.tipoRepeticion == 'p' && this.formTransaccion.repetirCadaX == '') {
+          this.mostrarAlerta("Se debe ingresar cada cuantos " + this.formTransaccion.tipoCadaX + " se debe repetir el " + this.tipoTransaccion);  
+        } else {
+          this.guardarTransaccion();
+        }
+      }
+    } else {
+      this.mostrarAlerta("Se debe ingresar un valor");
+    }    
+  }
 
+  guardarTransaccion() {
+    let transaccion = Transaccion.crearTransaccion(this.tipoTransaccion, this.formTransaccion.descripcion, this.formTransaccion.valor, this.formTransaccion.fechaSeleccionada, this.formTransaccion.pagoRegistrado, this.formTransaccion.categoriaSeleccionada, this.formTransaccion.cuentaSeleccionada, this.formTransaccion.etiquetaSeleccionada, this.formTransaccion.observacion, null);
+    this.transaccionProvider.guardarTransaccion(transaccion, false).then(transaccion => {
+      this.mostrarAlerta("Se ha creado la transacción");
+    }).catch(err => {
+      this.mostrarAlerta("NO se ha creado la transacción");
+    });
+  }
+
+  mostrarAlerta(mensaje) {
+    let toast = this.toastCtrl.create({
+      message: mensaje,
+      duration: 3000,
+      position: 'middle'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
   }
 
 }
