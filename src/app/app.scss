@@ -21,6 +21,12 @@
   background-color: rgba($color: map-get($colors, dark), $alpha: 0.6);
 }
 
+.popover-md.remove-ok {
+  ion-radio .radio-icon {
+    display: none;
+  }
+}
+
 .popover-center .popover-content {
   width: 350px;
   position: initial;
