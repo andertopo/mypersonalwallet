@@ -1,3 +1,4 @@
+import { TabProvider } from './../../providers/tab/tab-provider';
 
 import {Component} from "@angular/core";
 import { NavController } from 'ionic-angular';
@@ -67,7 +68,7 @@ export class InicioPage {
     console.log(e);
   }
   
-  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController) {
+  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public tabProvider: TabProvider) {
 
   }
   
@@ -79,6 +80,7 @@ export class InicioPage {
   }
 
   goTransacciones(type:string) {
-    this.navCtrl.setRoot(TransaccionesPage, {type: {transaccion: type}})
+    this.tabProvider.typeTransaction.transaccion = type;
+    this.navCtrl.parent.select(1);
   }
 }
