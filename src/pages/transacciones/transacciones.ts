@@ -1,3 +1,4 @@
+import { TabProvider } from './../../providers/tab/tab-provider';
 import { Component } from "@angular/core";
 import { NavController, NavParams, PopoverController, Events } from 'ionic-angular';
 import { SearchTransactionsPage } from './search-transactions/search-transactions';
@@ -21,7 +22,8 @@ export class TransaccionesPage {
 
   public transacciones: Array<Transaccion>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private events: Events, public transaccionProvider:TransaccionesProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private events: Events, public transaccionProvider:TransaccionesProvider, public tabProvider: TabProvider) {
+    console.log("construyendo");
     this.isFilterVisible = false;
     this.colorHeader = 'azulPrimario';
     this.tipoTransaccion = 'Transacciones';
@@ -42,6 +44,13 @@ export class TransaccionesPage {
         this.currentDate = data.date;
       }
     });
+  }
+
+  ionViewWillEnter() {
+    if (this.tabProvider.typeTransaction.transaccion != '') {
+      this.tipoTransaccion = this.tabProvider.typeTransaction.transaccion;
+      this.cambiarTipoTransaccion(this.tipoTransaccion);
+    }
   }
 
   ionViewDidLoad() {
@@ -97,6 +106,7 @@ export class TransaccionesPage {
   }
 
   cambiarTipoTransaccion(data: any) {
+    console.log("cambiando el tipo", data)
     if (data.transaccion == 'ingresos') {
       this.colorHeader = 'secondary';
     } else if (data.transaccion == 'gastos') {
