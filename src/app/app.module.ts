@@ -37,6 +37,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { EtiquetaPageModule } from '../pages/cofiguracion/etiqueta/etiqueta.module';
 import { EtiquetaProvider } from '../providers/etiqueta/etiqueta-provider';
 import { CategoriaPageModule } from '../pages/cofiguracion/categoria/categoria.module';
+import { DatabaseLoaderProvider } from '../providers/database/externalDatabase/database-loader';
 
 
 
@@ -83,6 +84,7 @@ import { CategoriaPageModule } from '../pages/cofiguracion/categoria/categoria.m
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpClient,
     DatabaseProvider,
+    DatabaseLoaderProvider,
     ExternalTransacccionDAOProvider,
 
 
