@@ -12,4 +12,14 @@ page-listado-categorias-popover {
     box-shadow: none;
     -webkit-box-shadow: none;
   }
+
+  ion-icon {
+    margin-right: 0;
+  }
+  .button-round-md {
+    width: 30px;
+    height: 30px;
+    font-size: 1.5rem;
+    padding: 0 1em;
+  }
 }

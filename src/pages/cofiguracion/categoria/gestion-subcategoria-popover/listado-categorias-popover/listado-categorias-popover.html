@@ -7,12 +7,16 @@
 <ion-content>
   <ion-list>
     <ion-item class="small" no-lines (click)="seleccionar(categoria)" *ngFor="let categoria of categoriasFiltradas">
-      <div class="icon-circled bg-{{ categoria.itemGui.color}}" float-left>
-        <ion-icon [name]="categoria.itemGui.icono" item-start></ion-icon>
-      </div>
-      <p float-left class="transaction-description">
+        
+      <ion-label style="display: flex; align-items:center;">
+          <button ion-button round float-left margin-right [color]="categoria.itemGui.color">
+              <ion-icon [name]="categoria.itemGui.icono"></ion-icon>
+            </button>
+        {{ categoria.itemGui.nombre }}
+      </ion-label>
+      <!--<p float-left class="transaction-description">
         <span text-capitalize>{{ categoria.itemGui.nombre }}</span>
-      </p>
+      </p>-->
     </ion-item>
   </ion-list>
 </ion-content>

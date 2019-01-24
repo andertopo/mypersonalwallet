@@ -24,7 +24,9 @@ export class ListadoCategoriasPopoverPage {
 
   filtrar(event: any) {
     let categoriaNombre = event.target.value;
-    this.categoriasFiltradas = this.categorias.filter(categoria => { return categoria["nombre"].startsWith(categoriaNombre)});
+    this.categoriasFiltradas = this.categorias.filter(categoria => { 
+      console.log(categoria);
+      return categoria["itemGui"]["nombre"].indexOf(categoriaNombre) > -1 });
   }
 
   seleccionar(categoria:CategoriaTransaccion) {

@@ -11,4 +11,10 @@ page-gestion-subcategoria-popover {
   .error {
     color: map-get($map: $colors, $key: danger);
   }
+
+  .button-round-md {
+    width: 30px;
+    height: 30px;
+    font-size: 1.5rem;
+  }
 }

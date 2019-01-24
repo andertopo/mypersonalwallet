@@ -20,9 +20,9 @@
     </ion-item>
     <ion-item>
       <div class="small" (click)="openCategorias()">
-        <div class="icon-circled bg-{{ categoria.itemGui.color}}" float-left>
-          <ion-icon margin-right [name]="categoria.itemGui.icono"></ion-icon>
-        </div>
+        <button ion-button round float-left margin-right [color]="categoria.itemGui.color">
+          <ion-icon [name]="categoria.itemGui.icono"></ion-icon>
+        </button>
         <p class="transaction-description">
           {{ categoria.itemGui.nombre }}
           <ion-icon float-right name="arrow-dropdown"></ion-icon>
