@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { TabsPage } from '../pages/tabs/tabs';
-import { DatabaseProvider } from '../providers/database/database';
+import { DatabaseLoaderProvider } from '../providers/database/externalDatabase/database-loader';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,12 +12,12 @@ import { DatabaseProvider } from '../providers/database/database';
 export class MyApp {
   rootPage:any = TabsPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, dbProvider:DatabaseProvider) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, databaseLoaderProvider:DatabaseLoaderProvider) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
-      let baseLista = dbProvider.isBdReady().subscribe(bdLista => {
+      let baseLista = databaseLoaderProvider.isBdReady().subscribe(bdLista => {
         if(bdLista) {
           console.log("la BD está lista");
           baseLista.unsubscribe();
