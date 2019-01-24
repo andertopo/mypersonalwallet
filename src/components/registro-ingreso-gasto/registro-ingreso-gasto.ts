@@ -53,7 +53,9 @@ export class RegistroIngresoGastoComponent implements OnInit {
       cantidadRepeticiones: '',
       tipoRepeticion: 'm',
       repetirCadaX: '',
-      tipoCadaX: 'Meses'
+      tipoCadaX: 'Meses',
+      recordatorio: false,
+      observacion: ''
     }
   }
 
@@ -120,6 +122,10 @@ export class RegistroIngresoGastoComponent implements OnInit {
     this.formTransaccion.repetir = !this.formTransaccion.repetir;
   }
 
+  toggleRecordatorio() {
+    this.formTransaccion.recordatorio = !this.formTransaccion.recordatorio;
+  }
+
   searchTransactions(evt) {
     
   }
@@ -142,7 +148,10 @@ export class RegistroIngresoGastoComponent implements OnInit {
   }
 
   guardarTransaccion() {
-    let transaccion = Transaccion.crearTransaccion(this.tipoTransaccion, this.formTransaccion.descripcion, this.formTransaccion.valor, this.formTransaccion.fechaSeleccionada, this.formTransaccion.pagoRegistrado, this.formTransaccion.categoriaSeleccionada, this.formTransaccion.cuentaSeleccionada, this.formTransaccion.etiquetaSeleccionada, this.formTransaccion.observacion, null);
+    let transaccion = Transaccion.crearTransaccion(this.tipoTransaccion, this.formTransaccion.descripcion, this.formTransaccion.valor, 
+      this.formTransaccion.fechaSeleccionada, this.formTransaccion.pagoRegistrado, this.formTransaccion.gastoFijo, this.formTransaccion.repetir, this.formTransaccion.categoriaSeleccionada, this.formTransaccion.cuentaSeleccionada, 
+      this.formTransaccion.etiquetaSeleccionada, this.formTransaccion.observacion, null
+      );
     this.transaccionProvider.guardarTransaccion(transaccion, false).then(transaccion => {
       this.mostrarAlerta("Se ha creado la transacción");
     }).catch(err => {

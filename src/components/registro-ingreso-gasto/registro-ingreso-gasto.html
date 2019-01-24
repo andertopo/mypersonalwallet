@@ -49,7 +49,7 @@
     </ion-item>
   </div>
 
-  <ion-list radio-group [(ngModel)]="formTransaccion.pagoRegistrado">
+  <ion-list radio-group [(ngModel)]="formTransaccion.pagoRegistrado" (ionChange)="toggleRecordatorio()">
     <div class="flex">
       <ion-item no-padding>
         <ion-radio item-left [color]="tipoTransaccion" value="true"></ion-radio>
@@ -149,15 +149,15 @@
   <div class="flex">
     <ion-icon name="create"></ion-icon>
     <ion-item>
-      <ion-input type="text" placeholder="Observación"></ion-input>
+      <ion-input [(ngModel)]="formTransaccion.observacion" type="text" placeholder="Observación"></ion-input>
     </ion-item>
   </div>
-  <div class="flex">
+  <div class="flex" *ngIf="formTransaccion.recordatorio">
     <ion-icon name="alarm"></ion-icon>
     <ion-item>
       <span>Recordarme</span>
     </ion-item>
-  </div>
+    </div>
   <button ion-button full round [color]="tipoTransaccion" (click)="guardar()">Aceptar</button>
   <button ion-button full clear [color]="tipoTransaccion">Aceptar y continuar</button>
 </ion-content>
