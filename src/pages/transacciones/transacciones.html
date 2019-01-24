@@ -57,9 +57,9 @@
         {{ transaccion.fecha | date:'EEE' | dateTranslate }}, {{ transaccion.fecha | date: 'dd'}}
       </ion-list-header>
       <ion-item no-lines *ngFor="let transactionItem of transaccion.arrayTransacciones">
-        <div class="icon-circled bg-{{ transactionItem.categoria.color}}" float-left>
-          <ion-icon [name]="transactionItem.categoria.icono" item-start></ion-icon>
-        </div>
+        <button ion-button round float-left margin-right [color]="transactionItem.categoria.color">
+          <ion-icon [name]="transactionItem.categoria.icono"></ion-icon>
+        </button>
         <p float-left class="transaction-description">
           <span text-capitalize>{{ transactionItem.descripcion }}</span>
           <br/>
@@ -68,8 +68,8 @@
         <p float-right text-right class="transaction-value">
           <span [class]="transactionItem.tipo">{{ transactionItem.valor | currency }}</span>
           <br/>
-          <small *ngIf="transactionItem.estado">Realizado</small>
-          <small *ngIf="!transactionItem.estado">Pendiente</small>
+          <small *ngIf="transactionItem.realizado">Realizado</small>
+          <small *ngIf="!transactionItem.realizado">Pendiente</small>
         </p>
       </ion-item>
     </div>

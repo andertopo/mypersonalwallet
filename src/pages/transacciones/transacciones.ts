@@ -49,7 +49,7 @@ export class TransaccionesPage {
   ionViewWillEnter() {
     if (this.tabProvider.typeTransaction.transaccion != '') {
       this.tipoTransaccion = this.tabProvider.typeTransaction.transaccion;
-      this.cambiarTipoTransaccion(this.tipoTransaccion);
+      this.cambiarTipoTransaccion(this.tabProvider.typeTransaction);
     }
   }
 
