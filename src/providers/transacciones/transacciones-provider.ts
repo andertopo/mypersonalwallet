@@ -58,8 +58,10 @@ export class TransaccionesProvider {
   }
 
   public obtenerTransacciones() {
-    this.generarTransacciones();
-    this.ordenarTransacciones();
+    if(this.transacciones.length <= 0) {
+      this.generarTransacciones();
+      this.ordenarTransacciones();
+    }
     return this.transacciones;
   }
 
