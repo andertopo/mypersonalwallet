@@ -1,0 +1,32 @@
+.text-animated {
+  width: 100%;
+  color: white;
+  position: inherit;
+  margin-top: -50%;
+  text-align: center;
+  transition: all 1s -0.25s ease-out;
+
+  div {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  div:last-of-type {
+    text-align: left;
+  }
+  div:last-of-type span {
+    margin-left: -355px;
+    animation: slidein 2s;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+  }
+  @keyframes slidein {
+    from {
+      margin-left: -800px;
+    }
+    to {
+      margin-left: 0px;
+    }
+  }
+}
