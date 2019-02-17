@@ -1,0 +1,102 @@
+.lateral-submenu-container {
+  position: absolute;
+  right: 25px;
+  width: 75px;
+  height: 150px;
+  z-index: 9999;
+}
+
+.links::before, .links::after {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  background-color: map-get($map: $colors, $key: opaque-two);
+  transition: all 1s -0.25s linear;
+}
+
+.links::before {
+  content: '';
+    top: 0;
+    right: 0;
+    border-radius: 100px 0 0 0;
+}
+
+.links::after {
+  content: '';
+    top: 75px;
+    border-radius: 0 0 0 100px;
+}
+
+.links button {
+  position: absolute;
+  max-width: 2em;
+  max-height: 2em;
+  margin: 0;
+  z-index: 99;
+  transition: all 1s -0.25s ease-out;
+}
+.links > button:nth-child(1) {
+  left: 35px;
+  top: 15px;
+}
+
+.links > button:nth-child(2) {
+  top: 60px;
+  left: 15px;
+  z-index: 9;
+}
+
+.links > button:nth-child(3) {
+  top: 105px;
+  left: 35px;
+  z-index: 9;
+}
+
+.lateral-submenu-icon-container {
+  position: inherit;
+  top: 50px;
+  right: 0;
+  width: 25px;
+  height: 50px;
+  background-color: map-get($map: $colors, $key: opaque);
+  border-radius: 25px 0 0 25px;
+  z-index: 99;
+}
+
+.lateral-submenu-icon-container ion-icon {
+  margin-top: 15px;
+  margin-left: 7px;
+  font-size: 1.5em;
+}
+
+/****** para cerrado *******/
+
+.links.close::before {
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+.links.close::after {
+  transform: rotate(-90deg);
+  opacity: 0;
+}
+
+.links.close > button:nth-child(1) {
+  transform: translate(20px, 50px) scale(0.5, 0.5);
+}
+
+.links.close > button:nth-child(2) {
+  transform: translateX(30px) scale(0.5, 0.5);
+}
+
+.links.close > button:nth-child(3) {
+  transform: translate(20px, -50px) scale(0.5, 0.5);
+}
+
+.lateral-submenu-icon-container.close {
+  z-index: 100;
+}
+
+.close-content {
+  margin-right: 75px;
+}
