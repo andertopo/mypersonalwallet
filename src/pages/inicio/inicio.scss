@@ -1,19 +1,24 @@
 page-inicio {
   @import '../../theme/bg-headers.scss';
-	.toolbar-title {
+
+  .toolbar-title {
     font-size: 2.5em;
+
     .subtitle {
       font-size: 0.4em;
       margin-top: 0;
     }
   }
-  .ion-md-trending-up{
+
+  .ion-md-trending-up {
     color: map-get($colors, secondary);
   }
-  .ion-md-trending-down{
+
+  .ion-md-trending-down {
     color: map-get($colors, danger);
   }
-  .ion-md-stats{
+
+  .ion-md-stats {
     color: map-get($colors, azulPrimario);
   }
 
@@ -25,8 +30,31 @@ page-inicio {
     ion-card-content ion-item .gastado-text {
       color: map-get($colors, danger);
     }
+
     ion-card-content ion-item .restante-text {
       color: map-get($map: $colors, $key: secondary);
     }
   }
+
+  .animacion {
+    animation-name: slidein;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes slidein {
+    from {
+      transform: translate(0%, 0%);
+    }
+
+    to {
+      transform: translate(-25%, 0%) rotate(90deg);
+    }
+  }
+  ion-card-content {
+    min-height: 150px;
+    transition: all 1s -0.25s ease-in;
+  }
+@import 'corner-menu.scss';
+@import 'lateral-submenu.scss';
 }

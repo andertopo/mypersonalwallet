@@ -15,7 +15,7 @@
       </button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-title text-center>
+  <ion-title text-center [ngClass]="clase" (click)="cambiarClase()">
     $ -5,093,236.00
     <p class="subtitle">Saldo en las cuentas</p>
   </ion-title>
@@ -106,14 +106,50 @@
       Gastos por Categoría
     </ion-card-header>
     <ion-card-content>
-      <canvas baseChart
-        [data]="doughnutChartData"
-        [labels]="doughnutChartLabels"
-        [chartType]="doughnutChartType"
-        [colors]="coloursDonut"
-        [options]="barChartOptions"
-        (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)"></canvas>
+      <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+        [colors]="coloursDonut" [options]="barChartOptions" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header no-padding>
+        <div class="parent left close">
+            <div class="background-1 close">
+              <div class="icon-1 close">
+                <ion-icon (click)="clickOpcionT('home')" color="white" name="home"></ion-icon>
+              </div>
+              <div class="icon-2 close">
+                <ion-icon (click)="clickOpcionT('list')" name="list"></ion-icon>
+              </div>
+              <div class="icon-3 close">
+                <ion-icon (click)="clickOpcionT('close')" name="close"></ion-icon>
+              </div>
+            </div>
+              <div class="background-2 close"></div>
+              <div class="icon-container close" (click)="toggleOption()">
+                <div class="icon-animated close"></div>
+              </div>
+          </div>
+
+      <ion-label text-center>Gastos por Categoría</ion-label>
+    </ion-card-header>
+    <div class="lateral-submenu-container close">
+        <div class="links close">
+          <button color="primary" ion-button round small icon-only (click)="clickOpcionT('lateral 1')">
+            <ion-icon name="home"></ion-icon>
+          </button>
+          <button color="primary" ion-button round small icon-only (click)="clickOpcionT('lateral 2')">
+            <ion-icon name="home"></ion-icon>
+          </button>
+          <button color="primary" ion-button round small icon-only (click)="clickOpcionT('lateral 3')">
+            <ion-icon name="home"></ion-icon>
+          </button>
+        </div>
+        <div class="lateral-submenu-icon-container close" (click)="toggleLateralMenu()">
+            <ion-icon [name]="arrowLateralSubmenu"></ion-icon>
+        </div>
+      </div>
+    <ion-card-content [ngClass]="classClose">
+      <ion-label float-right>Hola Mundo!!</ion-label>
     </ion-card-content>
   </ion-card>
 </ion-content>
