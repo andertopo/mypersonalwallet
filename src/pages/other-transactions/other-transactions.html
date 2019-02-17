@@ -1,0 +1,117 @@
+<ion-header>
+    <ion-navbar [color]="colorHeader">
+      <ion-toolbar>
+        <ion-buttons end>
+          <button ion-button icon-only>
+            <ion-icon name="calendar"></ion-icon>
+          </button>
+          <button ion-button icon-only (click)="goSearch()">
+            <ion-icon name="search"></ion-icon>
+          </button>
+          <button ion-button icon-only (click)="openFilters()">
+            <ion-icon name="funnel"></ion-icon>
+          </button>
+          <button ion-button clear icon-only end>
+            <ion-icon name="more"></ion-icon>
+          </button>
+        </ion-buttons>
+        <ion-buttons left>
+          <button ion-button (click)="mostrarTiposTransacciones()">
+            {{ tipoTransaccion }}&nbsp;&nbsp;
+            <ion-icon name="arrow-dropdown"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-title text-center margin [color]="colorHeader">
+        <ion-icon name="arrow-dropleft"(click)="setMonth(-1)"></ion-icon>
+        <span class="date-title" (click)="goFiltroFecha()">{{ currentDate | date: 'MMMM, yyyy' | dateTranslate}}</span>
+        <ion-icon name="arrow-dropright" (click)="setMonth(1)"></ion-icon>
+      </ion-title>
+    </ion-navbar>
+    <ion-title *ngIf="isFilterVisible" class="filter-div">
+      Filtro
+      <span class="filtros">{{ filtros }}</span>
+      <ion-icon float-right class="cerrar" name="close-circle" (click)="toggleFilter(false)"></ion-icon>
+    </ion-title>
+  </ion-header>
+
+
+<ion-content>
+    <!--<ion-segment margin-top>
+        <ion-segment-button>
+          <span ion-text color="opaque">Fin de mes</span>
+          <span ion-text color="danger">$-3,248,236.00</span>
+        </ion-segment-button>
+        <ion-segment-button color="opaque">
+          Balance mensual
+          <br/>
+          <span ion-text color="secondary">$95,000.00</span>
+        </ion-segment-button>
+      </ion-segment>
+    -->
+    <div ion-text float-left>
+      <ion-badge color="opaque" float-left>Fin de Mes</ion-badge>
+      <ion-badge color="danger" float-left>$-3,248,236.00</ion-badge>
+    </div>
+    <div ion-text float-right>
+        <ion-badge color="opaque">Balance mensual</ion-badge>
+        <ion-badge color="secondary">$95,000.00</ion-badge>
+    </div>
+      <div class="headerdivider"></div>
+      <br/>
+  <ion-card *ngFor="let transaccion of transacciones">
+    <!--<ion-card>-->
+    <ion-card-header no-padding>
+      <ion-label float-left padding-left>
+        {{ transaccion.fecha | date:'EEE' | dateTranslate }},
+          {{ transaccion.fecha | date: 'dd'}}
+      </ion-label>
+      <!--<ion-label float-left padding-left>Domingo, 06</ion-label>-->
+      <div class="parent right" [ngClass]="{'close': transaccion.submenuOpen}" *ngIf="transaccion.open">
+        <div class="background-1">
+          <div class="icon-1">
+            <ion-icon (click)="closeCard(transaccion)" color="white" name="remove"></ion-icon>
+          </div>
+          <div class="icon-2">
+            <ion-icon (click)="clickOpcionT('list')" name="add"></ion-icon>
+          </div>
+          <div class="icon-3">
+            <ion-icon (click)="clickOpcionT('close')" name="home"></ion-icon>
+          </div>
+        </div>
+        <div class="background-2"></div>
+        <div class="icon-container" (click)="toggleOption()">
+          <div class="icon-animated"></div>
+        </div>
+      </div>
+      <ion-label [ngClass]="{'padding-32': transaccion.open}" float-right margin-right>
+        <span ion-text [color]="transaccion.valorColor">
+          {{ transaccion.total | currency }}
+          <ion-icon color="dark" margin-left *ngIf="!transaccion.open" [name]="transaccion.menuIcon"
+            (click)="showContentAction(transaccion)"></ion-icon>
+        </span>
+      </ion-label>
+    </ion-card-header>
+    <ion-card-content [ngClass]="{'icon-down': transaccion.total < 0, 'icon-up': transaccion.total >= 0}"  *ngIf="transaccion.open">
+      <ion-list>
+        <ion-item no-lines *ngFor="let transactionItem of transaccion.arrayTransacciones">
+          <!--<ion-item no-lines *ngFor="let transactionItem of transacciones[0].arrayTransacciones">-->
+          <button ion-button round float-left margin-right [color]="transactionItem.categoria.color">
+            <ion-icon [name]="transactionItem.categoria.icono"></ion-icon>
+          </button>
+          <p float-left class="transaction-description">
+            <span text-capitalize>{{ transactionItem.descripcion }}</span>
+            <br />
+            <small text-capitalize>{{ transactionItem.categoria.nombre }} | {{ transactionItem.cuenta.nombre }}</small>
+          </p>
+          <p float-right text-right class="transaction-value">
+            <span [class]="transactionItem.tipo">{{ transactionItem.valor | currency }}</span>
+            <br />
+            <small *ngIf="transactionItem.realizado">Realizado</small>
+            <small *ngIf="!transactionItem.realizado">Pendiente</small>
+          </p>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

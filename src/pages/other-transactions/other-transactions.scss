@@ -1,0 +1,40 @@
+page-other-transactions {
+  ion-card-content {
+    padding: 13px 0 !important;
+    background: url('../assets/aditional-icons/backgrounds/up.svg');  
+    background-repeat: no-repeat;
+    background-size: 25%;
+    background-position: right 90%;
+  }
+  ion-card-content.icon-down {
+    background: url('../assets/aditional-icons/backgrounds/down.svg');
+  }
+  .item-md {
+    background: transparent;
+  }
+  .item-md .item-button {
+    width: 35px;
+    height: 35px;
+    font-size: 1.7rem;
+  }
+  .padding-32 {
+    padding-right: 32px;
+  }
+  @import '../../theme/colores-transacciones.scss';
+
+
+
+  .headerdivider {
+    border-left: 3px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+    width: 1px;
+    height: 40px;
+    position: absolute;
+    right: 50%;
+    top: 10px;
+  }
+  /*ion-segment-button {
+    line-height: 1.5rem !important;
+    color: rgba(60, 60, 60, 0.7) !important;
+  }*/
+}
