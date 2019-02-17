@@ -38,6 +38,8 @@ import { EtiquetaPageModule } from '../pages/cofiguracion/etiqueta/etiqueta.modu
 import { EtiquetaProvider } from '../providers/etiqueta/etiqueta-provider';
 import { CategoriaPageModule } from '../pages/cofiguracion/categoria/categoria.module';
 import { DatabaseLoaderProvider } from '../providers/database/externalDatabase/database-loader';
+import { OtherPage } from '../pages/otherPage/other-page';
+import { OtherTransactionsPageModule } from '../pages/other-transactions/other-transactions.module';
 
 
 
@@ -46,6 +48,7 @@ import { DatabaseLoaderProvider } from '../providers/database/externalDatabase/d
   declarations: [
     MyApp,
     InicioPage,
+    OtherPage,
     TransaccionesPage,
     ConfiguracionPage,
     TabsPage,
@@ -65,6 +68,7 @@ import { DatabaseLoaderProvider } from '../providers/database/externalDatabase/d
     CuentaPageModule,
     EtiquetaPageModule,
     CategoriaPageModule,
+    OtherTransactionsPageModule,
     HttpClientModule,
     
   ],
@@ -72,6 +76,7 @@ import { DatabaseLoaderProvider } from '../providers/database/externalDatabase/d
   entryComponents: [
     MyApp,
     InicioPage,
+    OtherPage,
     CalendarioInicioPage,
     TransaccionesPage,
     ConfiguracionPage,
