@@ -1,0 +1,243 @@
+<div class="splash">
+  <div class="background1"></div>
+  <div class="background2"></div>
+  <div class="background3"></div>
+  <div class="text-animated">
+    <div>Wallet</div>
+    <div>
+      <span>Personaliza tus gastos</span>
+    </div>
+  </div>
+  <div class="splash-icon-container">
+    <ion-icon color="light" name="home"></ion-icon>
+  </div>
+</div>
+<div class="card-container">
+  <ion-card class="card-menu" [color]="colors[0].color">
+    <ion-card-header (click)="scaleCard(0)">
+      <ion-label text-center>
+        <ion-icon *ngIf="tabActive" name="arrow-back" class="icon-back" float-left></ion-icon>Mi perfil
+      </ion-label>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid class="submenu-grid">
+        <ion-row>
+          <ion-col>
+            <!--<div style="border: 1px solid red; width: 100%; height: 25%; box-shadow: 0 -10px 16px rgba(0, 0, 0, 0.4);">
+              <ion-icon name="home"></ion-icon>
+            </div>
+            -->
+            <ion-item text-center>
+              <button large ion-button rounded icon-only>
+                <ion-icon name="home"></ion-icon>
+              </button>
+              <p ion-text margin-top [color]="colors[0].initialColor">Cuentas</p>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item text-center>
+              <button large ion-button rounded icon-only>
+                <ion-icon name="home"></ion-icon>
+              </button>
+              <p ion-text margin-top [color]="colors[0].initialColor">Categorias</p>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item text-center>
+              <button large ion-button rounded icon-only>
+                <ion-icon name="home"></ion-icon>
+              </button>
+              <p ion-text margin-top [color]="colors[0].initialColor">Tarjetas</p>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item text-center>
+              <button large ion-button rounded icon-only>
+                <ion-icon name="home"></ion-icon>
+              </button>
+              <p ion-text margin-top [color]="colors[0].initialColor">Etiquetas</p>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item text-center>
+              <button large ion-button rounded icon-only>
+                <ion-icon name="home"></ion-icon>
+              </button>
+              <p ion-text margin-top [color]="colors[0].initialColor">Metas</p>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item text-center>
+              <button large ion-button rounded icon-only>
+                <ion-icon name="home"></ion-icon>
+              </button>
+              <p ion-text margin-top [color]="colors[0].initialColor">Presupuesto</p>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+
+      <!--
+      <ion-scroll class="scroll-personalized" scrollY="true" style="position: initial; margin-top: 60px;">
+        <ion-card>
+          <ion-title style="color: black" text-center>Total: $ -25.000</ion-title>
+          <ion-card-content>
+            Hola mundo!!
+          </ion-card-content>
+        </ion-card>
+      </ion-scroll>
+    -->
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="card-menu" [color]="colors[1].color">
+    <ion-card-header (click)="scaleCard(1)">
+      <ion-label text-center>
+        <ion-icon *ngIf="tabActive" name="arrow-back" class="icon-back" float-left></ion-icon>Gerenciar
+      </ion-label>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list padding>
+        <button margin-bottom ion-item>
+          <ion-icon name="cart" item-start></ion-icon>
+          Shopping
+        </button>
+
+        <button margin-bottom ion-item>
+          <ion-icon name="medical" item-start></ion-icon>
+          Hospital
+        </button>
+
+        <button margin-bottom ion-item>
+          <ion-icon name="cafe" item-start></ion-icon>
+          Cafe
+        </button>
+
+        <button margin-bottom ion-item>
+          <ion-icon name="paw" item-start></ion-icon>
+          Dog Park
+        </button>
+
+        <button margin-bottom ion-item>
+          <ion-icon name="beer" item-start></ion-icon>
+          Pub
+        </button>
+
+        <button margin-bottom ion-item>
+          <ion-icon name="planet" item-start></ion-icon>
+          Space
+        </button>
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="card-menu" [color]="colors[2].color">
+    <ion-card-header (click)="scaleCard(2)">
+      <ion-label text-center>
+        <ion-icon *ngIf="tabActive" name="arrow-back" class="icon-back" float-left></ion-icon>General
+      </ion-label>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list padding>
+        <button margin-bottom ion-item>
+          <ion-icon name="cart" item-start></ion-icon>
+          Cuentas
+        </button>
+
+        <button margin-bottom ion-item>
+          <ion-icon name="medical" item-start></ion-icon>
+          Categorias
+        </button>
+
+        <button margin-bottom ion-item>
+          <ion-icon name="cafe" item-start></ion-icon>
+          Tarjetas de credito
+        </button>
+
+        <button margin-bottom ion-item>
+          <ion-icon name="paw" item-start></ion-icon>
+          Metas
+        </button>
+
+        <button margin-bottom ion-item>
+          <ion-icon name="beer" item-start></ion-icon>
+          Etiquetas
+        </button>
+
+        <button margin-bottom ion-item clear>
+          <ion-icon name="planet" item-start></ion-icon>
+          Cards de la pantalla principal
+        </button>
+
+        <button margin-bottom ion-item clear>
+          <ion-icon name="planet" item-start></ion-icon>
+          Importar datos
+        </button>
+
+        <button margin-bottom ion-item clear>
+          <ion-icon name="planet" item-start></ion-icon>
+          Exportar informes
+        </button>
+
+        <button margin-bottom ion-item clear>
+          <ion-icon name="planet" item-start></ion-icon>
+          Sincronización
+        </button>
+
+        <button margin-bottom ion-item clear>
+          <ion-icon name="planet" item-start></ion-icon>
+          Alertas y notificaciones
+        </button>
+
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="card-menu" [color]="colors[3].color">
+    <ion-card-header (click)="scaleCard(3)">
+      <ion-label text-center>
+        <ion-icon *ngIf="tabActive" name="arrow-back" class="icon-back" float-left></ion-icon>
+        Acerca de
+      </ion-label>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list padding>
+        <button margin-bottom ion-item>
+          <ion-icon name="cart" item-start></ion-icon>
+          Shopping
+        </button>
+
+        <button margin-bottom ion-item>
+          <ion-icon name="medical" item-start></ion-icon>
+          Hospital
+        </button>
+
+        <button margin-bottom ion-item>
+          <ion-icon name="cafe" item-start></ion-icon>
+          Cafe
+        </button>
+
+        <button margin-bottom ion-item>
+          <ion-icon name="paw" item-start></ion-icon>
+          Dog Park
+        </button>
+
+        <button margin-bottom ion-item>
+          <ion-icon name="beer" item-start></ion-icon>
+          Pub
+        </button>
+
+        <button margin-bottom ion-item (click)="go()">
+          <ion-icon name="planet" item-start (click)="go()"></ion-icon>
+          Space
+        </button>
+
+      </ion-list>
+      <div class="active-card" style="width: 150px; height: 150px;"></div>
+    </ion-card-content>
+  </ion-card>
+</div>

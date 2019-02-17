@@ -1,0 +1,199 @@
+other-page {
+  background-color: map-get($map: $colors, $key: light);
+  .icon-back {
+    margin-left: 16px;
+    margin-right: -36px;
+  }
+  .splash {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    transition: all 0.5s 0.25s linear;
+  }
+  .splash.active {
+    z-index: -1;
+    .text {
+      visibility: hidden;
+    }
+  }
+  .background1 {
+    position: absolute;
+    display: block;
+    width: 200%;
+    height: 40%;
+    transform: translate(0%, -110%) matrix(0.70711, -0.7071, 0.7071, 0.70711, -243.98, 0);
+    background-color: #222222;
+    transition: all 0.5s 0.25s linear;
+  }
+  .splash.active .background1 {
+    background-color: #0190ec;
+    transform: rotate(-45deg) translateY(-250%)
+  }
+  .background2 {
+    transform: matrix(0.70711, -0.7071, 0.7071, 0.7071, 0, 0);
+    top: 29%;
+    left: -53%;
+    position: absolute;
+    display: block;
+    width: 200%;
+    height: 40%;
+    background-color: #222222;
+    transition: all 0.5s 0.25s linear;
+  }
+  .splash.active .background2 {
+    //transform: translateY(30%);
+    background-color: #0190ec;
+    height: 0;
+    top: 59%;
+    left: -53%;
+  }
+  .background3 {
+    transform: translate(0%, -124%) matrix(0.70711, -0.7071, 0.7071, 0.70711, 40.1283, 0);
+    top: 105%;
+    left: -20%;
+    position: absolute;
+    display: block;
+    width: 200%;
+    height: 40%;
+    background-color: #222222;
+    transition: all 0.5s 0.25s linear;
+  }
+  .splash.active .background3 {
+    background-color: #0190ec;
+    transform: rotate(-45deg) translateY(28%);
+  }
+  @import 'texto.scss';
+  .splash-icon-container {
+    margin: 0 auto;
+    z-index: 9999;
+    font-size: 8.4em;
+    transition: all 0.5s 0.25s linear;
+  }
+  .splash.active .splash-icon-container {
+    transform: scale(0);
+  }
+  .card-container {
+    ion-card.card-menu {
+      position: absolute;
+      box-shadow: 0 -10px 16px rgba(0, 0, 0, 0.4);
+      transition: all 1s -0.25s ease-in-out;
+    }
+    .active-card {
+      top: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      button {
+        background-color: initial !important;
+        border: 1px solid;
+        border-top-left-radius: 50px;
+        border-bottom-left-radius: 50px;
+        box-shadow: 0 10px 16px rgba(0, 0, 0, 0.4);
+      }
+    }
+    ion-card.active-card {
+      background: url(../assets/aditional-icons/backgrounds/bank.svg);
+      background-repeat: no-repeat;
+      background-position: right 70%;
+      background-size: 50%;
+    }
+    .move-card-up {
+      transform: translateY(-200%) !important;
+    }
+    .move-card-down {
+      transform: translateY(300%) !important;
+    }
+    ion-card.card-menu {
+      button {
+        transition: all 1s -0.25s ease-in-out;
+      }
+    }
+    ion-card.card-menu:nth-child(1) {
+      button {
+        color: white;
+        background-color: map-get($map: $colors, $key: warning);
+      }
+    }
+    ion-card.card-menu:nth-child(1).active-card {
+      ion-card-header {
+        color: map-get($map: $colors, $key: warning);
+      }
+      button {
+        color: map-get($map: $colors, $key: warning);
+      }
+    }
+    ion-card.card-menu:nth-child(2) {
+      transform: translateY(80px);
+      button {
+        color: white;
+        background-color: map-get($map: $colors, $key: primary);
+      }
+    }
+    ion-card.card-menu:nth-child(2).active-card {
+      transform: translateY(0px);
+      ion-card-header {
+        color: map-get($map: $colors, $key: primary);
+      }
+      button {
+        color: map-get($map: $colors, $key: primary);
+      }
+    }
+    ion-card.card-menu:nth-child(3) {
+      transform: translateY(160px);
+      button {
+        color: white;
+        background-color: map-get($map: $colors, $key: secondary);
+      }
+    }
+    ion-card.card-menu:nth-child(3).active-card {
+      transform: translateY(0px);
+      ion-card-header {
+        color: map-get($map: $colors, $key: secondary);
+      }
+      button {
+        color: map-get($map: $colors, $key: secondary);
+      }
+    }
+    ion-card.card-menu:nth-child(4) {
+      transform: translateY(240px);
+      button {
+        color: white;
+        background-color: map-get($map: $colors, $key: azulPrimario);
+        transition: all 1s -0.25s ease-in-out;
+      }
+    }
+    ion-card.card-menu:nth-child(4).active-card {
+      transform: translateY(0px);
+      ion-card-header {
+        color: map-get($map: $colors, $key: azulPrimario);
+      }
+      button {
+        color: map-get($map: $colors, $key: azulPrimario);
+      }
+    }
+  }
+  .scroll-personalized .scroll-content {
+    margin-top: 60px;
+  }
+
+  ion-card-content {
+    height: 100%;
+    overflow-y: scroll;
+    padding-bottom: 76px;
+  }
+  .submenu-grid {
+    ion-item {
+      background: transparent;
+    }
+    button {
+      border-radius: 50%;
+      width: 3.8em;
+      height: 3.8em;
+      font-size: 1.5em;
+    }
+  }
+}
